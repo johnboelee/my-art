@@ -13,13 +13,30 @@
       background: black;
     }
 
-    img {
+    /* 👉 wrapper voor image + overlay */
+    .image-wrapper {
+      position: relative;
       width: 100vw;
       height: 100vh;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 
-    /* 👉 DIT IS NIEUW */
+    /* 👉 donkere laag over de foto */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35); /* pas hier donkerte aan */
+    }
+
+    /* 👉 jouw naam */
     .header {
       position: fixed;
       top: 20px;
@@ -37,10 +54,13 @@
 
 <body>
 
-  <!-- 👉 DIT IS NIEUW -->
   <div class="header">JOHN BOELEE</div>
 
-  <img src="john-boelee-art-01.jpg" alt="Art">
+  <!-- 👉 NIEUW: wrapper + overlay -->
+  <div class="image-wrapper">
+    <img src="john-boelee-art-01.jpg" alt="Art">
+    <div class="overlay"></div>
+  </div>
 
 </body>
 </html>
