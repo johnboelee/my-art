@@ -1,84 +1,81 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <title>John Boelee Art Studio</title>
+<title>John Boelee Art Studio</title>
 
-  <meta name="description" content="Original artworks by John Boelee">
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
 
-  <style>
-    body {
-      margin: 0;
-      background: black;
-    }
+/* 👉 naam blijft altijd zichtbaar */
+.header {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  font-size: 65px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
-    /* 👉 wrapper voor image + overlay */
-    .image-wrapper {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
+/* 👉 elk kunstwerk = full screen */
+.work {
+  height: 100vh;
+  width: 100vw;
+}
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.work img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    /* 👉 donkere laag over de foto */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.35);
-    }
-
-    /* 👉 header container */
-    .header {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-
-    /* 👉 naam */
-    .name {
-      font-size: 65px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      line-height: 1;
-      opacity: 0.9;
-    }
-
-    /* 👉 subtitel */
-    .sub {
-      font-size: 16px;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      margin-top: 8px;
-      opacity: 0.8;
-    }
-  </style>
+/* 👉 tekstvlakken */
+.text {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- 👉 HEADER -->
-  <div class="header">
-    <div class="name">JOHN BOELEE</div>
-    <div class="sub">CONTEMPORARY ART</div>
-  </div>
+<!-- 👉 vaste naam -->
+<div class="header">JOHN BOELEE</div>
 
-  <!-- 👉 IMAGE -->
-  <div class="image-wrapper">
-    <img src="john-boelee-art-01.jpg" alt="Art">
-    <div class="overlay"></div>
-  </div>
+<!-- 👉 1e beeld (landing / hero) -->
+<section class="work">
+  <img src="john-boelee-art-01.jpg">
+</section>
+
+<!-- 👉 scroll: tweede werk -->
+<section class="work">
+  <img src="john-boelee-art-02.jpg">
+</section>
+
+<!-- 👉 tekstvlak -->
+<section class="text">
+  Contemporary Art Practice<br>
+  The Netherlands
+</section>
+
+<!-- 👉 derde werk -->
+<section class="work">
+  <img src="john-boelee-art-03.jpg">
+</section>
 
 </body>
 </html>
