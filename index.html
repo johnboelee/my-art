@@ -13,30 +13,54 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* 👉 naam blijft altijd zichtbaar */
+/* 👉 FIXED HEADER */
 .header {
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 1000;
-  font-size: 65px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
-/* 👉 elk kunstwerk = full screen */
+.name {
+  font-size: 75px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.sub {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+/* 👉 FULLSCREEN SECTIONS */
 .work {
+  position: relative;
   height: 100vh;
   width: 100vw;
 }
 
+/* 👉 IMAGE */
 .work img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* 👉 tekstvlakken */
+/* 👉 DARK OVERLAY (TERUG!) */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+}
+
+/* 👉 TEXT SECTIONS */
 .text {
   height: 100vh;
   display: flex;
@@ -44,7 +68,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 40px;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 2px;
   opacity: 0.85;
 }
@@ -53,28 +77,34 @@ body {
 
 <body>
 
-<!-- 👉 vaste naam -->
-<div class="header">JOHN BOELEE</div>
+<!-- 👉 HEADER TERUG -->
+<div class="header">
+  <div class="name">JOHN BOELEE</div>
+  <div class="sub">CONTEMPORARY ART</div>
+</div>
 
-<!-- 👉 1e beeld (landing / hero) -->
+<!-- 👉 1e werk -->
 <section class="work">
   <img src="john-boelee-art-01.jpg">
+  <div class="overlay"></div>
 </section>
 
-<!-- 👉 scroll: tweede werk -->
+<!-- 👉 2e werk -->
 <section class="work">
   <img src="john-boelee-art-02.jpg">
+  <div class="overlay"></div>
 </section>
 
-<!-- 👉 tekstvlak -->
+<!-- 👉 tekst -->
 <section class="text">
   Contemporary Art Practice<br>
-  The Netherlands
+  Based in The Netherlands
 </section>
 
-<!-- 👉 derde werk -->
+<!-- 👉 3e werk -->
 <section class="work">
   <img src="john-boelee-art-03.jpg">
+  <div class="overlay"></div>
 </section>
 
 </body>
