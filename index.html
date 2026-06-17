@@ -2,23 +2,27 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-
 <title>John Boelee Art Studio</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background: black;
   color: white;
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-/* HEADER LINKSONDER */
+/* HEADER */
 .header {
   position: fixed;
   left: 5vw;
   bottom: 5vh;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .name {
@@ -36,172 +40,127 @@ body {
   opacity: 0.8;
 }
 
-/* FULLSCREEN SECTIONS */
-.work {
+/* HERO (alleen eerste beeld fullscreen) */
+.hero {
   position: relative;
+  width: 100%;
   height: 100vh;
-  height: 100svh; /* mobile fix */
-  width: 100vw;
-  background: black;
-  z-index: 1; /* voorkomt overlap issues */
+  height: 100svh;
 }
 
-/* HERO */
 .hero img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* OVERIGE WERKEN */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+/* TEXT */
+.text {
+  padding: 60px 40px;
+  text-align: center;
+  background: black;
+}
+
+.text p {
+  max-width: 900px;
+  margin: 0 auto;
+
+  font-size: 30px;
+  line-height: 1.7;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+/* ARTWORK BLOCK (BELANGRIJK: geen fullscreen meer) */
 .artwork {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 60px 40px;
+  text-align: center;
+  background: black;
 }
 
 .artwork img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* DONKERE OVERLAY (ALLEEN HERO) */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.35);
-}
-
-/* TITEL */
+/* TITLE */
 .title {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  color: rgba(255,255,255,0.85);
+  margin-top: 20px;
   font-size: 14px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  text-align: center;
-
-  z-index: 2;
-}
-
-/* TEKSTBLOKKEN */
-.text {
-  position: relative;
-  z-index: 5;
-  background: black; /* BELANGRIJK: voorkomt overlap met images */
-  
-  width: 100%;
-  min-height: 35vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  padding: 40px;
-  font-size: 30px;
-  letter-spacing: 2px;
   opacity: 0.85;
-  line-height: 1.7;
-}
-
-/* DESKTOP */
-@media (min-width: 1024px) {
-  .text {
-    font-size: 18px;
-  }
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .text {
-    font-size: 18px;
+  .name { font-size: 32px; }
+  .sub { font-size: 12px; }
+
+  .text, .artwork {
     padding: 25px;
+  }
+
+  .text p {
+    font-size: 18px;
     line-height: 1.6;
-  }
-
-  .header {
-    left: 20px;
-    bottom: 20px;
-  }
-
-  .name {
-    font-size: 32px;
-  }
-
-  .sub {
-    font-size: 12px;
+    letter-spacing: 1px;
   }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="name">JOHN BOELEE</div>
   <div class="sub">CONTEMPORARY ART</div>
 </div>
 
 <!-- HERO -->
-<section class="work hero">
-  <img src="john-boelee-art-01.jpg" alt="Artwork">
+<section class="hero">
+  <img src="john-boelee-art-01.jpg">
   <div class="overlay"></div>
 </section>
 
-<!-- INTRO TEKST -->
+<!-- TEXT -->
 <section class="text">
-  I am drawn to the moment when certainty begins to dissolve.
-  The work moves within the tension between what we know,
-  what we see, and what we experience.
+  <p>
+    I am drawn to the moment when certainty begins to dissolve.
+    The work moves within the tension between what we know,
+    what we see, and what we experience.
 
-  <br><br>
+    <br><br>
 
-  Images, memories, and observations gather in my practice,
-  where fragments of meaning drift, overlap, and quietly
-  contradict one another.
-
-  <br><br>
-
-  This state of ambiguity continues to hold my attention.
-  Rather than seeking resolution, the work allows contradiction
-  to remain, to breathe.
-
-  <br><br>
-
-  Through collected imagery, gesture, and abstraction,
-  each painting opens a space where different realities
-  can coexist at once, unsettled and present.
+    Images, memories, and observations gather in my practice,
+    where fragments of meaning drift, overlap, and quietly
+    contradict one another.
+  </p>
 </section>
 
-<!-- 2e WERK -->
-<section class="work artwork">
-  <img src="john-boelee-art-02.jpg" alt="Lion Watching Back">
-
-  <div class="title">
-    LION WATCHING BACK · 1993
-  </div>
+<!-- ART 2 -->
+<section class="artwork">
+  <img src="john-boelee-art-02.jpg">
+  <div class="title">LION WATCHING BACK · 1993</div>
 </section>
 
-<!-- TEKST -->
+<!-- TEXT 2 -->
 <section class="text">
-  Contemporary Art Practice<br>
-  Based in The Netherlands
+  <p>Contemporary Art Practice<br>Based in The Netherlands</p>
 </section>
 
-<!-- 3e WERK -->
-<section class="work artwork">
-  <img src="john-boelee-art-03.jpg" alt="Artwork">
+<!-- ART 3 -->
+<section class="artwork">
+  <img src="john-boelee-art-03.jpg">
 </section>
 
 </body>
