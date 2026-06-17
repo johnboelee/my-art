@@ -85,13 +85,10 @@ body {
 }
 
 .artwork img {
-  width: 100vw;
-  max-width: none;
+  width: min(100vw, 1400px);
   height: auto;
   display: block;
-
-  /* voorkomt rare overflow door 100vw */
-  margin-left: calc(-50vw + 50%);
+  margin: 0 auto;
 }
 
 /* TITLE */
