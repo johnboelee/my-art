@@ -50,6 +50,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* 🔥 BELANGRIJK FIX */
 }
 
 /* IMAGES */
@@ -65,16 +66,16 @@ body {
   object-fit: contain;
 }
 
-/* TITLE */
+/* TITLE (FIXED STRUCTURE) */
 .title {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;   /* 🔥 geen absolute meer */
+  margin-top: 20px;
+
   font-size: 14px;
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0.85;
+  text-align: center;
 }
 
 /* TEXT SECTION */
