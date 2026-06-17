@@ -40,7 +40,7 @@ body {
   opacity: 0.8;
 }
 
-/* HERO (alleen eerste beeld fullscreen) */
+/* HERO */
 .hero {
   position: relative;
   width: 100%;
@@ -77,34 +77,36 @@ body {
   opacity: 0.85;
 }
 
-/* ARTWORK BLOCK (BELANGRIJK: geen fullscreen meer) */
+/* ARTWORK BASE */
 .artwork {
   padding: 60px 40px;
-  text-align: center;
   background: black;
 }
 
+/* GREY BACKGROUND */
 .artwork-grey {
   background: #d9d9d9;
 }
 
+/* IMAGE BASE (BELANGRIJK: geen auto-centering meer hier) */
+.artwork img {
+  width: min(100vw, 1000px);
+  height: auto;
+  display: block;
+}
+
+/* standaard centreren (voor normale artworks) */
+.artwork:not(.artwork-right) img {
+  margin: 0 auto;
+}
+
+/* RIGHT VERSION */
 .artwork-right img {
   margin-left: auto;
   margin-right: 0;
 }
 
-.artwork-right .title {
-  color: black;
-}
-
-.artwork img {
-  width: min(100vw, 1000px);
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* TITLE */
+/* TITLES */
 .title {
   margin-top: 20px;
   font-size: 14px;
@@ -113,8 +115,14 @@ body {
   opacity: 0.85;
 }
 
+/* kleur aanpassing voor grijze achtergrond */
+.artwork-grey .title {
+  color: black;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
+
   .name { font-size: 32px; }
   .sub { font-size: 12px; }
 
@@ -126,6 +134,15 @@ body {
     font-size: 18px;
     line-height: 1.6;
     letter-spacing: 1px;
+  }
+
+  /* op mobiel altijd centreren */
+  .artwork-right img {
+    margin: 0 auto;
+  }
+
+  .artwork-grey .title {
+    color: black;
   }
 }
 </style>
@@ -177,12 +194,12 @@ body {
 </section>
 
 <!-- ART 3 -->
-<section class="artwork">
+<section class="artwork artwork-grey artwork-right">
   <img src="john-boelee-art-03.jpg">
   <div class="title">LAYERS OF ABSENCE · 2025</div>
 </section>
 
-  <!-- TEXT 3 -->
+<!-- TEXT 3 -->
 <section class="text">
   <p></p>
 </section>
