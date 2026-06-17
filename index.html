@@ -40,49 +40,29 @@ body {
   opacity: 0.8;
 }
 
-/* IMAGE BLOCK */
-.work {
+/* HERO (alleen eerste beeld fullscreen) */
+.hero {
   position: relative;
-  width: 100%;
-  background: black;
-}
-
-/* HERO IMAGE */
-.hero img {
   width: 100%;
   height: 100vh;
   height: 100svh;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-/* ARTWORK IMAGE */
-.artwork img {
-  width: 100%;
-  display: block;
-  object-fit: contain;
-}
-
-/* OVERLAY */
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.35);
 }
 
-/* TITLE — NOW TRUE CAPTION */
-.title {
-  text-align: center;
-  margin: 20px 0 60px 0;
-
-  font-size: 14px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-
 /* TEXT */
 .text {
-  padding: 40px;
+  padding: 60px 40px;
   text-align: center;
   background: black;
 }
@@ -97,12 +77,38 @@ body {
   opacity: 0.85;
 }
 
+/* ARTWORK BLOCK (BELANGRIJK: geen fullscreen meer) */
+.artwork {
+  padding: 60px 40px;
+  text-align: center;
+  background: black;
+}
+
+.artwork img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* TITLE */
+.title {
+  margin-top: 20px;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   .name { font-size: 32px; }
   .sub { font-size: 12px; }
 
-  .text { padding: 25px; }
+  .text, .artwork {
+    padding: 25px;
+  }
 
   .text p {
     font-size: 18px;
@@ -121,8 +127,8 @@ body {
 </div>
 
 <!-- HERO -->
-<section class="work">
-  <img class="hero" src="john-boelee-art-01.jpg">
+<section class="hero">
+  <img src="john-boelee-art-01.jpg">
   <div class="overlay"></div>
 </section>
 
@@ -138,18 +144,12 @@ body {
     Images, memories, and observations gather in my practice,
     where fragments of meaning drift, overlap, and quietly
     contradict one another.
-
-    <br><br>
-
-    This state of ambiguity continues to hold my attention.
-    Rather than seeking resolution, the work allows contradiction
-    to remain, to breathe.
   </p>
 </section>
 
 <!-- ART 2 -->
-<section class="work">
-  <img class="artwork" src="john-boelee-art-02.jpg">
+<section class="artwork">
+  <img src="john-boelee-art-02.jpg">
   <div class="title">LION WATCHING BACK · 1993</div>
 </section>
 
@@ -159,8 +159,8 @@ body {
 </section>
 
 <!-- ART 3 -->
-<section class="work">
-  <img class="artwork" src="john-boelee-art-03.jpg">
+<section class="artwork">
+  <img src="john-boelee-art-03.jpg">
 </section>
 
 </body>
