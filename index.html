@@ -2,13 +2,10 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
+
 <title>John Boelee Art Studio</title>
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   background: black;
@@ -16,7 +13,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+/* HEADER LINKSONDER */
 .header {
   position: fixed;
   left: 5vw;
@@ -39,37 +36,28 @@ body {
   opacity: 0.8;
 }
 
-/* SECTIONS */
+/* FULLSCREEN SECTIONS */
 .work {
   position: relative;
   height: 100vh;
-  height: 100svh;
+  height: 100svh; /* mobile fix */
   width: 100vw;
   background: black;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-
-  /* fade-in basis */
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  z-index: 1; /* voorkomt overlap issues */
 }
 
-/* active state (scroll effect) */
-.work.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* IMAGES */
+/* HERO */
 .hero img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* OVERIGE WERKEN */
+.artwork {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .artwork img {
@@ -78,29 +66,40 @@ body {
   object-fit: contain;
 }
 
-/* OVERLAY HERO */
+/* DONKERE OVERLAY (ALLEEN HERO) */
 .overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.35);
 }
 
-/* TITLE */
+/* TITEL */
 .title {
   position: absolute;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
+
+  color: rgba(255,255,255,0.85);
   font-size: 14px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  opacity: 0.85;
+  text-align: center;
+
+  z-index: 2;
 }
 
-/* TEXT BLOCKS */
+/* TEKSTBLOKKEN */
 .text {
+  position: relative;
+  z-index: 5;
+  background: black; /* BELANGRIJK: voorkomt overlap met images */
+  
+  width: 100%;
   min-height: 35vh;
-  background: black;
 
   display: flex;
   align-items: center;
@@ -110,8 +109,8 @@ body {
   padding: 40px;
   font-size: 30px;
   letter-spacing: 2px;
+  opacity: 0.85;
   line-height: 1.7;
-  opacity: 0.9;
 }
 
 /* DESKTOP */
@@ -126,6 +125,12 @@ body {
   .text {
     font-size: 18px;
     padding: 25px;
+    line-height: 1.6;
+  }
+
+  .header {
+    left: 20px;
+    bottom: 20px;
   }
 
   .name {
@@ -136,11 +141,13 @@ body {
     font-size: 12px;
   }
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="name">JOHN BOELEE</div>
   <div class="sub">CONTEMPORARY ART</div>
@@ -148,53 +155,54 @@ body {
 
 <!-- HERO -->
 <section class="work hero">
-  <img src="john-boelee-art-01.jpg">
+  <img src="john-boelee-art-01.jpg" alt="Artwork">
   <div class="overlay"></div>
 </section>
 
-<!-- TEXT -->
+<!-- INTRO TEKST -->
 <section class="text">
   I am drawn to the moment when certainty begins to dissolve.
   The work moves within the tension between what we know,
   what we see, and what we experience.
+
+  <br><br>
+
+  Images, memories, and observations gather in my practice,
+  where fragments of meaning drift, overlap, and quietly
+  contradict one another.
+
+  <br><br>
+
+  This state of ambiguity continues to hold my attention.
+  Rather than seeking resolution, the work allows contradiction
+  to remain, to breathe.
+
+  <br><br>
+
+  Through collected imagery, gesture, and abstraction,
+  each painting opens a space where different realities
+  can coexist at once, unsettled and present.
 </section>
 
-<!-- ART 2 -->
+<!-- 2e WERK -->
 <section class="work artwork">
-  <img src="john-boelee-art-02.jpg">
+  <img src="john-boelee-art-02.jpg" alt="Lion Watching Back">
 
   <div class="title">
     LION WATCHING BACK · 1993
   </div>
 </section>
 
-<!-- TEXT -->
+<!-- TEKST -->
 <section class="text">
   Contemporary Art Practice<br>
   Based in The Netherlands
 </section>
 
-<!-- ART 3 -->
+<!-- 3e WERK -->
 <section class="work artwork">
-  <img src="john-boelee-art-03.jpg">
+  <img src="john-boelee-art-03.jpg" alt="Artwork">
 </section>
-
-<script>
-/* scroll fade-in observer */
-const sections = document.querySelectorAll('.work');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, {
-  threshold: 0.2
-});
-
-sections.forEach(sec => observer.observe(sec));
-</script>
 
 </body>
 </html>
