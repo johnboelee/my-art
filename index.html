@@ -83,27 +83,29 @@ body {
   background: black;
 }
 
-/* GREY BACKGROUND */
+/* GREY WALL ONLY FOR ART 3 */
 .artwork-grey {
   background: #d9d9d9;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0; /* BELANGRIJK: geen boven/onder ruimte */
 }
 
-/* IMAGE BASE (BELANGRIJK: geen auto-centering meer hier) */
+/* IMAGE */
 .artwork img {
-  width: min(100vw, 1000px);
+  width: min(1000px, 100vw);
   height: auto;
   display: block;
 }
 
-/* standaard centreren (voor normale artworks) */
+/* standaard centreren */
 .artwork:not(.artwork-right) img {
   margin: 0 auto;
 }
 
-/* RIGHT VERSION */
+/* ART 3 RIGHT ALIGN */
 .artwork-right img {
-  margin-left: auto;
-  margin-right: 0;
+  margin: 0;
 }
 
 /* TITLES */
@@ -115,9 +117,10 @@ body {
   opacity: 0.85;
 }
 
-/* kleur aanpassing voor grijze achtergrond */
+/* TEXT KLEUR OP GRIS */
 .artwork-grey .title {
   color: black;
+  padding: 10px 20px 20px 20px;
 }
 
 /* MOBILE */
@@ -136,13 +139,21 @@ body {
     letter-spacing: 1px;
   }
 
-  /* op mobiel altijd centreren */
-  .artwork-right img {
+  /* mobiel: alles weer normaal */
+  .artwork-grey {
+    display: block;
+    padding: 25px;
+  }
+
+  .artwork img {
+    width: 100%;
+    max-width: none;
     margin: 0 auto;
   }
 
   .artwork-grey .title {
     color: black;
+    padding: 0;
   }
 }
 </style>
