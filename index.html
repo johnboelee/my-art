@@ -50,25 +50,38 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; /* 🔥 BELANGRIJK FIX */
+  flex-direction: column;
 }
 
-/* IMAGES */
+/* HERO */
+.hero {
+  position: relative;
+}
+
 .hero img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+}
+
+/* ARTWORK */
 .artwork img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* TITLE (FIXED STRUCTURE) */
+/* TITLE */
 .title {
-  position: relative;   /* 🔥 geen absolute meer */
+  position: relative;
   margin-top: 20px;
 
   font-size: 14px;
@@ -136,6 +149,7 @@ body {
 <!-- HERO -->
 <section class="work hero">
   <img src="john-boelee-art-01.jpg" alt="Artwork">
+  <div class="overlay"></div>
 </section>
 
 <!-- TEXT -->
