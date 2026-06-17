@@ -40,28 +40,26 @@ body {
   opacity: 0.8;
 }
 
-/* SECTIONS */
+/* IMAGE BLOCK */
 .work {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  height: 100svh;
+  width: 100%;
   background: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
-/* HERO */
-.hero {
-  position: relative;
-}
-
+/* HERO IMAGE */
 .hero img {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  height: 100svh;
   object-fit: cover;
+}
+
+/* ARTWORK IMAGE */
+.artwork img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
 }
 
 /* OVERLAY */
@@ -69,45 +67,29 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.35);
-  z-index: 1;
 }
 
-/* ARTWORK */
-.artwork img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* TITLE */
+/* TITLE — NOW TRUE CAPTION */
 .title {
-  position: relative;
-  margin-top: 20px;
+  text-align: center;
+  margin: 20px 0 60px 0;
 
   font-size: 14px;
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0.85;
-  text-align: center;
 }
 
-/* TEXT SECTION */
+/* TEXT */
 .text {
-  width: 100%;
-  min-height: 35vh;
   padding: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   text-align: center;
   background: black;
 }
 
 .text p {
   max-width: 900px;
-  margin: 0;
+  margin: 0 auto;
 
   font-size: 30px;
   line-height: 1.7;
@@ -117,17 +99,10 @@ body {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .name {
-    font-size: 32px;
-  }
+  .name { font-size: 32px; }
+  .sub { font-size: 12px; }
 
-  .sub {
-    font-size: 12px;
-  }
-
-  .text {
-    padding: 25px;
-  }
+  .text { padding: 25px; }
 
   .text p {
     font-size: 18px;
@@ -140,15 +115,14 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="name">JOHN BOELEE</div>
   <div class="sub">CONTEMPORARY ART</div>
 </div>
 
 <!-- HERO -->
-<section class="work hero">
-  <img src="john-boelee-art-01.jpg" alt="Artwork">
+<section class="work">
+  <img class="hero" src="john-boelee-art-01.jpg">
   <div class="overlay"></div>
 </section>
 
@@ -170,32 +144,23 @@ body {
     This state of ambiguity continues to hold my attention.
     Rather than seeking resolution, the work allows contradiction
     to remain, to breathe.
-
-    <br><br>
-
-    Through collected imagery, gesture, and abstraction,
-    each painting opens a space where different realities
-    can coexist at once, unsettled and present.
   </p>
 </section>
 
 <!-- ART 2 -->
-<section class="work artwork">
-  <img src="john-boelee-art-02.jpg" alt="Artwork">
+<section class="work">
+  <img class="artwork" src="john-boelee-art-02.jpg">
   <div class="title">LION WATCHING BACK · 1993</div>
 </section>
 
 <!-- TEXT 2 -->
 <section class="text">
-  <p>
-    Contemporary Art Practice<br>
-    Based in The Netherlands
-  </p>
+  <p>Contemporary Art Practice<br>Based in The Netherlands</p>
 </section>
 
 <!-- ART 3 -->
-<section class="work artwork">
-  <img src="john-boelee-art-03.jpg" alt="Artwork">
+<section class="work">
+  <img class="artwork" src="john-boelee-art-03.jpg">
 </section>
 
 </body>
