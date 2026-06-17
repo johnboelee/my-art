@@ -6,7 +6,6 @@
 <title>John Boelee Art Studio</title>
 
 <style>
-
 body {
   margin: 0;
   background: black;
@@ -14,7 +13,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+/* HEADER LINKSONDER */
 .header {
   position: fixed;
   left: 5vw;
@@ -37,15 +36,15 @@ body {
   opacity: 0.8;
 }
 
-/* WERKEN */
+/* FULLSCREEN SECTIONS */
 .work {
   position: relative;
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
   background: black;
 }
 
-/* HERO FOTO */
+/* HERO */
 .hero img {
   width: 100%;
   height: 100%;
@@ -65,14 +64,17 @@ body {
   object-fit: contain;
 }
 
-/* DONKERE HERO OVERLAY */
+/* DONKERE OVERLAY (ALLEEN HERO) */
 .overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.35);
 }
 
-/* TITELS */
+/* TITEL */
 .title {
   position: absolute;
   bottom: 40px;
@@ -85,60 +87,28 @@ body {
   text-transform: uppercase;
   text-align: center;
 
-  z-index: 10;
+  z-index: 2;
 }
 
-/* TEKSTVLAKKEN */
+/* TEKSTBLOKKEN */
 .text {
-  min-height: 35vh;
-
+  height: 35vh;
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-align: center;
-
-  padding: 80px 40px;
-
-  font-size: 18px;
-  line-height: 1.9;
-  letter-spacing: 1px;
-
-  max-width: 900px;
-  margin: 0 auto;
-
-  opacity: 0.9;
+  padding: 40px;
+  font-size: 30px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+  line-height: 1.7;
 }
 
-/* MOBIEL */
-@media (max-width: 768px) {
-
-  .header {
-    left: 20px;
-    bottom: 20px;
-  }
-
-  .name {
-    font-size: 38px;
-  }
-
-  .sub {
-    font-size: 12px;
-    letter-spacing: 3px;
-  }
-
+@media (min-width: 1024px) {
   .text {
-    font-size: 16px;
-    padding: 50px 25px;
-    line-height: 1.8;
-  }
-
-  .title {
-    font-size: 12px;
-    letter-spacing: 3px;
+    font-size: 18px;
   }
 }
-
 </style>
 </head>
 
@@ -156,28 +126,32 @@ body {
   <div class="overlay"></div>
 </section>
 
-<!-- INTRO -->
+<!-- INTRO TEKST -->
 <section class="text">
-  <div>
-    I am drawn to the moment when certainty begins to dissolve.
-    The work moves within the tension between what we know,
-    what we see, and what we experience.
-    <br><br>
-    Images, memories, and observations gather in my practice,
-    where fragments of meaning drift, overlap, and quietly
-    contradict one another.
-    <br><br>
-    This state of ambiguity continues to hold my attention.
-    Rather than seeking resolution, the work allows contradiction
-    to remain, to breathe.
-    <br><br>
-    Through collected imagery, gesture, and abstraction,
-    each painting opens a space where different realities
-    can coexist at once, unsettled and present.
-  </div>
+  I am drawn to the moment when certainty begins to dissolve.
+  The work moves within the tension between what we know,
+  what we see, and what we experience.
+
+  <br><br>
+
+  Images, memories, and observations gather in my practice,
+  where fragments of meaning drift, overlap, and quietly
+  contradict one another.
+
+  <br><br>
+
+  This state of ambiguity continues to hold my attention.
+  Rather than seeking resolution, the work allows contradiction
+  to remain, to breathe.
+
+  <br><br>
+
+  Through collected imagery, gesture, and abstraction,
+  each painting opens a space where different realities
+  can coexist at once, unsettled and present.
 </section>
 
-<!-- WERK 2 -->
+<!-- 2e WERK -->
 <section class="work artwork">
   <img src="john-boelee-art-02.jpg" alt="Lion Watching Back">
 
@@ -188,17 +162,14 @@ body {
 
 <!-- TEKST -->
 <section class="text">
-  <div>
-    Contemporary Art Practice<br>
-    Based in The Netherlands
-  </div>
+  Contemporary Art Practice<br>
+  Based in The Netherlands
 </section>
 
-<!-- WERK 3 -->
+<!-- 3e WERK -->
 <section class="work artwork">
   <img src="john-boelee-art-03.jpg" alt="Artwork">
 </section>
 
 </body>
-</html>
 </html>
