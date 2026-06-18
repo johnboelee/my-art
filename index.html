@@ -79,16 +79,16 @@ body {
 
 /* ARTWORK BASE */
 .artwork {
-  padding: 60px 40px;
+  padding: 60px 0; /* BELANGRIJK: geen linker/rechter padding meer */
   background: black;
 }
 
-/* GREY WALL ONLY FOR ART 3 */
+/* GREY WALL SECTION */
 .artwork-grey {
   background: #d9d9d9;
   display: flex;
   justify-content: flex-end;
-  padding: 0; /* BELANGRIJK: geen boven/onder ruimte */
+  padding: 0; /* echt edge-to-edge */
 }
 
 /* IMAGE */
@@ -103,9 +103,9 @@ body {
   margin: 0 auto;
 }
 
-/* ART 3 RIGHT ALIGN */
+/* RIGHT ALIGN FIX */
 .artwork-right img {
-  margin: 0;
+  margin: 0; /* belangrijk: geen auto centreren meer */
 }
 
 /* TITLES */
@@ -117,7 +117,7 @@ body {
   opacity: 0.85;
 }
 
-/* TEXT KLEUR OP GRIS */
+/* TEXT ON GREY */
 .artwork-grey .title {
   color: black;
   padding: 10px 20px 20px 20px;
@@ -139,7 +139,7 @@ body {
     letter-spacing: 1px;
   }
 
-  /* mobiel: alles weer normaal */
+  /* mobile reset */
   .artwork-grey {
     display: block;
     padding: 25px;
