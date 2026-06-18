@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>John Boelee Art Studio</title>
+<title>John Boelee Art</title>
 
 <style>
 * {
@@ -11,8 +11,8 @@
 
 body {
   margin: 0;
-  background: black;
-  color: white;
+  background: #f4f4f2;
+  color: #111;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
@@ -23,6 +23,7 @@ body {
   left: 5vw;
   bottom: 5vh;
   z-index: 10;
+  color: #111;
 }
 
 .name {
@@ -64,7 +65,8 @@ body {
 .text {
   padding: clamp(25px, 5vw, 60px);
   text-align: center;
-  background: black;
+  background: transparent;
+  color: #111;
 }
 
 .text p {
@@ -83,7 +85,7 @@ body {
 .artwork {
   padding: 0;
   position: relative;
-  height: 700px; /* Vaste hoogte voor alle artwork secties */
+  height: clamp(500px, 60vw, 1000px); /* Vaste hoogte voor alle artwork secties */
   overflow: hidden;
 }
 
@@ -100,23 +102,33 @@ body {
 }
 
 /* Afbeeldingen staan boven de grijze achtergrond */
-.artwork img {
-  position: relative;
-  z-index: 2;
+.artwork--full img {
+  position: absolute;
+  right: 0;
+  top: 0;
   height: 100%;
   width: auto;
-  object-fit: contain;
+  z-index: 2;
+}
+
+/* === NIEUWE CSS VOOR ART 2: AFBEELDING HELEMAAL LINKS === */
+.artwork--rightbg img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
   display: block;
-  margin: 0 auto; /* Centreren van de afbeelding */
+  z-index: 2;
 }
 
 /* Tekst op de grijze achtergrond voor Art 2 (rechts) */
 .artwork--rightbg .artwork--rightpanel {
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 0; /* Tekst onderaan */
   width: 30%;
-  height: 100%;
+  height: auto;
   padding: 20px;
   display: flex;
   align-items: flex-end;
@@ -157,8 +169,14 @@ body {
 
 @media (max-width: 768px) {
   .artwork {
-    height: auto;
-  }
+  height: auto;
+  overflow: visible;
+}
+.artwork--full img {
+  position: static;
+  width: 100%;
+  height: auto;
+}
 
   .artwork::before {
     display: none; /* Verwijder de grijze achtergrond op mobiel */
@@ -181,6 +199,13 @@ body {
   .artwork--leftbg .title,
   .artwork--rightpanel .title {
     color: white;
+  }
+
+  /* Mobiele aanpassing voor Art 2 */
+  .artwork--rightbg img {
+    position: static;
+    width: 100%;
+    height: auto;
   }
 }
 </style>
@@ -217,9 +242,7 @@ body {
 </section>
 
 <!-- TEXT 2 -->
-<section class="text">
-  <p></p>
-</section>
+<div style="height:00px;"></div>
 
 <!-- ART 3 -->
 <section class="artwork artwork--full">
@@ -231,3 +254,4 @@ body {
 
 </body>
 </html>
+
