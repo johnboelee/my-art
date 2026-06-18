@@ -95,20 +95,38 @@ body {
 }
 
 /* =========================
-   ART 2 (LEFT ALIGN)
+   ART 2 (IMAGE LEFT + GREY RIGHT)
 ========================= */
 
-.artwork--left {
+.artwork--rightbg {
   display: flex;
-  justify-content: flex-start;
+  padding: 0;
 }
 
-.artwork--left img {
+/* IMAGE LINKS */
+.artwork--rightbg img {
+  width: clamp(320px, 60vw, 1000px);
+  margin: 0;
+  display: block;
+}
+
+/* GRIJS VLAK RECHTS */
+.artwork--rightpanel {
+  background: #d9d9d9;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* TITLE IN GREY */
+.artwork--rightpanel .title {
+  color: black;
   margin: 0;
 }
 
 /* =========================
-   ART 3 (RIGHT + GREY WALL LEFT ONLY)
+   ART 3 (RIGHT + GREY LEFT WALL)
 ========================= */
 
 .artwork--full {
@@ -153,7 +171,7 @@ body {
 
 @media (max-width: 768px) {
 
-  .artwork--left,
+  .artwork--rightbg,
   .artwork--full {
     display: block;
   }
@@ -162,12 +180,14 @@ body {
     width: 100%;
   }
 
-  .artwork--leftbg {
+  .artwork--leftbg,
+  .artwork--rightpanel {
     background: transparent;
     padding: 0;
   }
 
-  .artwork--leftbg .title {
+  .artwork--leftbg .title,
+  .artwork--rightpanel .title {
     color: white;
   }
 }
@@ -196,10 +216,15 @@ body {
   </p>
 </section>
 
-<!-- ART 2 (LEFT) -->
-<section class="artwork artwork--left">
+<!-- ART 2 (IMAGE LEFT + GREY RIGHT) -->
+<section class="artwork artwork--rightbg">
+
   <img src="john-boelee-art-02.jpg">
-  <div class="title">LION WATCHING BACK · 1993</div>
+
+  <div class="artwork--rightpanel">
+    <div class="title">LION WATCHING BACK · 1993</div>
+  </div>
+
 </section>
 
 <!-- TEXT 2 -->
