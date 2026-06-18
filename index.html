@@ -82,77 +82,69 @@ body {
 
 .artwork {
   padding: 0;
-  background: black;
+  position: relative;
   height: 700px; /* Vaste hoogte voor alle artwork secties */
   overflow: hidden;
-  position: relative;
 }
 
-/* ART 2 + ART 3 → FLEX ROW */
-.artwork--rightbg,
-.artwork--full {
-  display: flex;
-  align-items: center; /* Verticaal centreren */
-  height: 700px; /* Vaste hoogte */
-  min-height: 700px; /* Zorgt ervoor dat de sectie minimaal 700px hoog is */
+/* Grijze achtergrond voor Art 2 (rechts) */
+.artwork--rightbg::before {
+  content: "";
+  position: absolute;
+  left: 30%; /* Links vanaf 30% van de breedte */
+  top: 0;
+  width: 70%; /* Neemt 70% van de breedte in beslag */
+  height: 100%;
+  background: #d9d9d9;
+  z-index: 1;
 }
 
-/* =========================
-   BASE IMAGE (NO CROPPING)
-========================= */
+/* Grijze achtergrond voor Art 3 (links) */
+.artwork--full::before {
+  content: "";
+  position: absolute;
+  right: 40%; /* Rechts vanaf 40% van de breedte */
+  top: 0;
+  width: 60%; /* Neemt 60% van de breedte in beslag */
+  height: 100%;
+  background: #d9d9d9;
+  z-index: 1;
+}
 
+/* Afbeeldingen staan boven de grijze achtergrond */
 .artwork img {
-  height: 100%; /* Neemt de volledige hoogte van de sectie in beslag */
-  width: auto; /* Behoudt de natuurlijke breedte-verhouding */
-  object-fit: contain; /* Zorgt ervoor dat de afbeelding niet wordt uitgerekt */
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
   display: block;
 }
 
-/* =========================
-   ART 2 (IMAGE LEFT + GREY RIGHT)
-========================= */
-
-.artwork--rightbg {
-  justify-content: flex-start; /* Zorgt dat de afbeelding links begint */
-}
-
-.artwork--rightbg img {
-  width: 70%; /* Breedte van de afbeelding */
-}
-
-.artwork--rightpanel {
-  background: #d9d9d9;
+/* Tekst op de grijze achtergrond voor Art 2 */
+.artwork--rightbg .artwork--rightpanel {
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 30%;
   height: 100%;
   padding: 20px;
   display: flex;
   align-items: flex-end;
+  z-index: 3;
 }
 
-.artwork--rightpanel .title {
-  color: black;
-  margin: 0;
-}
-
-/* =========================
-   ART 3 (GREY LEFT + IMAGE RIGHT)
-========================= */
-
-.artwork--leftbg {
-  background: #d9d9d9;
+/* Tekst op de grijze achtergrond voor Art 3 */
+.artwork--full .artwork--leftbg {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 40%;
   height: 100%;
   padding: 20px;
   display: flex;
   align-items: flex-end;
-}
-
-.artwork--full {
-  justify-content: flex-end; /* Zorgt dat de afbeelding rechts eindigt */
-}
-
-.artwork--full img {
-  width: 60%; /* Breedte van de afbeelding */
+  z-index: 3;
 }
 
 /* TITLE */
@@ -164,7 +156,8 @@ body {
   opacity: 0.85;
 }
 
-.artwork--leftbg .title {
+.artwork--leftbg .title,
+.artwork--rightpanel .title {
   color: black;
   margin: 0;
 }
@@ -175,14 +168,12 @@ body {
 
 @media (max-width: 768px) {
   .artwork {
-    height: auto; /* Laat de hoogte zich aanpassen op mobiel */
+    height: auto;
   }
 
-  .artwork--rightbg,
-  .artwork--full {
-    display: block;
-    height: auto;
-    min-height: 700px; /* Zorgt ervoor dat de sectie minimaal 700px hoog is op mobiel */
+  .artwork--rightbg::before,
+  .artwork--full::before {
+    display: none; /* Verwijder de grijze achtergrond op mobiel */
   }
 
   .artwork img {
@@ -192,10 +183,11 @@ body {
 
   .artwork--leftbg,
   .artwork--rightpanel {
+    position: static;
     width: 100%;
     height: auto;
     background: transparent;
-    padding: 0;
+    padding: 10px;
   }
 
   .artwork--leftbg .title,
