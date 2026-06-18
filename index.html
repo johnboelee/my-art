@@ -87,25 +87,13 @@ body {
   overflow: hidden;
 }
 
-/* Grijze achtergrond voor Art 2 (rechts) */
-.artwork--rightbg::before {
+/* Grijze achtergrond voor beide secties (100% breed) */
+.artwork::before {
   content: "";
   position: absolute;
-  left: 30%; /* Start vanaf 30% van de breedte */
   top: 0;
-  width: 70%; /* Neemt 70% van de breedte in beslag */
-  height: 100%;
-  background: #d9d9d9;
-  z-index: 1;
-}
-
-/* Grijze achtergrond voor Art 3 (links) */
-.artwork--full::before {
-  content: "";
-  position: absolute;
-  left: 0; /* Start vanaf 0% van de breedte */
-  top: 0;
-  width: 40%; /* Neemt 40% van de breedte in beslag */
+  left: 0;
+  width: 100%;
   height: 100%;
   background: #d9d9d9;
   z-index: 1;
@@ -119,9 +107,10 @@ body {
   width: auto;
   object-fit: contain;
   display: block;
+  margin: 0 auto; /* Centreren van de afbeelding */
 }
 
-/* Tekst op de grijze achtergrond voor Art 2 */
+/* Tekst op de grijze achtergrond voor Art 2 (rechts) */
 .artwork--rightbg .artwork--rightpanel {
   position: absolute;
   right: 0;
@@ -134,7 +123,7 @@ body {
   z-index: 3;
 }
 
-/* Tekst op de grijze achtergrond voor Art 3 */
+/* Tekst op de grijze achtergrond voor Art 3 (links) */
 .artwork--full .artwork--leftbg {
   position: absolute;
   left: 0;
@@ -171,8 +160,7 @@ body {
     height: auto;
   }
 
-  .artwork--rightbg::before,
-  .artwork--full::before {
+  .artwork::before {
     display: none; /* Verwijder de grijze achtergrond op mobiel */
   }
 
