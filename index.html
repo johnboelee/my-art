@@ -77,30 +77,35 @@ body {
 }
 
 /* =========================
-   ARTWORK SYSTEM (FIXED + STABLE)
+   ARTWORK SYSTEM (FIXED HEIGHT)
 ========================= */
 
 .artwork {
   padding: 0;
   background: black;
+  height: 700px; /* Vaste hoogte voor alle artwork secties */
+  overflow: hidden;
+  position: relative;
 }
 
-/* ART 2 + ART 3 → FLEX ROW ZONDER VASTE HEIGHT */
+/* ART 2 + ART 3 → FLEX ROW */
 .artwork--rightbg,
 .artwork--full {
   display: flex;
-  align-items: stretch;
+  align-items: center; /* Verticaal centreren */
+  height: 700px; /* Vaste hoogte */
 }
 
 /* =========================
-   BASE IMAGE (BELANGRIJK: NO CROPPING)
+   BASE IMAGE (NO CROPPING)
 ========================= */
 
 .artwork img {
-  width: 60%;
-  height: auto;
+  height: 100%; /* Neemt de volledige hoogte van de sectie in beslag */
+  width: auto; /* Behoudt de natuurlijke breedte-verhouding */
+  object-fit: contain; /* Zorgt ervoor dat de afbeelding niet wordt uitgerekt */
   display: block;
-  margin: 0;
+  margin: 0 auto; /* Centreren van de afbeelding */
 }
 
 /* =========================
@@ -108,12 +113,13 @@ body {
 ========================= */
 
 .artwork--rightbg img {
-  width: 70%;
+  width: 70%; /* Breedte van de afbeelding */
 }
 
 .artwork--rightpanel {
   background: #d9d9d9;
   width: 30%;
+  height: 100%;
   padding: 20px;
   display: flex;
   align-items: flex-end;
@@ -125,19 +131,20 @@ body {
 }
 
 /* =========================
-   ART 3 (RIGHT + GREY LEFT)
+   ART 3 (GREY LEFT + IMAGE RIGHT)
 ========================= */
 
 .artwork--leftbg {
   background: #d9d9d9;
   width: 40%;
+  height: 100%;
   padding: 20px;
   display: flex;
   align-items: flex-end;
 }
 
 .artwork--full img {
-  width: 60%;
+  width: 60%; /* Breedte van de afbeelding */
 }
 
 /* TITLE */
@@ -159,10 +166,14 @@ body {
 ========================= */
 
 @media (max-width: 768px) {
+  .artwork {
+    height: auto; /* Laat de hoogte zich aanpassen op mobiel */
+  }
 
   .artwork--rightbg,
   .artwork--full {
     display: block;
+    height: auto;
   }
 
   .artwork img {
@@ -172,6 +183,8 @@ body {
 
   .artwork--leftbg,
   .artwork--rightpanel {
+    width: 100%;
+    height: auto;
     background: transparent;
     padding: 0;
   }
@@ -208,13 +221,10 @@ body {
 
 <!-- ART 2 -->
 <section class="artwork artwork--rightbg">
-
   <img src="john-boelee-art-02.jpg">
-
   <div class="artwork--rightpanel">
     <div class="title">LION WATCHING BACK · 1993</div>
   </div>
-
 </section>
 
 <!-- TEXT 2 -->
@@ -224,13 +234,10 @@ body {
 
 <!-- ART 3 -->
 <section class="artwork artwork--full">
-
   <div class="artwork--leftbg">
     <div class="title">LAYERS OF ABSENCE · 2025</div>
   </div>
-
   <img src="john-boelee-art-03.jpg">
-
 </section>
 
 </body>
