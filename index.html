@@ -117,7 +117,11 @@ body {
   margin: 0;
 }
 
-/* ART 3 LEFT PANEL */
+/* =========================
+   ART 3 (FIXED PROPERLY)
+========================= */
+
+/* LEFT GREY BLOCK */
 .artwork--leftbg {
   background: #d9d9d9;
   width: 40%;
@@ -126,19 +130,27 @@ body {
   align-items: flex-end;
 }
 
-/* ART 3 CONTAINER FIX */
-.artwork--full {
-  display: flex;
-  align-items: stretch;
-}
-
-/* ART 3 IMAGE FIX */
+/* RIGHT IMAGE BLOCK */
 .artwork--full img {
+  flex: 1;
   max-width: 1000px;
   width: 100%;
   height: auto;
   display: block;
-  margin-left: auto;
+}
+
+/* TITLE */
+.title {
+  margin-top: 15px;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.artwork--leftbg .title {
+  color: black;
+  margin: 0;
 }
 
 /* MOBILE */
