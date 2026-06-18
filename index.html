@@ -85,6 +85,7 @@ body {
   background: black;
 }
 
+/* ALL ARTWORKS USE SAME STRUCTURE NOW */
 .artwork--rightbg,
 .artwork--full {
   display: flex;
@@ -93,19 +94,28 @@ body {
 
 /* BASE IMAGE */
 .artwork img {
-  width: 60%;
+  width: 100%;
   height: auto;
   display: block;
-  margin: 0;
 }
 
-/* ART 2 */
+/* =========================
+   ART 2 (UPDATED TO MATCH ART 3 SYSTEM)
+========================= */
+
+.artwork--rightbg {
+  background: #d9d9d9;
+}
+
 .artwork--rightbg img {
-  width: 60%;
+  max-width: 1000px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-right: auto;
 }
 
 .artwork--rightpanel {
-  background: #d9d9d9;
   width: 40%;
   padding: 20px;
   display: flex;
@@ -118,17 +128,15 @@ body {
 }
 
 /* =========================
-   ART 3 FIX (FINAL STABLE VERSION)
+   ART 3 (UNCHANGED WORKING VERSION)
 ========================= */
 
-/* FULL CONTAINER GETS BACKGROUND */
 .artwork--full {
   display: flex;
   align-items: stretch;
   background: #d9d9d9;
 }
 
-/* LEFT TEXT BLOCK */
 .artwork--leftbg {
   width: 40%;
   padding: 20px;
@@ -137,7 +145,6 @@ body {
   background: transparent;
 }
 
-/* RIGHT IMAGE */
 .artwork--full img {
   max-width: 1000px;
   width: 100%;
