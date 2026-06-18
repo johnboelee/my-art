@@ -118,19 +118,26 @@ body {
 }
 
 /* =========================
-   ART 3 FIX (CORRECT)
+   ART 3 FIX (FINAL STABLE VERSION)
 ========================= */
 
-/* LEFT GREY BLOCK */
-.artwork--leftbg {
+/* FULL CONTAINER GETS BACKGROUND */
+.artwork--full {
+  display: flex;
+  align-items: stretch;
   background: #d9d9d9;
+}
+
+/* LEFT TEXT BLOCK */
+.artwork--leftbg {
   width: 40%;
   padding: 20px;
   display: flex;
   align-items: flex-end;
+  background: transparent;
 }
 
-/* RIGHT IMAGE BLOCK */
+/* RIGHT IMAGE */
 .artwork--full img {
   max-width: 1000px;
   width: 100%;
