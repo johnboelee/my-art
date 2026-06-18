@@ -77,41 +77,45 @@ body {
 }
 
 /* =========================
-   ARTWORK SYSTEM
+   ARTWORK SYSTEM (FIXED GRID)
 ========================= */
 
 .artwork {
-  padding: clamp(25px, 5vw, 60px);
+  padding: 0;
   background: black;
 }
 
-/* BASE IMAGE (belangrijk: NIET meer width hier) */
+/* 🔥 BELANGRIJK: vaste visuele hoogte voor ALLE artworks */
+.artwork--rightbg,
+.artwork--full {
+  display: flex;
+  height: 65vh;
+  min-height: 420px;
+  max-height: 900px;
+}
+
+/* =========================
+   BASE IMAGE
+========================= */
+
 .artwork img {
-  height: auto;
+  height: 100%;
   display: block;
   margin: 0;
+  object-fit: cover;
 }
 
 /* =========================
    ART 2 (IMAGE LEFT + GREY RIGHT)
 ========================= */
 
-.artwork--rightbg {
-  display: flex;
-  padding: 0;
-  align-items: stretch;
-  max-height: 900px; /* zelfde referentie als ART 3 */
-}
-
 .artwork--rightbg img {
+  flex: 1.6;
   width: auto;
-  max-width: 65vw;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  max-width: none;
 }
 
-/* grijs vlak blijft stabiel */
+/* grijs vlak rechts */
 .artwork--rightpanel {
   background: #d9d9d9;
   flex: 1;
@@ -120,35 +124,28 @@ body {
   align-items: flex-end;
 }
 
-/* TITLE IN GREY */
 .artwork--rightpanel .title {
   color: black;
   margin: 0;
 }
 
 /* =========================
-   ART 3 (RIGHT + GREY LEFT WALL)
+   ART 3 (RIGHT + GREY LEFT)
 ========================= */
 
-.artwork--full {
-  display: flex;
-  padding: 0;
-}
-
-/* LINKS GRAY AREA */
 .artwork--leftbg {
   background: #d9d9d9;
-  width: 100%;
+  flex: 1;
   padding: 20px;
   display: flex;
   align-items: flex-end;
 }
 
-/* RIGHT IMAGE (strakker: 900px max) */
+/* RIGHT IMAGE */
 .artwork--full img {
-  width: clamp(320px, 55vw, 900px);
-  margin: 0;
-  display: block;
+  flex: 1.4;
+  width: auto;
+  max-width: none;
 }
 
 /* TITLE */
@@ -160,7 +157,6 @@ body {
   opacity: 0.85;
 }
 
-/* TITLE ON GREY */
 .artwork--leftbg .title {
   color: black;
   margin: 0;
@@ -175,10 +171,12 @@ body {
   .artwork--rightbg,
   .artwork--full {
     display: block;
+    height: auto;
   }
 
   .artwork img {
     width: 100%;
+    height: auto;
   }
 
   .artwork--leftbg,
