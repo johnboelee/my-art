@@ -26,14 +26,14 @@ body {
 }
 
 .name {
-  font-size: 65px;
+  font-size: clamp(28px, 5vw, 65px);
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
 }
 
 .sub {
-  font-size: 16px;
+  font-size: clamp(10px, 2vw, 16px);
   text-transform: uppercase;
   letter-spacing: 4px;
   margin-top: 8px;
@@ -62,7 +62,7 @@ body {
 
 /* TEXT */
 .text {
-  padding: 60px 40px;
+  padding: clamp(25px, 5vw, 60px);
   text-align: center;
   background: black;
 }
@@ -71,88 +71,85 @@ body {
   max-width: 900px;
   margin: 0 auto;
 
-  font-size: 30px;
+  font-size: clamp(16px, 2vw, 30px);
   line-height: 1.7;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   opacity: 0.85;
 }
 
-/* ARTWORK BASE */
+/* =========================
+   ARTWORK SYSTEM (FLUID)
+========================= */
+
 .artwork {
-  padding: 60px 0; /* BELANGRIJK: geen linker/rechter padding meer */
+  padding: clamp(25px, 5vw, 60px);
   background: black;
 }
 
-/* GREY WALL SECTION */
-.artwork-grey {
-  background: #d9d9d9;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0; /* echt edge-to-edge */
-}
-
-/* IMAGE */
+/* basis image */
 .artwork img {
-  width: min(1000px, 100vw);
+  width: clamp(320px, 90vw, 1000px);
   height: auto;
   display: block;
 }
 
-/* standaard centreren */
-.artwork:not(.artwork-right) img {
+/* CENTER (default) */
+.artwork img {
   margin: 0 auto;
 }
 
-/* RIGHT ALIGN FIX */
-.artwork-right img {
-  margin: 0; /* belangrijk: geen auto centreren meer */
+/* RIGHT aligned version */
+.artwork--right {
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* TITLES */
+.artwork--right img {
+  margin: 0;
+}
+
+/* FULL EDGE-TO-EDGE RIGHT (jouw foto 3) */
+.artwork--full {
+  display: flex;
+  justify-content: flex-end;
+  background: #d9d9d9;
+  padding: 0;
+}
+
+.artwork--full img {
+  width: clamp(320px, 60vw, 1000px);
+  margin: 0;
+}
+
+/* title */
 .title {
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 14px;
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0.85;
 }
 
-/* TEXT ON GREY */
-.artwork-grey .title {
+.artwork--full .title {
   color: black;
   padding: 10px 20px 20px 20px;
 }
 
-/* MOBILE */
+/* MOBILE (automatisch alles normal) */
 @media (max-width: 768px) {
 
-  .name { font-size: 32px; }
-  .sub { font-size: 12px; }
-
-  .text, .artwork {
-    padding: 25px;
-  }
-
-  .text p {
-    font-size: 18px;
-    line-height: 1.6;
-    letter-spacing: 1px;
-  }
-
-  /* mobile reset */
-  .artwork-grey {
+  .artwork--right,
+  .artwork--full {
     display: block;
-    padding: 25px;
+    background: transparent;
   }
 
   .artwork img {
     width: 100%;
-    max-width: none;
-    margin: 0 auto;
   }
 
-  .artwork-grey .title {
-    color: black;
+  .artwork--full .title {
+    color: white;
     padding: 0;
   }
 }
@@ -178,41 +175,19 @@ body {
     I am drawn to the moment when certainty begins to dissolve.
     The work moves within the tension between what we know,
     what we see, and what we experience.
-
-    <br><br>
-
-    Images, memories, and observations gather in my practice,
-    where fragments of meaning drift, overlap, and quietly
-    contradict one another.
-
-    <br><br>
-
-    Whether structured through collected imagery or developed
-    through gesture and abstraction, each artwork becomes a space
-    in which different realities can exist simultaneously.    
   </p>
 </section>
 
-<!-- ART 2 -->
+<!-- ART 2 (center) -->
 <section class="artwork">
   <img src="john-boelee-art-02.jpg">
   <div class="title">LION WATCHING BACK · 1993</div>
 </section>
 
-<!-- TEXT 2 -->
-<section class="text">
-  <p></p>
-</section>
-
-<!-- ART 3 -->
-<section class="artwork artwork-grey artwork-right">
+<!-- ART 3 (RIGHT EDGE + GREY WALL LEFT) -->
+<section class="artwork artwork--full">
   <img src="john-boelee-art-03.jpg">
   <div class="title">LAYERS OF ABSENCE · 2025</div>
-</section>
-
-<!-- TEXT 3 -->
-<section class="text">
-  <p></p>
 </section>
 
 </body>
