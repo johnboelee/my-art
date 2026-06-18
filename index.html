@@ -100,20 +100,21 @@ body {
   display: flex;
   padding: 0;
   align-items: stretch;
+  max-height: 900px; /* zelfde referentie als ART 3 */
 }
 
-/* IMAGE LINKS (groter + dominant) */
 .artwork--rightbg img {
-  flex: 1.5;
   width: auto;
-  max-width: none;
+  max-width: 65vw;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-/* GRIJS VLAK RECHTS (kleiner gemaakt) */
+/* grijs vlak blijft stabiel */
 .artwork--rightpanel {
   background: #d9d9d9;
-  flex: 0.5;
+  flex: 1;
   padding: 20px;
   display: flex;
   align-items: flex-end;
