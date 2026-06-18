@@ -77,16 +77,27 @@ body {
 }
 
 /* =========================
-   ARTWORK SYSTEM
+   ARTWORK SYSTEM (FIXED + STABLE)
 ========================= */
 
 .artwork {
-  padding: clamp(25px, 5vw, 60px);
+  padding: 0;
   background: black;
 }
 
-/* BASE IMAGE (belangrijk: NIET meer width hier) */
+/* ART 2 + ART 3 → FLEX ROW ZONDER VASTE HEIGHT */
+.artwork--rightbg,
+.artwork--full {
+  display: flex;
+  align-items: stretch;
+}
+
+/* =========================
+   BASE IMAGE (BELANGRIJK: NO CROPPING)
+========================= */
+
 .artwork img {
+  width: 60%;
   height: auto;
   display: block;
   margin: 0;
@@ -96,58 +107,37 @@ body {
    ART 2 (IMAGE LEFT + GREY RIGHT)
 ========================= */
 
-.artwork--rightbg {
-  display: flex;
-  padding: 0;
-  align-items: stretch;
-}
-
-/* IMAGE LINKS (groter + dominant) */
 .artwork--rightbg img {
-  flex: 1.5;
-  width: auto;
-  max-width: none;
-  display: block;
+  width: 60%;
 }
 
-/* GRIJS VLAK RECHTS (kleiner gemaakt) */
 .artwork--rightpanel {
   background: #d9d9d9;
-  flex: 0.5;
+  width: 40%;
   padding: 20px;
   display: flex;
   align-items: flex-end;
 }
 
-/* TITLE IN GREY */
 .artwork--rightpanel .title {
   color: black;
   margin: 0;
 }
 
 /* =========================
-   ART 3 (RIGHT + GREY LEFT WALL)
+   ART 3 (RIGHT + GREY LEFT)
 ========================= */
 
-.artwork--full {
-  display: flex;
-  padding: 0;
-}
-
-/* LINKS GRAY AREA */
 .artwork--leftbg {
   background: #d9d9d9;
-  width: 100%;
+  width: 40%;
   padding: 20px;
   display: flex;
   align-items: flex-end;
 }
 
-/* RIGHT IMAGE (strakker: 900px max) */
 .artwork--full img {
-  width: clamp(320px, 55vw, 900px);
-  margin: 0;
-  display: block;
+  width: 60%;
 }
 
 /* TITLE */
@@ -159,7 +149,6 @@ body {
   opacity: 0.85;
 }
 
-/* TITLE ON GREY */
 .artwork--leftbg .title {
   color: black;
   margin: 0;
@@ -178,6 +167,7 @@ body {
 
   .artwork img {
     width: 100%;
+    height: auto;
   }
 
   .artwork--leftbg,
