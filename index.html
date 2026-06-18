@@ -94,6 +94,7 @@ body {
   display: flex;
   align-items: center; /* Verticaal centreren */
   height: 700px; /* Vaste hoogte */
+  min-height: 700px; /* Zorgt ervoor dat de sectie minimaal 700px hoog is */
 }
 
 /* =========================
@@ -105,12 +106,15 @@ body {
   width: auto; /* Behoudt de natuurlijke breedte-verhouding */
   object-fit: contain; /* Zorgt ervoor dat de afbeelding niet wordt uitgerekt */
   display: block;
-  margin: 0 auto; /* Centreren van de afbeelding */
 }
 
 /* =========================
    ART 2 (IMAGE LEFT + GREY RIGHT)
 ========================= */
+
+.artwork--rightbg {
+  justify-content: flex-start; /* Zorgt dat de afbeelding links begint */
+}
 
 .artwork--rightbg img {
   width: 70%; /* Breedte van de afbeelding */
@@ -141,6 +145,10 @@ body {
   padding: 20px;
   display: flex;
   align-items: flex-end;
+}
+
+.artwork--full {
+  justify-content: flex-end; /* Zorgt dat de afbeelding rechts eindigt */
 }
 
 .artwork--full img {
@@ -174,6 +182,7 @@ body {
   .artwork--full {
     display: block;
     height: auto;
+    min-height: 700px; /* Zorgt ervoor dat de sectie minimaal 700px hoog is op mobiel */
   }
 
   .artwork img {
