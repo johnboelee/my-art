@@ -85,7 +85,6 @@ body {
   background: black;
 }
 
-/* ALL ARTWORKS USE SAME STRUCTURE NOW */
 .artwork--rightbg,
 .artwork--full {
   display: flex;
@@ -100,7 +99,7 @@ body {
 }
 
 /* =========================
-   ART 2 (UPDATED TO MATCH ART 3 SYSTEM)
+   ART 2
 ========================= */
 
 .artwork--rightbg {
@@ -128,7 +127,7 @@ body {
 }
 
 /* =========================
-   ART 3 (UNCHANGED WORKING VERSION)
+   ART 3 FIX (IMPORTANT CHANGE HERE)
 ========================= */
 
 .artwork--full {
@@ -137,6 +136,7 @@ body {
   background: #d9d9d9;
 }
 
+/* LEFT BLOCK */
 .artwork--leftbg {
   width: 40%;
   padding: 20px;
@@ -145,10 +145,12 @@ body {
   background: transparent;
 }
 
+/* RIGHT IMAGE FIX */
 .artwork--full img {
   max-width: 1000px;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
   margin-left: auto;
 }
