@@ -66,12 +66,33 @@ body {
 }
 
 /* TEXT */
+/* TEXT */
+
 .text {
-  font-family: 'Inter', serif;
-  padding: 10px 0;
-  text-align: center;
-  background: transparent;
-  color: #111;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 45vh;
+}
+
+.text-left {
+  background: #f7f7f7;
+}
+
+.text-right {
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  background: #fff;
+}
+
+.text-right p {
+  max-width: 550px;
+  margin: 0;
+  font-size: clamp(15px, 1.5vw, 22px);
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+  font-weight: 300;
+  text-align: left;
 }
 
 .text p {
@@ -172,6 +193,19 @@ body {
 ========================= */
 
 @media (max-width: 768px) {
+  
+  .text {
+  grid-template-columns: 1fr;
+}
+
+.text-left {
+  display: none;
+}
+
+.text-right {
+  padding: 30px 20px;
+}
+  
   .artwork {
   height: auto;
   overflow: visible;
@@ -231,18 +265,26 @@ body {
 
 <!-- TEXT -->
 <section class="text">
- <p>
-    I am drawn to the moment when certainty begins to dissolve. The work exists in the tension between what we know, what we see, and what we experience.
 
-    <br><br>
+  <div class="text-left"></div>
 
-    Images, memories, and observations enter the practice as fragments that drift, overlap, and quietly contradict one another.
+  <div class="text-right">
+    <p>
+      I am drawn to the moment when certainty begins to dissolve. The work exists in the tension between what we know, what we see, and what we experience.
 
-    <br><br>
+      <br><br>
 
-    Whether structured through collected imagery or developed through gesture and abstraction, each work becomes a space where multiple realities can coexist.   
-  </p>
+      Images, memories, and observations enter the practice as fragments that drift, overlap, and quietly contradict one another.
+
+      <br><br>
+
+      Whether structured through collected imagery or developed through gesture and abstraction, each work becomes a space where multiple realities can coexist.
+    </p>
+  </div>
+
 </section>
+
+
 
 <!-- ART 2 -->
 <section class="artwork artwork--rightbg">
@@ -267,4 +309,5 @@ Diergaarde Blijdorp, Rotterdam</div>
 
 </body>
 </html>
+
 
