@@ -71,38 +71,29 @@ body {
 .text {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 45vh;
-}
-
-.text-left {
-  background: #f7f7f7;
+  background: #f3f3f3;
 }
 
 .text-right {
-  display: flex;
-  align-items: center;
-  padding: 60px;
+  padding: 30px 30px;
   background: #fff;
 }
 
 .text-right p {
-  max-width: 550px;
+  max-width: 1000px;
   margin: 0;
   font-size: clamp(15px, 1.5vw, 22px);
-  line-height: 1.8;
+  line-height: 1.5;
   letter-spacing: 0.3px;
   font-weight: 300;
   text-align: left;
 }
 
-.text p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: clamp(15px, 1.5vw, 22px);
-  line-height: 1.8;
-  letter-spacing: 0.5px;
-  font-weight: 300;
+.text-right p + p {
+  margin-top: 14px;
 }
+
+
 /* =========================
    ARTWORK SYSTEM (FIXED HEIGHT)
 ========================= */
@@ -124,6 +115,10 @@ body {
   height: 100%;
   background: #d9d9d9;
   z-index: 1;
+}
+
+.artwork--full::before {
+  background: #e3e3e3;
 }
 
 /* Afbeeldingen staan boven de grijze achtergrond */
@@ -269,18 +264,11 @@ body {
   <div class="text-left"></div>
 
   <div class="text-right">
-    <p>
-      I am drawn to the moment when certainty begins to dissolve. The work exists in the tension between what we know, what we see, and what we experience.
+    <p>I am drawn to the moment when certainty begins to dissolve. The work exists in the tension between what we know, what we see, and what we experience.</p>
+    <p>Images, memories, and observations enter the practice as fragments that drift, overlap, and quietly contradict one another.</p>
+    <p>Whether structured through collected imagery or developed through gesture and abstraction, each work becomes a space where multiple realities can coexist.</p>
 
-      <br><br>
-
-      Images, memories, and observations enter the practice as fragments that drift, overlap, and quietly contradict one another.
-
-      <br><br>
-
-      Whether structured through collected imagery or developed through gesture and abstraction, each work becomes a space where multiple realities can coexist.
-    </p>
-  </div>
+    </div>
 
 </section>
 
@@ -309,5 +297,3 @@ Diergaarde Blijdorp, Rotterdam</div>
 
 </body>
 </html>
-
-
