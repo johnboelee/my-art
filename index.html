@@ -154,13 +154,10 @@ html, body {
 /* Tekst op de grijze achtergrond voor Art 2 (rechts) */
 .artwork--rightbg .artwork--rightpanel {
   position: absolute;
-  right: 0;
-  bottom: 0; /* Tekst onderaan */
-  width: 30%;
-  height: auto;
-  padding: 20px;
-  display: flex;
-  align-items: flex-end;
+  right: 10px;
+  bottom: 10px;
+  max-width: calc(100% - 20px);
+  padding: 10px;
   z-index: 3;
 }
 
@@ -196,8 +193,15 @@ html, body {
    MOBILE
 ========================= */
 
+
+
+
+
+/* MOBILE OVERRIDE */
 @media (max-width: 768px) {
-  
+
+
+
   .text {
   grid-template-columns: 1fr;
 }
@@ -313,4 +317,5 @@ html, body {
 
 </body>
 </html>
+
 
