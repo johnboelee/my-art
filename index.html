@@ -94,9 +94,26 @@ body {
   grid-template-columns: 1fr 1fr;
   background: #f3f3f3;
 }
-
+/* text-ledt and text-right ar 2 blocks, possible to give different colors */
+.text-left {
+  background: #fff;
+}
 .text-right {
-  padding: 30px 40px 50px 40px;
+  background: #fff;
+  padding: 40px;
+}
+
+.text-right h1,
+.text-right p {
+  margin: 0;
+}
+
+.text-right p + p {
+  margin-top: 14px;
+}
+
+.text-right h1 {
+  margin-bottom: 20px;
 }
 
 .text-right p {
@@ -259,7 +276,7 @@ body {
   <div class="text-left"></div>
   <div class="text-right">
    
-<h1>Contemporary Artist</h1>
+<h1>John Boelee – Contemporary Artist</h1>
 
 
 
