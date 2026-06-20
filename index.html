@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>John Boelee Art</title>
 
 <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  font-family: 'Inter', serif;
+  font-family: 'Inter', sans-serif;
   background: #fff;
   color: #111;
   overflow-x: hidden;
 }
-html, body {
-  margin: 0;
-  font-family: 'Inter', serif;
-  background: #fff;
-  color: #111;
-  overflow-x: hidden;
-}
-
 
 /* HEADER */
+
 .header {
   position: fixed;
   left: 5vw;
   bottom: 5vh;
   z-index: 10;
-  color: #111;
 }
 
 .name {
@@ -42,7 +37,7 @@ html, body {
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
-  color: #ffffff;
+  color: #fff;
 }
 
 .sub {
@@ -51,21 +46,22 @@ html, body {
   letter-spacing: 4px;
   margin-top: 8px;
   opacity: 0.8;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* HERO */
+
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100svh;
 }
 
 .hero img {
   width: 100%;
-  height: 100%;
+  height: 100svh;
   object-fit: cover;
+  display: block;
 }
 
 .overlay {
@@ -75,7 +71,6 @@ html, body {
 }
 
 /* TEXT */
-/* TEXT */
 
 .text {
   display: grid;
@@ -84,7 +79,7 @@ html, body {
 }
 
 .text-right {
-  padding: 30px 30px;
+  padding: 30px;
   background: #fff;
 }
 
@@ -95,33 +90,26 @@ html, body {
   line-height: 1.5;
   letter-spacing: 0.3px;
   font-weight: 300;
-  text-align: left;
 }
 
 .text-right p + p {
   margin-top: 14px;
 }
 
-
 /* =========================
-   ARTWORK SYSTEM (FIXED HEIGHT)
+   ARTWORK SYSTEM
 ========================= */
 
 .artwork {
-  padding: 0;
   position: relative;
-  height: clamp(500px, 60vw, 1000px); /* Vaste hoogte voor alle artwork secties */
+  height: clamp(500px, 60vw, 1000px);
   overflow: hidden;
 }
 
-/* Grijze achtergrond voor beide secties (100% breed) */
 .artwork::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: #d9d9d9;
   z-index: 1;
 }
@@ -130,7 +118,28 @@ html, body {
   background: #e3e3e3;
 }
 
-/* Afbeeldingen staan boven de grijze achtergrond */
+/* Art 2 */
+
+.artwork--rightbg img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  z-index: 2;
+  display: block;
+}
+
+.artwork--rightpanel {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 10px;
+  z-index: 3;
+}
+
+/* Art 3 */
+
 .artwork--full img {
   position: absolute;
   right: 0;
@@ -140,30 +149,7 @@ html, body {
   z-index: 2;
 }
 
-/* === NIEUWE CSS VOOR ART 2: AFBEELDING HELEMAAL LINKS === */
-.artwork--rightbg img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: auto;
-  display: block;
-  z-index: 2;
-}
-
-
-/* Tekst op de grijze achtergrond voor Art 2 (rechts) */
-.artwork--rightbg .artwork--rightpanel {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  max-width: calc(100% - 20px);
-  padding: 10px;
-  z-index: 3;
-}
-
-/* Tekst op de grijze achtergrond voor Art 3 (links) */
-.artwork--full .artwork--leftbg {
+.artwork--leftbg {
   position: absolute;
   left: 0;
   top: 0;
@@ -175,64 +161,49 @@ html, body {
   z-index: 3;
 }
 
+/* TITLES */
 
-/* TITLE */
 .title {
-  margin-top: 15px;
   font-size: 14px;
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0.85;
-}
-
-.artwork--leftbg .title,
-.artwork--rightpanel .title {
-  color: black;
   margin: 0;
+  color: #000;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
-
-
-
-
-/* MOBILE OVERRIDE */
 @media (max-width: 768px) {
 
-
-
   .text {
-  grid-template-columns: 1fr;
-}
-
-.text-left {
-  display: none;
-}
-
-.text-right {
-  padding: 30px 20px;
-}
-  
-  .artwork {
-  height: auto;
-  overflow: visible;
-}
-.artwork--full img {
-  position: static;
-  width: 100%;
-  height: auto;
-}
-
-  .artwork::before {
-    display: none; /* Verwijder de grijze achtergrond op mobiel */
+    grid-template-columns: 1fr;
   }
 
-  .artwork img {
+  .text-left {
+    display: none;
+  }
+
+  .text-right {
+    padding: 30px 20px;
+  }
+
+  .artwork {
+    height: auto;
+    overflow: visible;
+  }
+
+  .artwork::before {
+    display: none;
+  }
+
+  .artwork img,
+  .artwork--full img,
+  .artwork--rightbg img {
+    position: static;
     width: 100%;
     height: auto;
+    display: block;
   }
 
   .artwork--leftbg,
@@ -240,26 +211,19 @@ html, body {
     position: static;
     width: 100%;
     height: auto;
-    background: transparent;
-    padding: 10px;
+    padding: 15px 20px;
+    background: #f3f3f3;
   }
 
   .artwork--leftbg .title,
   .artwork--rightpanel .title {
-    color: white;
-  }
-
-  /* Mobiele aanpassing voor Art 2 */
-  .artwork--rightbg img {
-    position: static;
-    width: 100%;
-    height: auto;
+    color: #111;
   }
 }
+
 </style>
-<head>
-  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="header">
@@ -268,30 +232,34 @@ html, body {
 </div>
 
 <!-- HERO -->
+
 <section class="hero">
-  <img src="john-boelee-art-01.jpg">
+  <img src="john-boelee-art-01.jpg" alt="John Boelee Contemporary Art">
   <div class="overlay"></div>
 </section>
 
 <!-- TEXT -->
+
 <section class="text">
 
   <div class="text-left"></div>
 
   <div class="text-right">
     <p>I am drawn to the moment when certainty begins to dissolve. The work exists in the tension between what we know, what we see, and what we experience.</p>
-    <p>Images, memories, and observations enter the practice as fragments that drift, overlap, and quietly contradict one another.</p>
-    <p>Whether structured through collected imagery or developed through gesture and abstraction, each work becomes a space where multiple realities can coexist.</p>
 
-    </div>
+    <p>Images, memories, and observations enter the practice as fragments that drift, overlap, and quietly contradict one another.</p>
+
+    <p>Whether structured through collected imagery or developed through gesture and abstraction, each work becomes a space where multiple realities can coexist.</p>
+  </div>
 
 </section>
 
-
-
 <!-- ART 2 -->
+
 <section class="artwork artwork--rightbg">
+
   <img src="john-boelee-art-02.jpg" alt="Looking Back (1993)">
+
   <div class="artwork--rightpanel">
     <div class="title">
       <i>Looking Back</i> (1993)<br>
@@ -300,13 +268,13 @@ html, body {
       Diergaarde Blijdorp, Rotterdam
     </div>
   </div>
+
 </section>
-<!-- TEXT 2 -->
-<div style="height:00px;"></div>
 
 <!-- ART 3 -->
-<!-- ART 3 -->
+
 <section class="artwork artwork--full">
+
   <div class="artwork--leftbg">
     <div class="title">
       <i>LAYER OF ABSENCE</i> (2025)<br>
@@ -314,7 +282,9 @@ html, body {
       59 × 49 cm
     </div>
   </div>
-  <img src="john-boelee-art-03.jpg" alt="LAYER OF ABSENCE (2025)">
+
+  <img src="john-boelee-art-03.jpg" alt="Layer of Absence (2025)">
+
 </section>
 
 </body>
