@@ -31,10 +31,10 @@ body {
   bottom: 5vh;
   z-index: 10;
 }
-hoe zou je dit laatste dan willen doen
 
 .name {
-  font-size: clamp(28px, 5vw, 65px);
+  font-size: clamp(42px, 5vw, 100px);
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
@@ -97,9 +97,7 @@ hoe zou je dit laatste dan willen doen
   margin-top: 14px;
 }
 
-/* =========================
-   ARTWORK SYSTEM
-========================= */
+/* ARTWORK SYSTEM */
 
 .artwork {
   position: relative;
@@ -119,8 +117,6 @@ hoe zou je dit laatste dan willen doen
   background: #e3e3e3;
 }
 
-/* Art 2 */
-
 .artwork--rightbg img {
   position: absolute;
   left: 0;
@@ -138,8 +134,6 @@ hoe zou je dit laatste dan willen doen
   padding: 10px;
   z-index: 3;
 }
-
-/* Art 3 */
 
 .artwork--full img {
   position: absolute;
@@ -162,8 +156,6 @@ hoe zou je dit laatste dan willen doen
   z-index: 3;
 }
 
-/* TITLES */
-
 .title {
   font-size: 14px;
   letter-spacing: 4px;
@@ -184,54 +176,49 @@ hoe zou je dit laatste dan willen doen
     line-height: 1.6;
 }
 
-
-
-
-
-
-  .text {
+.text {
     grid-template-columns: 1fr;
-  }
+}
 
-  .text-left {
+.text-left {
     display: none;
-  }
+}
 
-  .text-right {
+.text-right {
     padding: 30px 20px;
-  }
+}
 
-  .artwork {
+.artwork {
     height: auto;
     overflow: visible;
-  }
+}
 
-  .artwork::before {
+.artwork::before {
     display: none;
-  }
+}
 
-  .artwork img,
-  .artwork--full img,
-  .artwork--rightbg img {
+.artwork img,
+.artwork--full img,
+.artwork--rightbg img {
     position: static;
     width: 100%;
     height: auto;
     display: block;
-  }
+}
 
-  .artwork--leftbg,
-  .artwork--rightpanel {
+.artwork--leftbg,
+.artwork--rightpanel {
     position: static;
     width: 100%;
     height: auto;
     padding: 15px 20px;
     background: #f3f3f3;
-  }
+}
 
-  .artwork--leftbg .title,
-  .artwork--rightpanel .title {
+.artwork--leftbg .title,
+.artwork--rightpanel .title {
     color: #111;
-  }
+}
 }
 
 </style>
@@ -254,25 +241,17 @@ hoe zou je dit laatste dan willen doen
 <!-- TEXT -->
 
 <section class="text">
-
   <div class="text-left"></div>
-
   <div class="text-right">
     <p>I am drawn to the moment when certainty begins to dissolve. The work exists in the tension between what we know, what we see, and what we experience.</p>
-
     <p>Images, memories, and observations enter the practice as fragments that drift, overlap, and quietly contradict one another.</p>
-
     <p>Whether structured through collected imagery or developed through gesture and abstraction, each work becomes a space where multiple realities can coexist.</p>
   </div>
-
 </section>
 
 <!-- ART 2 -->
-
 <section class="artwork artwork--rightbg">
-
   <img src="john-boelee-art-02.jpg" alt="Looking Back (1993)">
-
   <div class="artwork--rightpanel">
     <div class="title">
       <i>Looking Back</i> (1993)<br>
@@ -281,13 +260,10 @@ hoe zou je dit laatste dan willen doen
       Diergaarde Blijdorp, Rotterdam
     </div>
   </div>
-
 </section>
 
 <!-- ART 3 -->
-
 <section class="artwork artwork--full">
-
   <div class="artwork--leftbg">
     <div class="title">
       <i>LAYER OF ABSENCE</i> (2025)<br>
@@ -295,9 +271,7 @@ hoe zou je dit laatste dan willen doen
       59 × 49 cm
     </div>
   </div>
-
   <img src="john-boelee-art-03.jpg" alt="Layer of Absence (2025)">
-
 </section>
 
 </body>
