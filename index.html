@@ -44,7 +44,7 @@ body {
   background: rgba(0,0,0,0.35);
 }
 
-/* HERO TEXT (VERPLAATSTE HEADER) */
+/* HERO TEXT */
 
 .hero-text {
   position: absolute;
@@ -57,23 +57,21 @@ body {
   max-width: 420px;
 }
 
-.name {
+.hero-name {
   font-size: clamp(18px, 6.5vw, 70px);
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
-
-  white-space: nowrap; /* 👈 voorkomt JOHN / BOELEE splitsing */
+  white-space: nowrap;
 }
 
-.sub {
+.hero-sub {
   font-size: clamp(10px, 2vw, 16px);
   text-transform: uppercase;
   letter-spacing: 4px;
   margin-top: 8px;
   opacity: 0.8;
-
   white-space: nowrap;
 }
 
@@ -103,7 +101,7 @@ body {
   margin-top: 14px;
 }
 
-/* ARTWORK SYSTEM (ongewijzigd) */
+/* ARTWORK */
 
 .artwork {
   position: relative;
@@ -173,42 +171,32 @@ body {
 /* MOBILE */
 
 @media (max-width: 768px) {
-    .name {
-     font-size: 22px;
-  }
+
+.hero-name {
+  font-size: 22px;
+}
+
+.hero-text {
+  max-width: 280px;
+}
 
 .text {
-    grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
 }
 
 .text-left {
-    display: none;
+  display: none;
 }
 
 .text-right {
-    padding: 30px 20px;
+  padding: 30px 20px;
 }
 
 .artwork {
-    height: auto;
-    overflow: visible;
+  height: auto;
+  overflow: visible;
 }
 
-.artwork img,
-.artwork--full img,
-.artwork--rightbg img {
-    position: static;
-    width: 100%;
-    height: auto;
-}
-
-.artwork--leftbg,
-.artwork--rightpanel {
-    position: static;
-    width: 100%;
-    padding: 15px 20px;
-    background: #f3f3f3;
-}
 .artwork::before {
   display: none;
 }
@@ -223,6 +211,14 @@ body {
   z-index: 2;
 }
 
+.artwork--leftbg,
+.artwork--rightpanel {
+  position: static;
+  width: 100%;
+  padding: 15px 20px;
+  background: #f3f3f3;
+}
+
 }
 </style>
 </head>
@@ -233,8 +229,8 @@ body {
 <section class="hero">
 
   <div class="hero-text">
-    <div class="name">JOHN BOELEE</div>
-    <div class="sub">CONTEMPORARY ART</div>
+    <div class="hero-name">JOHN BOELEE</div>
+    <div class="hero-sub">CONTEMPORARY ART</div>
   </div>
 
   <img src="john-boelee-art-01.jpg" alt="John Boelee Contemporary Art">
