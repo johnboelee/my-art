@@ -206,6 +206,19 @@ body {
     padding: 15px 20px;
     background: #f3f3f3;
 }
+.artwork::before {
+  display: none;
+}
+
+.artwork img,
+.artwork--full img,
+.artwork--rightbg img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
 
 }
 </style>
