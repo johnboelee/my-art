@@ -60,23 +60,45 @@ body {
 
 .hero-text {
   position: absolute;
-  left: 5vw;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  color: #fff;
 
   width: 100%;
-  max-width: 420px;
+  padding: 22px 5vw;
+
+  background: rgba(255,255,255,0.06);
+  /*backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);*/
 }
 
 .hero-name {
+  color: #fff;
   font-size: clamp(30px, 5vw, 80px);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
   white-space: nowrap;
+}
+
+.hero-name::before,
+.hero-name::after {
+  content: "";
+  position: absolute;
+  left: -100vw;
+  width: 200vw;
+  height: 1px;
+  background: rgba(255,255,255,0.75);
+}
+
+.hero-name::before {
+  top: 0;
+}
+
+.hero-name::after {
+  bottom: 0;
 }
 
 .hero-sub {
