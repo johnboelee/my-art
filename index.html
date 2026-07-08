@@ -53,7 +53,7 @@ body {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.40);
   z-index: 1;
 }
 
@@ -79,7 +79,7 @@ body {
 }
 
 .hero-name {
-   color: #ffffff;
+   color: #000000;
   font-size: clamp(34px, 5.5vw, 88px);
   font-weight: 500;
   text-transform: uppercase;
@@ -94,8 +94,8 @@ body {
   position: absolute;
   left: -100vw;
   width: 200vw;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.6);
+  height: 3px;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .hero-name::before {
@@ -198,12 +198,21 @@ body {
   z-index: 2;
 }
 
-.artwork--rightpanel {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  padding: 10px;
-  z-index: 3;
+.artwork--rightpanel{
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+
+    padding:20px;
+
+    background:inherit;
+
+    z-index:3;
 }
 
 .artwork--full img {
@@ -215,16 +224,21 @@ body {
   z-index: 2;
 }
 
-.artwork--leftbg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 40%;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  align-items: flex-end;
-  z-index: 3;
+.artwork--leftbg{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-end;
+
+    padding:20px;
+
+    background:inherit;
+
+    z-index:3;
 }
 
 .title {
@@ -258,7 +272,7 @@ body {
 
 /* MOBILE */
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
 /* witte ruimte tussen de afbeeldingen */
   .artwork + .artwork {
@@ -476,9 +490,10 @@ Acrylic paint on canvas (airbrushed)<br>
 <section class="artwork artwork--rightbg artwork--light6">
   <div class="artwork--rightpanel">
     <div class="title">
-      <i>EMOTIONAL DISTURBANCE #4</i> (2010)<br>
-      Acrylic paint on canvas (airbrushed)<br>
-      50 × 50 cm
+      <i>Galerie Delta, Rotterdam </i>(2010)<br>
+
+Exterior view during my solo exhibition.
+
     </div>
   </div>
   <img
@@ -490,8 +505,33 @@ Acrylic paint on canvas (airbrushed)<br>
     john-boelee-art-06-3840.webp 3840w"
   sizes="100vw"
   loading="lazy"
-  alt="EMOTIONAL DISTURBANCE #4 (2010), acrylic paint on canvas (airbrushed) by John Boelee">
+  alt="Galerie Delta, Rotterdam, 2010
+Exterior view during my solo exhibition.
+ (2010),John Boelee">
   </section>
+
+<!-- ART 7 -->
+<section class="artwork artwork--full">
+  <div class="artwork--leftbg">
+    <div class="title">
+     <i>............................</i>.......<br>
+.....................<br>
+..............
+    </div>
+  </div>
+
+  <img
+    src="john-boelee-art-07-1600.webp"
+    srcset="
+      john-boelee-art-07-800.webp 800w,
+      john-boelee-art-07-1600.webp 1600w,
+      john-boelee-art-07-2560.webp 2560w,
+      john-boelee-art-07-3840.webp 3840w"
+    sizes="100vw"
+    loading="lazy"
+    alt="EMOTIONAL DISTURBANCE #9 (2014), acrylic paint on canvas (airbrushed) by John Boelee">
+</section>
+
 
 
 
@@ -505,5 +545,74 @@ Acrylic paint on canvas (airbrushed)<br>
     </a>
   </div>
 </footer>
+<script>
+function positionPanels() {
+
+ if (window.innerWidth <= 800) {
+
+  document.querySelectorAll('.artwork--rightpanel, .artwork--leftbg').forEach(panel => {
+    panel.style.removeProperty('left');
+    panel.style.removeProperty('right');
+  });
+
+  return;
+}
+
+  document.querySelectorAll('.artwork--rightbg').forEach(section => {
+
+    const img = section.querySelector('img');
+    const panel = section.querySelector('.artwork--rightpanel');
+
+    if (!img || !panel) return;
+
+    const imageWidth = img.getBoundingClientRect().width;
+
+    panel.style.left = imageWidth + 'px';
+    panel.style.right = '0';
+
+  });
+
+
+  document.querySelectorAll('.artwork--full').forEach(section => {
+
+    const img = section.querySelector('img');
+    const panel = section.querySelector('.artwork--leftbg');
+
+    if (!img || !panel) return;
+
+    const imageWidth = img.getBoundingClientRect().width;
+
+    panel.style.left = '0';
+    panel.style.right = imageWidth + 'px';
+
+  });
+
+}
+
+
+// wacht tot alles geladen is
+window.addEventListener('load', () => {
+  requestAnimationFrame(positionPanels);
+});
+
+
+// reageert op veranderende afbeeldingsgrootte
+const observer = new ResizeObserver(() => {
+  requestAnimationFrame(positionPanels);
+});
+
+
+document.querySelectorAll('.artwork img').forEach(img => {
+  observer.observe(img);
+});
+
+
+// browser resize
+window.addEventListener('resize', () => {
+  requestAnimationFrame(positionPanels);
+});
+
+</script>
 </body>
 </html>
+
