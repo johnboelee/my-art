@@ -44,17 +44,22 @@ body {
 }
 
 .hero img {
-  width: 100%;
-  height: 100svh;
-  object-fit: cover;
-  display: block;
-}
 
+  width:100%;
+  height:85svh;
+
+  object-fit:cover;
+
+  display:block;
+
+  filter:
+  saturate(88%)
+  contrast(94%)
+  brightness(102%);
+
+}
 .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.38);
-  z-index: 1;
+  display: none;
 }
 
 .hero-text {
@@ -63,48 +68,36 @@ body {
 
 /* HERO TEXT */
 
-.hero-text {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  padding: 22px 5vw;
-  text-align: right;
+.hero-title-space {
 
+height:10svh;
 
-  background: transparent;
-  /*backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);*/
+display:flex;
+
+align-items:center;
+
+justify-content:flex-end;
+
+padding:0 5vw;
+
+background:#fff;
 }
 
 .hero-name {
-   color: #000000;
-  font-size: clamp(34px, 5.5vw, 88px);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1;
-  white-space: nowrap;
+
+font-size:clamp(24px,3vw,48px);
+
+font-weight:300;
+
+letter-spacing:0.08em;
+
+text-transform:uppercase;
+
+color:#111;
+
 }
 
-.hero-name::before,
-.hero-name::after {
-  content: "";
-  position: absolute;
-  left: -100vw;
-  width: 200vw;
-  height: 3px;
-  background: rgba(0, 0, 0, 0.6);
-}
 
-.hero-name::before {
-   top: -8px;
-}
-
-.hero-name::after {
-  bottom: -8px;
-}
 
 .hero-sub {
   font-size: clamp(10px, 2vw, 16px);
@@ -118,17 +111,19 @@ body {
 /* TEXT */
 
 .text {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: #f3f3f3;
+  display:block;
+  background:#fff;
 }
 /* text-ledt and text-right ar 2 blocks, possible to give different colors */
-.text-left {
-  background: #fff;
-}
+
 .text-right {
-  background: #fff;
-  padding: 40px;
+  background:#fff;
+
+  max-width:650px;
+  margin-left:auto;
+  margin-right:10vw;
+
+  padding:100px 20px;
 }
 
 .text-right h1,
@@ -165,20 +160,21 @@ body {
   overflow: hidden;
 }
 
+
 .artwork::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #d9d9d9;
-  z-index: 1;
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#f4f4f4;
+  z-index:1;
 }
 
 .artwork--light2::before {
-  background: #efefef;
+background:#fafafa;
 }
-
+/* grijs voor 3, 5 en 7 */
 .artwork--full::before {
-  background: #e3e3e3;
+  background: #ececec;
 }
 
 .artwork--light4::before {
@@ -242,13 +238,23 @@ body {
 }
 
 .title {
-  font-size: 11.5px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  opacity: 0.8;
-  line-height: 1.45;
-  margin: 0;
-  color: #000;
+
+font-size:12px;
+
+letter-spacing:0.08em;
+
+text-transform:none;
+
+opacity:0.75;
+
+line-height:1.6;
+
+font-weight:300;
+
+margin:0;
+
+color:#222;
+
 }
 
 .mixedcase {
@@ -347,17 +353,31 @@ body {
 
 }
 </style>
+
+
+
+<script type="application/ld+json">
+
+{
+ "@context":"https://schema.org",
+ "@type":"Person",
+ "name":"John Boelee",
+ "jobTitle":"Contemporary Artist",
+ "birthPlace":"Leiden, Netherlands",
+ "url":"https://johnboelee.com",
+ "sameAs":[
+ "https://www.saatchiart.com/en-es/johnboelee"
+ ]
+}
+
+</script>
+
 </head>
 
 <body>
 
 <!-- HERO -->
 <section class="hero">
-
-  <div class="hero-text">
-    <div class="hero-name">JOHN BOELEE</div>
-    
-  </div>
 
 <img
   src="john-boelee-art-01-1600.webp"
@@ -367,11 +387,17 @@ body {
     john-boelee-art-01-2560.webp 2560w,
     john-boelee-art-01-3840.webp 3840w"
   sizes="100vw"
-  alt="Artwork by Dutch contemporary artist John Boelee"
-  fetchpriority="high">
-  <div class="overlay"></div>
-</section>
+  alt="Conceptual entrance image introducing the artistic development of John Boelee"
+  fetchpriority="high"
+  decoding="async">
 
+<div class="hero-title-space">
+  <div class="hero-name">
+    JOHN BOELEE
+  </div>
+</div>
+
+</section>
 <!-- TEXT -->
 <section class="text">
   <div class="text-left"></div>
@@ -401,6 +427,7 @@ Rather than offering fixed meanings, the works remain open to multiple readings.
     john-boelee-art-02-3840.webp 3840w"
   sizes="100vw"
   loading="lazy"
+decoding="async"
   alt="Looking Back (1993), charcoal drawing on paper, Diergaarde Blijdorp, Rotterdam by John Boelee">
   
   <div class="artwork--rightpanel">
@@ -431,6 +458,7 @@ Rather than offering fixed meanings, the works remain open to multiple readings.
     john-boelee-art-03-3840.webp 3840w"
   sizes="100vw"
   loading="lazy"
+decoding="async"
   alt="LAYERS OF ABSENCE (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
 </section>
 <!-- FOOTER -->
@@ -447,6 +475,7 @@ Rather than offering fixed meanings, the works remain open to multiple readings.
     john-boelee-art-04-3840.webp 3840w"
   sizes="100vw"
   loading="lazy"
+decoding="async"
   alt=".................... (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
 
   <div class="artwork--rightpanel">
@@ -478,6 +507,7 @@ Rather than offering fixed meanings, the works remain open to multiple readings.
       john-boelee-art-05-3840.webp 3840w"
     sizes="100vw"
     loading="lazy"
+    decoding="async"
     alt="EMOTIONAL DISTURBANCE #9 (2014), acrylic paint on canvas (airbrushed) by John Boelee">
 </section>
 
@@ -505,9 +535,9 @@ Rather than offering fixed meanings, the works remain open to multiple readings.
 <section class="artwork artwork--rightbg artwork--light6">
   <div class="artwork--rightpanel">
     <div class="title">
-      <i>Galerie Delta, Rotterdam </i>(2010)<br>
+      <i>Galerie Delta, Rotterdam </i>
 
-Exterior view during my solo exhibition.
+Exterior view during the solo exhibition, 2010
 
     </div>
   </div>
@@ -520,6 +550,7 @@ Exterior view during my solo exhibition.
     john-boelee-art-06-3840.webp 3840w"
   sizes="100vw"
   loading="lazy"
+  decoding="async"
   alt="Galerie Delta, Rotterdam, 2010
 Exterior view during my solo exhibition.
  (2010),John Boelee">
@@ -529,7 +560,7 @@ Exterior view during my solo exhibition.
 <section class="artwork artwork--full">
   <div class="artwork--leftbg">
     <div class="title">
-   Studio, Draaistraat 15, The Hague (2010).
+   Studio, Draaistraat 15, The Hague, 2010
     </div>
   </div>
 
@@ -542,7 +573,8 @@ Exterior view during my solo exhibition.
       john-boelee-art-07-3840.webp 3840w"
     sizes="100vw"
     loading="lazy"
-    alt="Studio, Draaistraat 15, The Hague (2010).">
+    decoding="async"
+    alt="Studio, Draaistraat 15, The Hague, 2010">
 </section>
 
 <!-- ART 8 -->
@@ -556,13 +588,14 @@ Exterior view during my solo exhibition.
     john-boelee-art-08-3840.webp 3840w"
   sizes="100vw"
   loading="lazy"
+  decoding="async"
   alt="ARTITLEDcontemporary, (formerly Galerie Arttitled! contemporary art) presenting my work at the 2012 Affordable Art Fair.">
  
 
   <div class="artwork--rightpanel">
     <div class="title">
       
-    <span class="mixedcase">ARTITLEDcontemporary</span> (formerly Galerie Arttitled! Contemporary Art), Affordable Art Fair Amsterdam 2012.
+    <span class="mixedcase">ARTITLEDcontemporary</span> (formerly Galerie Arttitled! Contemporary Art), Affordable Art Fair Amsterdam, 2012
     </div>
   </div>
 </section>
