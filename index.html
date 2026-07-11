@@ -239,6 +239,28 @@ background:#fafafa;
     z-index:3;
 }
 
+.artwork--cover {
+  position: relative;
+  width: 100%;
+  height: clamp(500px, 60vw, 1000px);
+  overflow: hidden;
+}
+
+.artwork--cover::before {
+  display:none;
+}
+
+.artwork--cover img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  z-index:2;
+}
 .title {
 
 font-size:12px;
@@ -323,6 +345,11 @@ color:#222;
   overflow: visible;
 }
 
+.artwork--cover {
+  height: 65svh;
+  overflow: hidden;
+}
+
 .artwork::before {
   display: none;
 }
@@ -353,7 +380,9 @@ color:#222;
 }
 
 
-}
+}   /* <-- sluit de @media af */
+
+
 </style>
 
 
@@ -595,7 +624,7 @@ Draaistraat 15, The Hague<br>
   sizes="100vw"
   loading="lazy"
   decoding="async"
-  alt="ARTITLEDcontemporary (formerly Galerie Arttitled! contemporary art) presenting my work at the 2012 Affordable Art Fair."">
+  alt="ARTITLEDcontemporary (formerly Galerie Arttitled! contemporary art) presenting my work at the 2012 Affordable Art Fair.">
  
 
   <div class="artwork--rightpanel">
@@ -609,6 +638,20 @@ Amsterdam, 2012
   </div>
 </section>
 
+
+<section class="artwork artwork--cover">
+  <img
+    src="john-boelee-art-09-1600.webp"
+    srcset="
+      john-boelee-art-09-800.webp 800w,
+      john-boelee-art-09-1600.webp 1600w,
+      john-boelee-art-09-2560.webp 2560w,
+      john-boelee-art-09-3840.webp 3840w"
+    sizes="100vw"
+    loading="lazy"
+    decoding="async"
+    alt="">
+</section>
 
 
 <footer class="footer">
