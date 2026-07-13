@@ -362,8 +362,27 @@ color:#222;
 }
 
 .artwork--cover {
-  height: 65svh;
+  position: relative;
+  height: auto;
+  min-height: 65svh;
   overflow: hidden;
+}
+
+
+
+.artwork--cover-caption {
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:20px;
+  z-index:10;
+
+  color:#222;
+  opacity:0.85;
+
+  font-size:12px;
+  line-height:1.5;
+  letter-spacing:.06em;
 }
 
 .artwork::before {
@@ -378,6 +397,14 @@ color:#222;
   height: auto;
   position: relative;
   z-index: 2;
+}
+
+.artwork--cover img {
+  width:100%;
+  height:65svh;
+  object-fit:cover;
+  object-position:center;
+  display:block;
 }
 
 .artwork--leftbg,
