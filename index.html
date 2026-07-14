@@ -331,10 +331,32 @@ color:#222;
   text-decoration: underline;
 }
 
-
+.statement-mobile {
+  display: none;
+}
 /* MOBILE */
 
 @media (max-width: 800px) {
+
+  .statement-desktop {
+  display: none;
+}
+
+.statement-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 40px 20px;
+}
+
+.statement-mobile p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  white-space: nowrap;
+}
 
 /* witte ruimte tussen de afbeeldingen */
   .artwork + .artwork {
@@ -535,11 +557,17 @@ decoding="async"
 
 
 <!-- EXHIBITION TEXT SPACE -->
-<section class="text statement">
+<!-- DESKTOP -->
+<section class="text statement statement-desktop">
   <div class="text-left"></div>
   <div class="text-right">
     <p>What does a work preserve? What does it lose?</p>
   </div>
+</section>
+
+<!-- MOBILE -->
+<section class="statement-mobile">
+  <p>What does a work preserve? What does it lose?</p>
 </section>
 
 
