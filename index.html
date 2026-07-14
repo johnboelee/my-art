@@ -117,11 +117,9 @@ color:#111;
 
 .text-right {
   background:#fff;
-
-  max-width:650px;
+  max-width:520px;
   margin-left:auto;
   margin-right:10vw;
-
   padding:100px 20px;
 }
 
@@ -142,7 +140,7 @@ color:#111;
   max-width: 1000px;
   margin: 0;
   font-size: clamp(15px, 1.1vw, 20px);
-  line-height: 1.5;
+  line-height: 1.7;
   letter-spacing: 0.3px;
   font-weight: 300;
 }
@@ -302,12 +300,17 @@ color:#222;
 }
 
 .footer {
-  padding: 25px 20px;
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #777;
-  background: #fff;
+    padding: 40px 20px 60px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: #777;
+    background: #fff;
+}
+
+.exhibition-end {
+    height: 40svh;
+    background: #fff;
 }
 
 .footer a {
@@ -704,16 +707,22 @@ Amsterdam, 2012
 </section>
 
 
+<div class="exhibition-end" aria-hidden="true"></div>
+
 <footer class="footer">
   <div class="footer-content">
     John Boelee —
     <a href="mailto:studio@johnboelee.com">studio@johnboelee.com</a>
     —
-    <a href="https://www.saatchiart.com/en-es/johnboelee" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.saatchiart.com/en-es/johnboelee"
+       target="_blank"
+       rel="noopener noreferrer">
       Saatchi Art
     </a>
   </div>
 </footer>
+
+
 <script>
 function positionPanels() {
 
