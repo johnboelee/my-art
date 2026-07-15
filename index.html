@@ -115,12 +115,21 @@ color:#111;
 }
 /* text-ledt and text-right ar 2 blocks, possible to give different colors */
 
+
 .text-right {
   background:#fff;
   max-width:520px;
   margin-left:auto;
   margin-right:10vw;
   padding:140px 20px;
+}
+
+
+
+.cv .text-right {
+  max-width: 460px;
+  padding-top:100px;
+  padding-bottom:80px;
 }
 
 .statement .text-right {
@@ -284,6 +293,10 @@ background:#fafafa;
     letter-spacing:.06em;
 
     z-index:3;
+}
+
+.artwork--origin {
+  height: clamp(600px, 52vw, 850px);
 }
 
 
@@ -515,7 +528,7 @@ color:#222;
 <div class="hero-transition"></div>
 
 <!-- ART 2 -->
-<section class="artwork artwork--rightbg artwork--light2">
+<section class="artwork artwork--origin artwork--rightbg artwork--light2">
  <img
   src="john-boelee-art-02-1600.webp"
   srcset="
@@ -563,17 +576,6 @@ decoding="async"
 
 <!-- EXHIBITION TEXT SPACE -->
 <!-- DESKTOP -->
-<section class="text statement statement-desktop">
-  <div class="text-left"></div>
-  <div class="text-right">
-    <p>What does a work preserve? What does it lose?</p>
-  </div>
-</section>
-
-<!-- MOBILE -->
-<section class="statement-mobile">
-  <p>What does a work preserve? What does it lose?</p>
-</section>
 
 
   <!-- ART 4 -->
@@ -598,6 +600,19 @@ decoding="async"
     </div>
   </div>
 </section>
+
+<section class="text statement statement-desktop">
+  <div class="text-left"></div>
+  <div class="text-right">
+    <p>What does a work preserve? What does it lose?</p>
+  </div>
+</section>
+
+<!-- MOBILE -->
+<section class="statement-mobile">
+  <p>What does a work preserve? What does it lose?</p>
+</section>
+
 
 
 <!-- ART 5 -->
@@ -625,8 +640,9 @@ decoding="async"
 
 
 
+
 <!-- CV -->
-<section class="text">
+<section class="text cv">
   <div class="text-left"></div>
 
   <div class="text-right">
