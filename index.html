@@ -483,19 +483,141 @@ color:#222;
 
 
 <script type="application/ld+json">
-
 {
  "@context":"https://schema.org",
- "@type":"Person",
- "name":"John Boelee",
- "jobTitle":"Contemporary Artist",
- "birthPlace":"Leiden, Netherlands",
- "url":"https://johnboelee.com",
- "sameAs":[
- "https://www.saatchiart.com/en-es/johnboelee"
+ "@graph":[
+
+ {
+  "@type":"Person",
+  "@id":"https://johnboelee.com/#artist",
+  "name":"John Boelee",
+  "jobTitle":"Contemporary Artist",
+  "description":"John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works exploring perception, memory and visual culture.",
+  "image":"https://johnboelee.com/john-boelee-art-01-1600.webp",
+  "birthPlace":"Leiden, Netherlands",
+  "url":"https://johnboelee.com",
+  "sameAs":[
+   "https://www.saatchiart.com/en-es/johnboelee"
+  ]
+ },
+
+{
+ "@type":"ImageObject",
+ "name":"John Boelee — Contemporary Artist website hero image",
+ "creator":{
+   "@id":"https://johnboelee.com/#artist"
+ },
+ "artform":"Studio documentation"
+ "description":"Hero image introducing John Boelee's contemporary art practice.",
+ "image":"https://johnboelee.com/john-boelee-art-01-1600.webp"
+},
+
+ {
+  "@type":"VisualArtwork",
+  "name":"Looking Back",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"1993",
+ "artform":"Drawing",
+ "artworkSurface":"Paper",
+ "width":"57 cm",
+ "height":"40 cm",
+  "artMedium":"Charcoal on paper",
+  "image":"https://johnboelee.com/john-boelee-art-02-1600.webp"
+ },
+
+ {
+  "@type":"VisualArtwork",
+  "name":"LAYERS OF ABSENCE",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"2025",
+  "width":"49 cm",
+  "height":"59 cm",
+  "artform":"Mixed media",
+  "artMedium":"Ink and acrylic paint on paper and reverse-painted glass",
+  "image":"https://johnboelee.com/john-boelee-art-03-1600.webp"
+ },
+
+ {
+  "@type":"VisualArtwork",
+  "name":".................",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"2025",
+  "artform":"Mixed media",
+  "width":"49 cm",
+  "height":"59 cm",
+  "artMedium":"Ink and acrylic paint on paper and reverse-painted glass",
+  "image":"https://johnboelee.com/john-boelee-art-04-1600.webp"
+ },
+
+ {
+  "@type":"VisualArtwork",
+  "name":"EMOTIONAL DISTURBANCE #9",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"2021",
+  "artform":"Studio documentation"
+  "width":"180 cm",
+  "height":"180 cm",
+  "artMedium":"Acrylic paint on canvas (airbrushed)",
+  "image":"https://johnboelee.com/john-boelee-art-05-1600.webp"
+ },
+
+ {
+  "@type":"VisualArtwork",
+  "name":"Galerie Delta — Exterior view during solo exhibition",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"2010",
+  "artform":"Exhibition documentation"
+  "image":"https://johnboelee.com/john-boelee-art-06-1600.webp"
+ },
+
+ {
+  "@type":"VisualArtwork",
+  "name":"Studio view, Hoge Zand 38",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"2010",
+  "artform":"Studio documentation"
+  "image":"https://johnboelee.com/john-boelee-art-07-1600.webp"
+ },
+
+ {
+  "@type":"VisualArtwork",
+  "name":"ARTITLEDcontemporary — Affordable Art Fair",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"2012",
+  "artform":"Exhibition documentation"
+  "image":"https://johnboelee.com/john-boelee-art-08-1600.webp"
+ },
+
+ {
+  "@type":"VisualArtwork",
+  "name":"EMOTIONAL DISTURBANCE #5 and #6",
+  "creator":{
+   "@id":"https://johnboelee.com/#artist"
+  },
+  "dateCreated":"2010",
+  "artMedium":"Acrylic paint on canvas (airbrushed)",
+  "artform":"Studio documentation"
+  "width":"35 cm",
+  "height":"35 cm",
+  "image":"https://johnboelee.com/john-boelee-art-09-1600.webp"
+ }
+
  ]
 }
-
 </script>
 
 </head>
@@ -839,4 +961,5 @@ window.addEventListener('resize', () => {
 
 </script>
 </body>
+</html>
 </html>
