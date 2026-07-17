@@ -29,17 +29,91 @@
 * {
   box-sizing: border-box;
 }
+/* !!!!!!!!!- ROOT -!!!!!!!!!!*/
+:root {
 
+  /* HERO */
+  --hero-image-h: 55svh;
+  --hero-title-h: 20svh;
+  --hero-transition-h: 16svh;
+
+
+/* GALERIERUIMTE */
+--wall-1: #e7e7e7;   /* afbeelding 3, 4 */
+--wall-2: #eeeeee;  /* afbeelding 2, 5 */
+--wall-3: #f5f5f5;   /* afbeelding 6, 7 */
+--wall-4: #e5e5e5;   /* afbeelding 8 */
+
+
+  /* OVERGANGEN 
+    --hero-transition: #dddddd;
+  --exhibition-end: #e3e1de;*/
+
+  
+
+/*--hero-transition: #deddd8;
+--exhibition-end: #dedbd6;*/
+
+--hero-transition: #e3e2df;
+--exhibition-end: #dddddd;
+
+
+  /* TEKST */
+--paper: #fafafa;
+  --text: #111;
+  --caption: #777;
+}
+
+/*BODY -----------------------------------------------------------------------------------------------------------------------------------------------------*/
 html,
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #fafaf8;
-  color: #111;
+  background: var(--hero-transition);
+  color: var(--text);
   overflow-x: hidden;
 }
 
-/* HERO */
+/*ARTWORK BACKGROUND ----------------------------------------------------------------------------------------------------------------------------------------*/
+.artwork::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: var(--wall-1);
+  z-index:1;
+}
+
+
+/* afbeelding 2 */
+.artwork--light2::before {
+  background: var(--wall-2);
+}
+
+
+/* afbeelding 5 */
+.artwork--monumental::before {
+  background: var(--wall-2);
+}
+
+
+/* afbeelding 6 */
+.artwork--light6::before {
+  background: var(--wall-3);
+}
+
+
+/* afbeelding 8 */
+.artwork--light4::before {
+  background: var(--wall-4);
+}
+
+
+/* afbeelding 3 en 4 */
+.artwork--current-room::before {
+  background: var(--wall-1);
+}
+
+/* HERO ----------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*
   Fix #2: the hero's total height was three unlinked magic numbers
@@ -48,11 +122,7 @@ body {
   described in the master prompt is a deliberate, adjustable choice
   rather than an accidental sum.
 */
-:root {
-  --hero-image-h: 55svh;
-  --hero-title-h: 20svh;
-  --hero-transition-h: 16svh;
-}
+
 
 .hero {
   position: relative;
@@ -64,16 +134,10 @@ body {
 
   width:100%;
   height: var(--hero-image-h);
-
   object-fit:cover;
-
   display:block;
-
-
-
 }
 
-/* HERO TEXT */
 
 .hero-title-space {
   height: var(--hero-title-h);
@@ -86,10 +150,8 @@ body {
 
 .hero-transition {
   height: var(--hero-transition-h);
-  background: #fafaf8;
+  background: var(--hero-transition);
 }
-
-
 
 
 .hero-name {
@@ -102,16 +164,15 @@ body {
   font-weight:300;
   letter-spacing:0.08em;
   text-transform:uppercase;
-  color:#111;
+  color:var(--text);
 }
 
 
 
-/* TEXT */
-
+/* TEXT > statement & CV ------------------------------------------------------------------------------------------------------------------------------------*/
 .text {
   display:block;
-  background:#fafaf8;
+  background:var(--paper);
 }
 /* text-ledt and text-right ar 2 blocks, possible to give different colors */
 
@@ -123,8 +184,6 @@ body {
   margin-right:10vw;
   padding:140px 20px;
 }
-
-
 
 .cv .text-right {
   max-width: 460px;
@@ -185,8 +244,7 @@ body {
 
 
 
-/* ARTWORK */
-
+/* ARTWORK SPACES    ----------------------------------------------------------------------------------------------------------------------------------------*/
 /*
   Fix #5: every "room" used the same clamp(500px, 60vw, 1000px)
   height, so the rhythm was mechanical rather than curated
@@ -214,30 +272,9 @@ body {
   --room-scale: 1.12;
 }
 
-.artwork::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:#f4f4f4;
-  z-index:1;
-}
 
-.artwork--light2::before {
-background:#f3f3f1;
-}
-/* grijs voor 3, 5 en 7 */
-.artwork--full::before {
-  background: #ececec;
-}
 
-.artwork--light4::before {
-  background: #f4f4f4;
-}
-
-.artwork--light6::before {
-  background: #eeeeee;
-}
-
+/*ARTWORK LAYOUT ----------------------------------------------------------------------------------------------------------------------------------------*/
 .artwork--rightbg img {
   position: absolute;
   left: 0;
@@ -290,6 +327,7 @@ background:#f3f3f1;
     z-index:3;
 }
 
+/*ARTWORK COVER ----------------------------------------------------------------------------------------------------------------------------------------*/
 .artwork--cover {
   position: relative;
   width: 100%;
@@ -397,6 +435,11 @@ background:#f3f3f1;
   height: clamp(540px, 64vw, 1050px);
 }
 
+/* Only for 3 & 4 */
+.artwork--current-room::before {
+  background: var(--wall-1);
+}
+
 /*
   Documentary vs. autonomous work distinction (master prompt 6AA):
   documentary/context images get a visually lighter caption
@@ -443,12 +486,12 @@ color:#222;
     font-size: 12px;
     letter-spacing: 0.08em;
     color: #777;
-    background: #fafaf8;
+    background: var(--exhibition-end);
 }
 
 .exhibition-end {
     height: 40svh;
-    background: #fafaf8;
+    background: var(--exhibition-end);
 }
 
 .footer a {
@@ -475,7 +518,7 @@ color:#222;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff;
+  background:var(--paper);
   padding: 140px 20px 170px;
 }
 
@@ -599,6 +642,8 @@ color:#222;
 .artwork--caption-below-text .title {
   text-align: left;
 }
+
+
 
 .title {
   text-align: left;
@@ -805,7 +850,7 @@ Drawn at Diergaarde Blijdorp, Rotterdam
 </section>
 
 <!-- ART 3 -->
-<section class="artwork artwork--full">
+<section class="artwork artwork--full artwork--current-room">
   <div class="artwork--leftbg">
     <div class="title">
       <i>LAYERS OF ABSENCE</i> (2025)<br>
@@ -831,7 +876,7 @@ decoding="async"
 
 
   <!-- ART 4 -->
-<section class="artwork artwork--rightbg artwork--light4">
+<section class="artwork artwork--rightbg artwork--light4 artwork--current-room">
   <img
   src="john-boelee-art-04-1600.webp"
   srcset="
