@@ -45,15 +45,7 @@
 --wall-4: #e5e5e5;   /* afbeelding 8 */
 
 
-  /* OVERGANGEN 
-    --hero-transition: #dddddd;
-  --exhibition-end: #e3e1de;*/
-
-  
-
-/*--hero-transition: #deddd8;
---exhibition-end: #dedbd6;*/
-
+  /* OVERGANGEN */
 --hero-transition: #e3e2df;
 --exhibition-end: #dddddd;
 
@@ -69,6 +61,9 @@ html,
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  /* Bewuste keuze van de gebruiker: de grijzere --hero-transition
+     tint, ook zichtbaar bij het macOS "rubber-band" overscroll-
+     effect aan de randen van de pagina. */
   background: var(--hero-transition);
   color: var(--text);
   overflow-x: hidden;
@@ -108,21 +103,16 @@ body {
 }
 
 
-/* afbeelding 3 en 4 */
+/*
+  Afbeelding 3 en 4 delen dezelfde "kamer" (wall-1). Deze regel
+  komt nu maar één keer voor (was eerder per ongeluk gedupliceerd
+  verderop in het bestand — onschadelijk, maar overbodige code).
+*/
 .artwork--current-room::before {
   background: var(--wall-1);
 }
 
 /* HERO ----------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-/*
-  Fix #2: the hero's total height was three unlinked magic numbers
-  (55svh image + 20svh title-space + 16svh transition = ~91svh).
-  These are now named variables so the "architectonic" proportion
-  described in the master prompt is a deliberate, adjustable choice
-  rather than an accidental sum.
-*/
-
 
 .hero {
   position: relative;
@@ -198,14 +188,6 @@ body {
   padding-bottom:320px;
 }
 
-/*
-  Fix #6: white-space:nowrap forced a single unbreakable line.
-  Any longer translation, a different language, or a browser
-  zoom / text-size accessibility setting would overflow the
-  viewport horizontally. Replaced with a controlled max-width
-  that lets the line wrap gracefully if needed, while still
-  reading as one calm line at normal sizes.
-*/
 .statement .text-right p {
   /* Ruim genoeg voor de huidige zin (45 tekens) op één regel,
      met min(90vw, ...) als vangnet zodat extreme inzoom of een
@@ -245,15 +227,6 @@ body {
 
 
 /* ARTWORK SPACES    ----------------------------------------------------------------------------------------------------------------------------------------*/
-/*
-  Fix #5: every "room" used the same clamp(500px, 60vw, 1000px)
-  height, so the rhythm was mechanical rather than curated
-  (master prompt 6C explicitly asks to avoid a perfect grid).
-  A --room-scale variable lets individual sections breathe at a
-  slightly different scale without duplicating the whole ruleset.
-  Default stays 1 (no visual change) unless a modifier class or
-  inline style sets it.
-*/
 .artwork {
   position: relative;
   height: clamp(500px, calc(60vw * var(--room-scale, 1)), calc(1000px * var(--room-scale, 1)));
@@ -356,8 +329,10 @@ body {
     left:4vw;
     bottom:4vh;
 
-    color:#222;
-    opacity:0.75;
+    /* Was hardcoded #222 / opacity:0.75 — nu op de tekstvariabele
+       aangesloten, consistent met de andere captions. */
+    color:var(--caption);
+    opacity:1;
 
     font-size:12px;
     line-height:1.6;
@@ -435,11 +410,6 @@ body {
   height: clamp(540px, 64vw, 1050px);
 }
 
-/* Only for 3 & 4 */
-.artwork--current-room::before {
-  background: var(--wall-1);
-}
-
 /*
   Documentary vs. autonomous work distinction (master prompt 6AA):
   documentary/context images get a visually lighter caption
@@ -464,7 +434,7 @@ letter-spacing:0.08em;
 
 text-transform:none;
 
-opacity:0.75;
+opacity:1;
 
 line-height:1.6;
 
@@ -472,7 +442,8 @@ font-weight:300;
 
 margin:0;
 
-color:#222;
+/* Was hardcoded #222 — nu op de tekstvariabele aangesloten. */
+color:var(--caption);
 
 }
 
@@ -485,7 +456,7 @@ color:#222;
     text-align: center;
     font-size: 12px;
     letter-spacing: 0.08em;
-    color: #777;
+    color: var(--caption);
     background: var(--exhibition-end);
 }
 
@@ -495,7 +466,7 @@ color:#222;
 }
 
 .footer a {
-  color: #777;
+  color: var(--caption);
   text-decoration: none;
 }
 
@@ -582,7 +553,7 @@ color:#222;
   bottom:20px;
   z-index:10;
 
-  color:#222;
+  color:var(--caption);
   opacity:0.85;
 
   font-size:12px;
@@ -617,7 +588,9 @@ color:#222;
   position: static;
   width: 100%;
   padding: 20px 20px 30px;
-  background: #fafafa;
+  /* Was hardcoded #fafafa — nu op dezelfde papierkleur-variabele
+     aangesloten als de rest van het systeem. */
+  background: var(--paper);
   display: flex;
   justify-content: flex-start;
   text-align: left;
@@ -634,7 +607,7 @@ color:#222;
   transform: none;
   width: 100%;
   padding: 20px 20px 30px;
-  background: #fafafa;
+  background: var(--paper);
   text-align: left;
   text-shadow: none;
 }
@@ -876,7 +849,7 @@ decoding="async"
 
 
   <!-- ART 4 -->
-<section class="artwork artwork--rightbg artwork--light4 artwork--current-room">
+<section class="artwork artwork--rightbg artwork--current-room">
   <img
   src="john-boelee-art-04-1600.webp"
   srcset="
