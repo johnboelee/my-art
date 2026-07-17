@@ -17,6 +17,10 @@
 
 <link rel="canonical" href="https://johnboelee.com">
 
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
 <title>John Boelee | Contemporary Artist</title>
 <style>
 
@@ -30,12 +34,25 @@ html,
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #fafaf8;;
+  background: #fafaf8;
   color: #111;
   overflow-x: hidden;
 }
 
 /* HERO */
+
+/*
+  Fix #2: the hero's total height was three unlinked magic numbers
+  (55svh image + 20svh title-space + 16svh transition = ~91svh).
+  These are now named variables so the "architectonic" proportion
+  described in the master prompt is a deliberate, adjustable choice
+  rather than an accidental sum.
+*/
+:root {
+  --hero-image-h: 55svh;
+  --hero-title-h: 20svh;
+  --hero-transition-h: 16svh;
+}
 
 .hero {
   position: relative;
@@ -46,7 +63,7 @@ body {
 .hero img {
 
   width:100%;
-  height:55svh;
+  height: var(--hero-image-h);
 
   object-fit:cover;
 
@@ -55,18 +72,11 @@ body {
 
 
 }
-.overlay {
-  display: none;
-}
-
-.hero-text {
-  z-index: 2;
-}
 
 /* HERO TEXT */
 
 .hero-title-space {
-  height:20svh;
+  height: var(--hero-title-h);
   display:flex;
   align-items:flex-end;
   justify-content:flex-end;
@@ -75,7 +85,7 @@ body {
 }
 
 .hero-transition {
-  height: 16svh;
+  height: var(--hero-transition-h);
   background: #fafaf8;
 }
 
@@ -86,6 +96,7 @@ body {
   position: absolute;
   right: 12vw;
   bottom: 18vh;
+  margin: 0;
 
   font-size: clamp(24px,3vw,48px);
   font-weight:300;
@@ -95,15 +106,6 @@ body {
 }
 
 
-
-.hero-sub {
-  font-size: clamp(10px, 2vw, 16px);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-top: 8px;
-  opacity: 0.8;
-  white-space: nowrap;
-}
 
 /* TEXT */
 
@@ -137,8 +139,22 @@ body {
   padding-bottom:320px;
 }
 
+/*
+  Fix #6: white-space:nowrap forced a single unbreakable line.
+  Any longer translation, a different language, or a browser
+  zoom / text-size accessibility setting would overflow the
+  viewport horizontally. Replaced with a controlled max-width
+  that lets the line wrap gracefully if needed, while still
+  reading as one calm line at normal sizes.
+*/
 .statement .text-right p {
-  white-space: nowrap;
+  /* Ruim genoeg voor de huidige zin (45 tekens) op één regel,
+     met min(90vw, ...) als vangnet zodat extreme inzoom of een
+     zeer smal scherm nog steeds netjes afbreekt in plaats van
+     over de rand te lopen. Pas het ch-getal aan als de tekst
+     zelf langer wordt. */
+  max-width: min(90vw, 52ch);
+  white-space: normal;
 }
 
 .text-right h1,
@@ -171,12 +187,32 @@ body {
 
 /* ARTWORK */
 
+/*
+  Fix #5: every "room" used the same clamp(500px, 60vw, 1000px)
+  height, so the rhythm was mechanical rather than curated
+  (master prompt 6C explicitly asks to avoid a perfect grid).
+  A --room-scale variable lets individual sections breathe at a
+  slightly different scale without duplicating the whole ruleset.
+  Default stays 1 (no visual change) unless a modifier class or
+  inline style sets it.
+*/
 .artwork {
   position: relative;
-  height: clamp(500px, 60vw, 1000px);
+  height: clamp(500px, calc(60vw * var(--room-scale, 1)), calc(1000px * var(--room-scale, 1)));
   overflow: hidden;
 }
 
+/* Optional curatorial rhythm modifiers — apply where a section
+   deserves to feel more intimate or more monumental than its
+   neighbours. Not applied automatically: each use should be a
+   deliberate choice per master prompt 6C / 6E. */
+.artwork--intimate {
+  --room-scale: 0.72;
+}
+
+.artwork--monumental {
+  --room-scale: 1.12;
+}
 
 .artwork::before {
   content:"";
@@ -293,6 +329,62 @@ background:#f3f3f1;
     z-index:3;
 }
 
+/*
+  Alternative "room" type: full-width photo with the caption as
+  its own line below, instead of squeezed into the narrow side
+  panel used by .artwork--full / .artwork--rightbg. Used where an
+  image's proportions would otherwise leave too little room for
+  the caption text to breathe. Deliberately a different system —
+  per master prompt 6E, not every room needs identical treatment.
+*/
+.artwork--caption-below {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+}
+
+.artwork--caption-below::before {
+  display: none;
+}
+
+.artwork--caption-below img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.artwork--caption-below-text {
+  /* Positie is instelbaar via variabelen, zodat de plek van de
+     caption per foto (of later opnieuw) makkelijk te verschuiven
+     is zonder de hele regel te herschrijven.
+     Huidige keuze: links, net boven het verticale midden van de foto. */
+  --caption-x: 4vw;
+  --caption-y: 50%;
+  --caption-gap: 14px;
+
+  position: absolute;
+  left: var(--caption-x);
+  top: var(--caption-y);
+  transform: translateY(calc(-100% - var(--caption-gap)));
+  z-index: 2;
+  text-align: left;
+
+  /* Leesbaarheidsvoorziening, geen decoratief effect: omdat de
+     tekst nu op de foto zelf staat, verschuift wat eronder ligt
+     per schermbreedte (bij smaller scherm ander deel van het
+     beeld dan bij breed scherm). Een vaste positie kan contrast
+     dus niet garanderen. Een zachte schaduw houdt de tekst
+     leesbaar ongeacht wat eronder staat, zonder een vlak of
+     gradient toe te voegen. */
+  text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 1px 8px rgba(255,255,255,0.5);
+}
+
+.artwork--caption-below-text .title {
+  text-align: left;
+}
+
 .artwork--origin {
   height: clamp(600px, 52vw, 750px);
 }
@@ -303,6 +395,20 @@ background:#f3f3f1;
 
 .artwork--fair {
   height: clamp(540px, 64vw, 1050px);
+}
+
+/*
+  Documentary vs. autonomous work distinction (master prompt 6AA):
+  documentary/context images get a visually lighter caption
+  treatment — slightly smaller, slightly more muted — so they
+  read as documentation rather than as a reproduction of an
+  autonomous piece. Applied to the studio and exhibition-history
+  sections (art 6, 7, 8, 9).
+*/
+.title--documentary {
+  font-size: 11px;
+  opacity: 0.6;
+  letter-spacing: 0.1em;
 }
 
 
@@ -400,10 +506,6 @@ color:#222;
     font-size:30px;
   }
 
-.hero-text {
-  max-width: 320px;
-}
-
 .text {
   grid-template-columns: 1fr;
 }
@@ -478,6 +580,26 @@ color:#222;
   text-align: left;
 }
 
+/* Op mobiel is de foto verhoudingsgewijs vaak veel hoger dan
+   breed, waardoor een vaste overlay-positie op een onvoorspelbaar
+   deel van het beeld kan vallen en de tekst-shadow niet altijd
+   genoeg contrast geeft. Consistent met de andere panelen hierboven
+   wordt de caption op mobiel daarom een gewoon blok onder de foto,
+   in plaats van een overlay erop. */
+.artwork--caption-below-text {
+  position: static;
+  transform: none;
+  width: 100%;
+  padding: 20px 20px 30px;
+  background: #fafafa;
+  text-align: left;
+  text-shadow: none;
+}
+
+.artwork--caption-below-text .title {
+  text-align: left;
+}
+
 .title {
   text-align: left;
 }
@@ -515,7 +637,7 @@ color:#222;
  "creator":{
    "@id":"https://johnboelee.com/#artist"
  },
- "artform":"Studio documentation"
+ "artform":"Studio documentation",
  "description":"Hero image introducing John Boelee's contemporary art practice.",
  "image":"https://johnboelee.com/john-boelee-art-01-1600.webp"
 },
@@ -570,7 +692,7 @@ color:#222;
    "@id":"https://johnboelee.com/#artist"
   },
   "dateCreated":"2021",
-  "artform":"Studio documentation"
+  "artform":"Studio documentation",
   "width":"180 cm",
   "height":"180 cm",
   "artMedium":"Acrylic paint on canvas (airbrushed)",
@@ -584,7 +706,7 @@ color:#222;
    "@id":"https://johnboelee.com/#artist"
   },
   "dateCreated":"2010",
-  "artform":"Exhibition documentation"
+  "artform":"Exhibition documentation",
   "image":"https://johnboelee.com/john-boelee-art-06-1600.webp"
  },
 
@@ -595,7 +717,7 @@ color:#222;
    "@id":"https://johnboelee.com/#artist"
   },
   "dateCreated":"2010",
-  "artform":"Studio documentation"
+  "artform":"Studio documentation",
   "image":"https://johnboelee.com/john-boelee-art-07-1600.webp"
  },
 
@@ -606,7 +728,7 @@ color:#222;
    "@id":"https://johnboelee.com/#artist"
   },
   "dateCreated":"2012",
-  "artform":"Exhibition documentation"
+  "artform":"Exhibition documentation",
   "image":"https://johnboelee.com/john-boelee-art-08-1600.webp"
  },
 
@@ -618,7 +740,7 @@ color:#222;
   },
   "dateCreated":"2010",
   "artMedium":"Acrylic paint on canvas (airbrushed)",
-  "artform":"Studio documentation"
+  "artform":"Studio documentation",
   "width":"35 cm",
   "height":"35 cm",
   "image":"https://johnboelee.com/john-boelee-art-09-1600.webp"
@@ -631,6 +753,8 @@ color:#222;
 </head>
 
 <body>
+
+<main>
 
 <!-- HERO -->
 <section class="hero">
@@ -648,9 +772,9 @@ color:#222;
   decoding="async">
 
 <div class="hero-title-space">
-  <div class="hero-name">
+  <h1 class="hero-name">
     JOHN BOELEE
-  </div>
+  </h1>
 </div>
 
 </section>
@@ -744,7 +868,7 @@ decoding="async"
 
 
 <!-- ART 5 -->
-<section class="artwork artwork--full">
+<section class="artwork artwork--full artwork--monumental">
   <div class="artwork--leftbg">
     <div class="title">
      <br>Studio view <br><i>EMOTIONAL DISTURBANCE #9</i> (2021)
@@ -790,7 +914,7 @@ decoding="async"
 <!-- ART 6 -->
 <section class="artwork artwork--rightbg artwork--light6 artwork--delta">
   <div class="artwork--rightpanel">
-    <div class="title">
+    <div class="title title--documentary">
 Galerie Delta<br>
 Rotterdam<br>
 Exterior view during the solo exhibition<br>
@@ -811,15 +935,7 @@ Exterior view during the solo exhibition<br>
   </section>
 
 <!-- ART 7 -->
-<section class="artwork artwork--full">
-  <div class="artwork--leftbg">
-    <div class="title">
-Studio view<br>
-Hoge Zand 38, The Hague<br>
-2010
-    </div>
-  </div>
-
+<section class="artwork artwork--caption-below">
   <img
     src="john-boelee-art-07-1600.webp"
     srcset="
@@ -831,6 +947,14 @@ Hoge Zand 38, The Hague<br>
     loading="lazy"
     decoding="async"
     alt="Studio view, Hoge Zand 38, The Hague, 2010">
+
+  <div class="artwork--caption-below-text">
+    <div class="title title--documentary">
+Studio view<br>
+Hoge Zand 38, The Hague<br>
+2010
+    </div>
+  </div>
 </section>
 
 <!-- ART 8 -->
@@ -849,7 +973,7 @@ Hoge Zand 38, The Hague<br>
  
 
   <div class="artwork--rightpanel">
-    <div class="title">
+    <div class="title title--documentary">
       
     <span class="mixedcase">ARTITLEDcontemporary</span><br>
 formerly Galerie Arttitled! Contemporary Art<br>
@@ -871,7 +995,7 @@ Amsterdam, 2012
     sizes="(max-width: 800px) 1600px, 100vw"
     loading="lazy"
     decoding="async"
-    alt="">
+    alt="Studio view, EMOTIONAL DISTURBANCE #5 and #6 (2010), acrylic paint on canvas (airbrushed), 35 × 35 cm each, by John Boelee">
   <div class="artwork--cover-caption">
         Studio view<br>
         <i>EMOTIONAL DISTURBANCE</i> #5 and #6 (2010)<br>
@@ -883,6 +1007,8 @@ Amsterdam, 2012
 
 
 <div class="exhibition-end" aria-hidden="true"></div>
+
+</main>
 
 <footer class="footer">
   <div class="footer-content">
@@ -968,3 +1094,4 @@ window.addEventListener('resize', () => {
 </script>
 </body>
 </html>
+
