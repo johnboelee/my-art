@@ -183,11 +183,21 @@ body {
 }
 
 .statement .text-right {
-  margin-left:45%;
+  max-width:620px;
+  margin-left:40%;
   margin-right:15%;
-  padding-top:280px;
-  padding-bottom:320px;
+  padding-top:220px;
+  padding-bottom:260px;
+  color:var(--caption);
 }
+
+.statement-intro {
+  font-size:12px !important;
+  letter-spacing:.08em;
+  margin-bottom:120px !important;
+}
+
+
 
 .statement .text-right p {
   /* Ruim genoeg voor de huidige zin (45 tekens) op één regel,
@@ -453,12 +463,27 @@ color:var(--caption);
 }
 
 .footer {
-    padding: 40px 20px 60px;
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--caption);
     background: var(--exhibition-end);
+
+    padding:
+        12vh   /* ruimte boven */
+        4vw
+        22vh;  /* ruimte onder */
+
+    text-align: left;
+
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: .08em;
+    color: var(--caption);
+}
+
+.footer-content{
+    line-height:1.6;
+}
+
+.footer-content a{
+    color:inherit;
 }
 
 .exhibition-end {
@@ -501,6 +526,7 @@ color:var(--caption);
     letter-spacing: 0.3px;
     line-height: 1.7;
     white-space: nowrap;
+    color: #888;
 }
 
 /* witte ruimte tussen de afbeeldingen */
@@ -555,7 +581,7 @@ color:var(--caption);
   z-index:10;
 
   color:var(--caption);
-  opacity:0.85;
+  opacity:0.95;
 
   font-size:12px;
   line-height:1.5;
@@ -882,14 +908,23 @@ decoding="async"
 
 <section class="text statement statement-desktop">
   <div class="text-left"></div>
+
   <div class="text-right">
-    <p>What does a work preserve? What does it lose?</p>
+
+    <p class="statement-intro">
+      In between moments
+    </p>
+
+   
   </div>
 </section>
 
 <!-- MOBILE -->
 <section class="statement-mobile">
-  <p>What does a work preserve? What does it lose?</p>
+
+<p>
+In between moments
+</p>
 </section>
 
 
@@ -1043,63 +1078,66 @@ Amsterdam, 2012
 </section>
 
 
-<div class="exhibition-end" aria-hidden="true"></div>
+
 
 </main>
 
 <footer class="footer">
   <div class="footer-content">
-    John Boelee —
-    <a href="mailto:studio@johnboelee.com">studio@johnboelee.com</a>
-    —
+    John Boelee<br><br>
+
+    <a href="mailto:studio@johnboelee.com">
+      studio@johnboelee.com
+    </a><br><br>
+
     <a href="https://www.saatchiart.com/en-es/johnboelee"
-       target="_leeg"
+       target="_blank"
        rel="noopener noreferrer">
       Saatchi Art
     </a>
   </div>
-</voettekst>
+</footer>
 
 
 <script>
-functie positiePanelen() {
+function positionPanels() {
 
- indien (window.innerWidth <= 800) {
+ if (window.innerWidth <= 800) {
 
-  document.querySelectorAll('.artwork--rechterpaneel, .artwork--leftbg').voor elk(panel => {
-    panel.stijl.removeProperty('links');
-    panel.stijl.removeProperty('juist');
+  document.querySelectorAll('.artwork--rightpanel, .artwork--leftbg').forEach(panel => {
+    panel.style.removeProperty('left');
+    panel.style.removeProperty('right');
   });
 
   return;
 }
 
-  document.querySelectorAll('.artwork--rightbg').voor elk(sectie => {
+  document.querySelectorAll('.artwork--rightbg').forEach(section => {
 
-    const img = sectie.querySelector('img');
-    const panel = sectie.querySelector('.kunstwerk--rechterpaneel');
+    const img = section.querySelector('img');
+    const panel = section.querySelector('.artwork--rightpanel');
 
-    indien (!img || !panel) return;
+    if (!img || !panel) return;
 
-    const afbeeldingbreette = img.getBoundingClientRect().width;
+    const imageWidth = img.getBoundingClientRect().width;
 
-    panel.stijl.links = afbeeldingbreette + 'px';
-    panel.stijl.right = '0';
+    panel.style.left = imageWidth + 'px';
+    panel.style.right = '0';
 
   });
 
 
-  document.querySelectorAll('.kunstwerk--vol').voor elk(sectie => {
+  document.querySelectorAll('.artwork--full').forEach(section => {
 
-    const img = sectie.querySelector('img');
-    const panel = sectie.querySelector('.artwork--leftbg');
+    const img = section.querySelector('img');
+    const panel = section.querySelector('.artwork--leftbg');
 
-    indien (!img || !panel) return;
+    if (!img || !panel) return;
 
-    const afbeeldingbreette = img.getBoundingClientRect().width;
+    const imageWidth = img.getBoundingClientRect().width;
 
-    panel.stijl.links = '0';
-    panel.stijl.right = afbeeldingbreette + 'px';
+    panel.style.left = '0';
+    panel.style.right = imageWidth + 'px';
 
   });
 
@@ -1107,25 +1145,25 @@ functie positiePanelen() {
 
 
 // wacht tot alles geladen is
-window.addEventListener('beladen', () => {
-  aanvraagAnimationFrame(positiePanelen);
+window.addEventListener('load', () => {
+  requestAnimationFrame(positionPanels);
 });
 
 
 // reageert op veranderende afbeeldingsgrootte
-const observer = new Grootte wijzigenObserver(() => {
-  aanvraagAnimationFrame(positiePanelen);
+const observer = new ResizeObserver(() => {
+  requestAnimationFrame(positionPanels);
 });
 
 
-document.querySelectorAll('.kunstwerk img').voor elk(img => {
-  observer.observeerder(img);
+document.querySelectorAll('.artwork img').forEach(img => {
+  observer.observe(img);
 });
 
 
-//browsergrootte wijzigen
-window.addEventListener('grootte vergroten', () => {
-  aanvraagAnimationFrame(positiePanelen);
+// browser resize
+window.addEventListener('resize', () => {
+  requestAnimationFrame(positionPanels);
 });
 
 </script>
