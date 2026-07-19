@@ -971,7 +971,7 @@ In between moments
 
 <p>Selected group exhibitions and art fairs include Pulchri Studio (The Hague), Gallery Delta (Rotterdam), ART RAI (Amsterdam, with Gallery Delta), Affordable Art Fair (with ARTITLEDcontemporary), Gallery Nasty Alice (Eindhoven, the Netherlands), and Karin Janssen Project Space (London, UK).</p>
 
-<p>Solo exhibitions include Gallery Delta (Rotterdam), Pulchri Studio (The Hague), and Gallery Rols (Laren).</p>
+<p>Solo exhibitions include Gallery Delta (Rotterdam), and Pulchri Studio (The Hague).</p>
   </div>
 </section>
 
@@ -1092,53 +1092,53 @@ Amsterdam, 2012
     </a><br><br>
 
     <a href="https://www.saatchiart.com/en-es/johnboelee"
-       target="_leeg"
+       target="_blank"
        rel="noopener noreferrer">
       Saatchi Art
     </a>
   </div>
-</voettekst>
+</footer>
 
 
 <script>
-functie positiePanelen() {
+function positionPanels() {
 
- indien (window.innerWidth <= 800) {
+ if (window.innerWidth <= 800) {
 
-  document.querySelectorAll('.artwork--rechterpaneel, .artwork--leftbg').voor elk(panel => {
-    panel.stijl.removeProperty('links');
-    panel.stijl.removeProperty('juist');
+  document.querySelectorAll('.artwork--rightpanel, .artwork--leftbg').forEach(panel => {
+    panel.style.removeProperty('left');
+    panel.style.removeProperty('right');
   });
 
   return;
 }
 
-  document.querySelectorAll('.artwork--rightbg').voor elk(sectie => {
+  document.querySelectorAll('.artwork--rightbg').forEach(section => {
 
-    const img = sectie.querySelector('img');
-    const panel = sectie.querySelector('.kunstwerk--rechterpaneel');
+    const img = section.querySelector('img');
+    const panel = section.querySelector('.artwork--rightpanel');
 
-    indien (!img || !panel) return;
+    if (!img || !panel) return;
 
-    const afbeeldingbreette = img.getBoundingClientRect().width;
+    const imageWidth = img.getBoundingClientRect().width;
 
-    panel.stijl.links = afbeeldingbreette + 'px';
-    panel.stijl.right = '0';
+    panel.style.left = imageWidth + 'px';
+    panel.style.right = '0';
 
   });
 
 
-  document.querySelectorAll('.kunstwerk--vol').voor elk(sectie => {
+  document.querySelectorAll('.artwork--full').forEach(section => {
 
-    const img = sectie.querySelector('img');
-    const panel = sectie.querySelector('.artwork--leftbg');
+    const img = section.querySelector('img');
+    const panel = section.querySelector('.artwork--leftbg');
 
-    indien (!img || !panel) return;
+    if (!img || !panel) return;
 
-    const afbeeldingbreette = img.getBoundingClientRect().width;
+    const imageWidth = img.getBoundingClientRect().width;
 
-    panel.stijl.links = '0';
-    panel.stijl.right = afbeeldingbreette + 'px';
+    panel.style.left = '0';
+    panel.style.right = imageWidth + 'px';
 
   });
 
@@ -1146,25 +1146,25 @@ functie positiePanelen() {
 
 
 // wacht tot alles geladen is
-window.addEventListener('beladen', () => {
-  aanvraagAnimationFrame(positiePanelen);
+window.addEventListener('load', () => {
+  requestAnimationFrame(positionPanels);
 });
 
 
 // reageert op veranderende afbeeldingsgrootte
-const observer = new Grootte wijzigenObserver(() => {
-  aanvraagAnimationFrame(positiePanelen);
+const observer = new ResizeObserver(() => {
+  requestAnimationFrame(positionPanels);
 });
 
 
-document.querySelectorAll('.kunstwerk img').voor elk(img => {
-  observer.observeerder(img);
+document.querySelectorAll('.artwork img').forEach(img => {
+  observer.observe(img);
 });
 
 
-//browsergrootte wijzigen
-window.addEventListener('grootte vergroten', () => {
-  aanvraagAnimationFrame(positiePanelen);
+// browser resize
+window.addEventListener('resize', () => {
+  requestAnimationFrame(positionPanels);
 });
 
 </script>
