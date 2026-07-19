@@ -513,15 +513,15 @@ color:var(--caption);
 
 .statement-mobile {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background:var(--paper);
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: var(--paper);
   padding: 140px 20px 170px;
 }
 
 .statement-mobile p {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
     letter-spacing: 0.3px;
     line-height: 1.7;
@@ -1091,53 +1091,53 @@ Amsterdam, 2012
     </a><br><br>
 
     <a href="https://www.saatchiart.com/en-es/johnboelee"
-       target="_blank"
+       target="_leeg"
        rel="noopener noreferrer">
       Saatchi Art
     </a>
   </div>
-</footer>
+</voettekst>
 
 
 <script>
-function positionPanels() {
+functie positiePanelen() {
 
- if (window.innerWidth <= 800) {
+ indien (window.innerWidth <= 800) {
 
-  document.querySelectorAll('.artwork--rightpanel, .artwork--leftbg').forEach(panel => {
-    panel.style.removeProperty('left');
-    panel.style.removeProperty('right');
+  document.querySelectorAll('.artwork--rechterpaneel, .artwork--leftbg').voor elk(panel => {
+    panel.stijl.removeProperty('links');
+    panel.stijl.removeProperty('juist');
   });
 
   return;
 }
 
-  document.querySelectorAll('.artwork--rightbg').forEach(section => {
+  document.querySelectorAll('.artwork--rightbg').voor elk(sectie => {
 
-    const img = section.querySelector('img');
-    const panel = section.querySelector('.artwork--rightpanel');
+    const img = sectie.querySelector('img');
+    const panel = sectie.querySelector('.kunstwerk--rechterpaneel');
 
-    if (!img || !panel) return;
+    indien (!img || !panel) return;
 
-    const imageWidth = img.getBoundingClientRect().width;
+    const afbeeldingbreette = img.getBoundingClientRect().width;
 
-    panel.style.left = imageWidth + 'px';
-    panel.style.right = '0';
+    panel.stijl.links = afbeeldingbreette + 'px';
+    panel.stijl.right = '0';
 
   });
 
 
-  document.querySelectorAll('.artwork--full').forEach(section => {
+  document.querySelectorAll('.kunstwerk--vol').voor elk(sectie => {
 
-    const img = section.querySelector('img');
-    const panel = section.querySelector('.artwork--leftbg');
+    const img = sectie.querySelector('img');
+    const panel = sectie.querySelector('.artwork--leftbg');
 
-    if (!img || !panel) return;
+    indien (!img || !panel) return;
 
-    const imageWidth = img.getBoundingClientRect().width;
+    const afbeeldingbreette = img.getBoundingClientRect().width;
 
-    panel.style.left = '0';
-    panel.style.right = imageWidth + 'px';
+    panel.stijl.links = '0';
+    panel.stijl.right = afbeeldingbreette + 'px';
 
   });
 
@@ -1145,25 +1145,25 @@ function positionPanels() {
 
 
 // wacht tot alles geladen is
-window.addEventListener('load', () => {
-  requestAnimationFrame(positionPanels);
+window.addEventListener('beladen', () => {
+  aanvraagAnimationFrame(positiePanelen);
 });
 
 
 // reageert op veranderende afbeeldingsgrootte
-const observer = new ResizeObserver(() => {
-  requestAnimationFrame(positionPanels);
+const observer = new Grootte wijzigenObserver(() => {
+  aanvraagAnimationFrame(positiePanelen);
 });
 
 
-document.querySelectorAll('.artwork img').forEach(img => {
-  observer.observe(img);
+document.querySelectorAll('.kunstwerk img').voor elk(img => {
+  observer.observeerder(img);
 });
 
 
-// browser resize
-window.addEventListener('resize', () => {
-  requestAnimationFrame(positionPanels);
+//browsergrootte wijzigen
+window.addEventListener('grootte vergroten', () => {
+  aanvraagAnimationFrame(positiePanelen);
 });
 
 </script>
