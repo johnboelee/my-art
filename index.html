@@ -9,11 +9,24 @@
 
 <meta property="og:title" content="John Boelee | Contemporary Artist">
 <meta property="og:description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works">
-<meta property="og:image" content="https://johnboelee.com/john-boelee-art-03.jpg">
+<!-- Fix: verwees eerder naar een niet-bestaand .jpg-bestand zonder
+     maat-suffix. Nu naar het daadwerkelijke, bestaande webp-bestand,
+     met expliciete afmetingen zodat previews sneller en betrouwbaarder
+     laden op WhatsApp, LinkedIn, Facebook, etc. -->
+<meta property="og:image" content="https://johnboelee.com/john-boelee-art-03-1600.webp">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="2000">
 <meta property="og:url" content="https://johnboelee.com">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="John Boelee">
 <meta name="robots" content="index, follow">
+
+<!-- Twitter/X Card — ontbrak volledig; zonder deze tags toont X
+     geen (of een generieke) preview bij het delen van de link. -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="John Boelee | Contemporary Artist">
+<meta name="twitter:description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works">
+<meta name="twitter:image" content="https://johnboelee.com/john-boelee-art-03-1600.webp">
 
 <link rel="canonical" href="https://johnboelee.com">
 
@@ -61,6 +74,22 @@
 --paper: #fafafa;
   --text: #111;
   --caption: #777;
+}
+
+/* Alleen voor zoekmachines en screenreaders zichtbaar; onzichtbaar
+   in de visuele opmaak. Gebruikt voor verborgen h2's per "zaal",
+   zodat de paginastructuur semantisch duidelijk is voor Google
+   zonder dat de white-cube-ervaring wordt aangetast. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /*BODY -----------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -386,7 +415,7 @@ body {
   /* Positie is instelbaar via variabelen, zodat de plek van de
      caption per foto (of later opnieuw) makkelijk te verschuiven
      is zonder de hele regel te herschrijven.
-     Huidige keuze: links, net boven het verticale midden van de foto. */
+     Huidige keuze: linksboven. */
   --caption-x: 4vw;
   --caption-y: 4vh;
 
@@ -397,14 +426,6 @@ body {
 
   z-index: 2;
   text-align: left;
-
-  /* Leesbaarheidsvoorziening, geen decoratief effect: omdat de
-     tekst nu op de foto zelf staat, verschuift wat eronder ligt
-     per schermbreedte (bij smaller scherm ander deel van het
-     beeld dan bij breed scherm). Een vaste positie kan contrast
-     dus niet garanderen. Een zachte schaduw houdt de tekst
-     leesbaar ongeacht wat eronder staat, zonder een vlak of
-     gradient toe te voegen. */
 
   /* geen witte schaduw */
   text-shadow: none;
@@ -722,7 +743,7 @@ color:var(--caption);
 
  {
   "@type":"VisualArtwork",
-  "name":".................",
+  "name":"Untitled",
   "creator":{
    "@id":"https://johnboelee.com/#artist"
   },
@@ -834,6 +855,7 @@ color:var(--caption);
 
 <!-- ART 2 -->
 <section class="artwork artwork--origin artwork--rightbg artwork--light2">
+ <h2 class="sr-only">Early work: Looking Back (1993)</h2>
  <img
   src="john-boelee-art-02-1600.webp"
   srcset="
@@ -859,6 +881,7 @@ Drawn at Diergaarde Blijdorp, Rotterdam
 
 <!-- ART 3 -->
 <section class="artwork artwork--full artwork--current-room">
+  <h2 class="sr-only">Recent work: Layers of Absence (2025)</h2>
   <div class="artwork--leftbg">
     <div class="title">
       <i>LAYERS OF ABSENCE</i> (2025)<br>
@@ -887,6 +910,7 @@ decoding="async"
 
   <!-- ART 4 -->
 <section class="artwork artwork--rightbg artwork--current-room">
+  <h2 class="sr-only">Recent work: Untitled (2025)</h2>
   <img
   src="john-boelee-art-04-1600.webp"
   srcset="
@@ -935,6 +959,7 @@ In between moments
 
 <!-- ART 5 -->
 <section class="artwork artwork--full artwork--monumental">
+  <h2 class="sr-only">Studio practice: Emotional Disturbance #9 (2021)</h2>
   <div class="artwork--leftbg">
     <div class="title">
      <br>Studio view <br><i>EMOTIONAL DISTURBANCE #9</i> (2021)
@@ -963,6 +988,7 @@ In between moments
 
 <!-- CV -->
 <section class="text cv">
+  <h2 class="sr-only">Biography</h2>
   <div class="text-left"></div>
 
   <div class="text-right">
@@ -981,6 +1007,7 @@ In between moments
 
 <!-- ART 6 -->
 <section class="artwork artwork--rightbg artwork--light6 artwork--delta">
+  <h2 class="sr-only">Exhibition history: Galerie Delta, Rotterdam (2010)</h2>
   <div class="artwork--rightpanel">
     <div class="title title--documentary">
 Galerie Delta<br>
@@ -1006,6 +1033,7 @@ Exterior view during the solo exhibition<br>
 
 <!-- ART 7 -->
 <section class="artwork artwork--caption-below">
+  <h2 class="sr-only">Studio practice: Hoge Zand 38, The Hague (2010)</h2>
   <img
     src="john-boelee-art-07-1600.webp"
     srcset="
@@ -1032,6 +1060,7 @@ Rotterdam<br>
 
 <!-- ART 8 -->
 <section class="artwork artwork--rightbg artwork--current-room artwork--fair">
+  <h2 class="sr-only">Exhibition history: Affordable Art Fair, Amsterdam (2012)</h2>
   <img
   src="john-boelee-art-08-1600.webp"
   srcset="
@@ -1060,6 +1089,7 @@ Amsterdam, 2012
 
 <!-- ART 9 -->
 <section class="artwork artwork--cover">
+  <h2 class="sr-only">Studio practice: Emotional Disturbance #5 and #6 (2010)</h2>
   <img
     src="john-boelee-art-09-1600.webp"
     srcset="
