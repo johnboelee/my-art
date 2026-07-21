@@ -381,19 +381,20 @@ body {
   z-index: 1;
 }
 
+
 .artwork--caption-below-text {
   /* Positie is instelbaar via variabelen, zodat de plek van de
      caption per foto (of later opnieuw) makkelijk te verschuiven
      is zonder de hele regel te herschrijven.
      Huidige keuze: links, net boven het verticale midden van de foto. */
   --caption-x: 4vw;
-  --caption-y: 50%;
-  --caption-gap: 14px;
+  --caption-y: 4vh;
 
   position: absolute;
   left: var(--caption-x);
   top: var(--caption-y);
-  transform: translateY(calc(-100% - var(--caption-gap)));
+  transform: none;
+
   z-index: 2;
   text-align: left;
 
@@ -404,7 +405,9 @@ body {
      dus niet garanderen. Een zachte schaduw houdt de tekst
      leesbaar ongeacht wat eronder staat, zonder een vlak of
      gradient toe te voegen. */
-  text-shadow: 0 1px 3px rgba(255,255,255,0.9), 0 1px 8px rgba(255,255,255,0.5);
+
+  /* geen witte schaduw */
+  text-shadow: none;
 }
 
 .artwork--caption-below-text .title {
