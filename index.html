@@ -28,6 +28,15 @@
 <meta name="twitter:description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works">
 <meta name="twitter:image" content="https://johnboelee.com/john-boelee-art-03-1600.webp">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Was @import met 5 Inter-gewichten + het volledig ongebruikte
+     Cormorant Garamond. De CSS gebruikt uitsluitend font-weight:300,
+     dus nu alleen dat gewicht geladen — en via een directe <link>
+     in plaats van @import, zodat het font-CSS parallel met de rest
+     van de pagina kan laden in plaats van er serieel achteraan. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+
 <link rel="canonical" href="https://johnboelee.com">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -36,8 +45,6 @@
 
 <title>John Boelee | Contemporary Artist</title>
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap');
 
 * {
   box-sizing: border-box;
