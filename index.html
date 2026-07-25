@@ -457,6 +457,16 @@ color:var(--caption);
 }
 
   .artwork + .artwork {
+    margin-top: 2px;
+  }
+
+  /* Alleen de overgang tussen afbeelding 3 en 4: een grotere marge,
+     zonder de algemene regel hierboven aan te passen (die zou ook
+     de overgang tussen afbeelding 2 en 3 raken). Dit target specifiek
+     afbeelding 4 (de tweede artwork--mobile-inset in de rij), en
+     komt daar boven de foto terecht — niet boven het label, want
+     bij afbeelding 4 staat het label ná de foto in de HTML. */
+  .artwork--mobile-inset + .artwork--mobile-inset {
     margin-top: 45px;
   }
 
@@ -533,8 +543,8 @@ color:var(--caption);
    artwork--current-room zelf, want die class zit ook op afbeelding 8,
    wat ongewijzigd moet blijven. */
 .artwork--mobile-inset img {
-  width: calc(100% - 10%);
-  margin: 0 5%;
+  width: calc(100% - 16%);
+  margin: 0 8%;
 }
 
 .artwork--cover img {
