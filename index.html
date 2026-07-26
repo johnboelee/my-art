@@ -745,19 +745,32 @@ color:var(--caption);
 <!-- HERO -->
 <section class="hero">
 
-<img
-  src="john-boelee-art-01-1600.webp"
-  srcset="
-    john-boelee-art-01-800.webp 800w,
-    john-boelee-art-01-1600.webp 1600w,
-    john-boelee-art-01-2560.webp 2560w,
-    john-boelee-art-01-3840.webp 3840w"
-  sizes="(max-width: 800px) 1600px, 100vw"
-  width="1600"
-  height="2000"
-  alt="A framed painting displayed on a plain gallery wall, the entrance image of John Boelee's work"
-  fetchpriority="high"
-  decoding="async">
+<picture>
+
+  <source
+    media="(max-width: 800px)"
+    srcset="
+      john-boelee-art-01-mobile-800.webp 800w,
+      john-boelee-art-01-mobile-1600.webp 1600w,
+      john-boelee-art-01-mobile-2560.webp 2560w,
+      john-boelee-art-01-mobile-3840.webp 3840w"
+    sizes="100vw">
+
+  <img
+    src="john-boelee-art-01-1600.webp"
+    srcset="
+      john-boelee-art-01-800.webp 800w,
+      john-boelee-art-01-1600.webp 1600w,
+      john-boelee-art-01-2560.webp 2560w,
+      john-boelee-art-01-3840.webp 3840w"
+    sizes="100vw"
+    width="1600"
+    height="2000"
+    alt="A framed painting displayed on a plain gallery wall, the entrance image of John Boelee's work"
+    fetchpriority="high"
+    decoding="async">
+
+</picture>
 
 <div class="hero-title-space">
   <h1 class="hero-name">
@@ -1014,6 +1027,20 @@ Amsterdam, 2012
 <section class="artwork artwork--cover">
   <h2 class="sr-only">Studio practice: Emotional Disturbance #5 and #6 (2010)</h2>
   <p class="sr-only">Studio view of two small acrylic paintings, "Emotional Disturbance #5" and "#6" (2010), each 35 by 35 centimetres, airbrushed on canvas by John Boelee — a closing image returning to the intimate scale where image and material first take shape.</p>
+  
+
+
+<picture>
+
+  <source
+    media="(max-width: 800px)"
+    srcset="
+      john-boelee-art-09-mobile-800.webp 800w,
+      john-boelee-art-09-mobile-1600.webp 1600w,
+      john-boelee-art-09-mobile-2560.webp 2560w,
+      john-boelee-art-09-mobile-3840.webp 3840w"
+    sizes="100vw">
+
   <img
     src="john-boelee-art-09-1600.webp"
     srcset="
@@ -1021,20 +1048,14 @@ Amsterdam, 2012
       john-boelee-art-09-1600.webp 1600w,
       john-boelee-art-09-2560.webp 2560w,
       john-boelee-art-09-3840.webp 3840w"
-    sizes="(max-width: 800px) 1600px, 100vw"
+    sizes="100vw"
     width="1600"
     height="1067"
     loading="lazy"
     decoding="async"
     alt="Studio view, EMOTIONAL DISTURBANCE #5 and #6 (2010), acrylic paint on canvas (airbrushed), 35 × 35 cm each, by John Boelee">
-  <div class="artwork--cover-caption">
-        Studio view<br>
-        <i>EMOTIONAL DISTURBANCE</i> #5 and #6 (2010)<br>
-        Acrylic paint on canvas (airbrushed)<br>
-        35 × 35 cm each
-    </div>
 
-</section>
+</picture>
 
 
 
