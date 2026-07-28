@@ -274,8 +274,8 @@ body {
 .artwork--cover {
   position: relative;
   width: 100%;
-  height: clamp(500px, 60vw, 1000px);
-  overflow: hidden;
+  height: auto;
+  overflow: visible;
 }
 
 .artwork--cover::before {
@@ -283,21 +283,17 @@ body {
 }
 
 .artwork--cover img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
+  position: static;
   display:block;
-  z-index:2;
+  width:100%;
+  height:auto;
+  object-fit:contain;
 }
 
 .artwork--cover-caption{
     position:absolute;
     left:4vw;
-    bottom:4vh;
+    top:4vh;
 
     color:var(--caption);
     opacity:1;
@@ -503,15 +499,17 @@ color:var(--caption);
 .artwork--cover {
   position: relative;
   height: auto;
-  min-height: 65svh;
-  overflow: hidden;
+  min-height: 0;
+  overflow: visible;
 }
 
 .artwork--cover-caption {
   position:absolute;
   left:20px;
-  right:20px;
-  bottom:20px;
+  top:20px;
+  right:auto;
+  bottom:auto;
+
   z-index:10;
 
   color:var(--caption);
@@ -549,10 +547,9 @@ color:var(--caption);
 
 .artwork--cover img {
   width:100%;
-  height:65svh;
-  object-fit:cover;
-  object-position:center;
+  height:auto;
   display:block;
+  object-fit:contain;
 }
 
 .artwork--leftbg,
@@ -584,7 +581,21 @@ color:var(--caption);
   text-align: left;
 }
 
+.artwork--cover {
+    position: relative;
+}
 
+.footer {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+
+    padding: 0;
+    background: transparent;
+
+    z-index: 10;
+
+}
 }
 
 </style>
@@ -1057,10 +1068,13 @@ Amsterdam, 2012
 
 </picture>
 
+<div class="artwork--cover-caption">
+  Studio view<br>
+  <i>EMOTIONAL DISTURBANCE #5 and #6</i> (2010)<br>
+  Acrylic paint on canvas (airbrushed)<br>
+  35 × 35 cm each
+</div>
 
-
-
-</main>
 
 <footer class="footer">
   <div class="footer-content">
@@ -1077,7 +1091,7 @@ Amsterdam, 2012
     </a>
   </div>
 </footer>
-
+</main>
 
 <script>
 function positionPanels() {
