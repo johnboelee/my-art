@@ -9,6 +9,10 @@
 
 <meta property="og:title" content="John Boelee | Contemporary Artist">
 <meta property="og:description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works">
+<!-- Fix: verwees eerder naar een niet-bestaand .jpg-bestand zonder
+     maat-suffix. Nu naar het daadwerkelijke, bestaande webp-bestand,
+     met expliciete afmetingen zodat previews sneller en betrouwbaarder
+     laden op WhatsApp, LinkedIn, Facebook, etc. -->
 <meta property="og:image" content="https://johnboelee.com/john-boelee-art-03-1600.webp">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="2000">
@@ -17,6 +21,8 @@
 <meta property="og:site_name" content="John Boelee">
 <meta name="robots" content="index, follow">
 
+<!-- Twitter/X Card — ontbrak volledig; zonder deze tags toont X
+     geen (of een generieke) preview bij het delen van de link. -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="John Boelee | Contemporary Artist">
 <meta name="twitter:description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works">
@@ -24,6 +30,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Was @import met 5 Inter-gewichten + het volledig ongebruikte
+     Cormorant Garamond. De CSS gebruikt uitsluitend font-weight:300,
+     dus nu alleen dat gewicht geladen — en via een directe <link>
+     in plaats van @import, zodat het font-CSS parallel met de rest
+     van de pagina kan laden in plaats van er serieel achteraan. -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
 
 <link rel="canonical" href="https://johnboelee.com">
@@ -38,24 +49,44 @@
 * {
   box-sizing: border-box;
 }
+/* !!!!!!!!!- ROOT -!!!!!!!!!!*/
 :root {
 
+  /* HERO */
   --hero-image-h: 55svh;
   --hero-title-h: 20svh;
   --hero-transition-h: 16svh;
 
---wall-1: #e9e9e9;
---wall-2: #eeeeee;
---wall-3: #e8e8e8;
 
+/* GALERIERUIMTE */
+--wall-1: #e9e9e9;   /* afbeelding 3, 4, 8 — afb 8 deelt bewust dezelfde
+                         kleur als 3/4, omdat de scrollafstand ertussen
+                         groot genoeg is dat ze nooit naast elkaar worden
+                         ervaren, terwijl dit wel een sterker contrast
+                         geeft met de daadwerkelijke buren: afb 7 en 9 */
+--wall-2: #eeeeee;  /* afbeelding 2, 5 */
+--wall-3: #e8e8e8;   /* afbeelding 6, 7 — verdonkerd t.o.v. --paper,
+                         zodat de overgang van de CV-tekst naar de
+                         eerste documentaire foto (Galerie Delta)
+                         voelbaar is: van "tekst over de kunstenaar"
+                         naar "de kunstenaar in de wereld" */
+
+
+  /* OVERGANGEN */
 --hero-transition: #e3e2df;
 --exhibition-end: #dddddd;
 
+
+  /* TEKST */
 --paper: #fafafa;
   --text: #111;
   --caption: #777;
 }
 
+/* Alleen voor zoekmachines en screenreaders zichtbaar; onzichtbaar
+   in de visuele opmaak. Gebruikt voor verborgen h2's per "zaal",
+   zodat de paginastructuur semantisch duidelijk is voor Google
+   zonder dat de white-cube-ervaring wordt aangetast. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -67,16 +98,20 @@
   white-space: nowrap;
   border: 0;
 }
-
+/*BODY -----------------------------------------------------------------------------------------------------------------------------------------------------*/
 html,
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  /* Bewuste keuze van de gebruiker: de grijzere --hero-transition
+     tint, ook zichtbaar bij het macOS "rubber-band" overscroll-
+     effect aan de randen van de pagina. */
   background: var(--paper);
   color: var(--text);
   overflow-x: hidden;
 }
 
+/*ARTWORK BACKGROUND ----------------------------------------------------------------------------------------------------------------------------------------*/
 .artwork::before {
   content:"";
   position:absolute;
@@ -85,21 +120,34 @@ body {
   z-index:1;
 }
 
+/* afbeelding 2 */
 .artwork--light2::before {
   background: var(--wall-2);
 }
 
+
+/* afbeelding 5 */
 .artwork--monumental::before {
   background: var(--wall-2);
 }
 
+
+/* afbeelding 6 */
 .artwork--light6::before {
   background: var(--wall-3);
 }
 
+
+/*
+  Afbeelding 3, 4 en 8 delen dezelfde "kamer" (wall-1). Deze regel
+  komt nu maar één keer voor (was eerder per ongeluk gedupliceerd
+  verderop in het bestand — onschadelijk, maar overbodige code).
+*/
 .artwork--current-room::before {
   background: var(--wall-1);
 }
+
+/* HERO ----------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .hero {
   position: relative;
@@ -116,6 +164,7 @@ body {
   display:block;
 }
 
+
 .hero-title-space {
   height: var(--hero-title-h);
   display:flex;
@@ -131,6 +180,7 @@ body {
   background: var(--hero-transition);
 }
 
+
 .hero-name {
   position: absolute;
   right: 12vw;
@@ -144,10 +194,15 @@ body {
   color:var(--text);
 }
 
+
+
+/* TEXT > statement & CV ------------------------------------------------------------------------------------------------------------------------------------*/
 .text {
   display:block;
   background:var(--paper);
 }
+/* text-ledt and text-right ar 2 blocks, possible to give different colors */
+
 
 .text-right {
   background: transparent;
@@ -178,7 +233,14 @@ body {
   margin-bottom:120px !important;
 }
 
+
+
 .statement .text-right p {
+  /* Ruim genoeg voor de huidige zin (45 tekens) op één regel,
+     met min(90vw, ...) als vangnet zodat extreme inzoom of een
+     zeer smal scherm nog steeds netjes afbreekt in plaats van
+     over de rand te lopen. Pas het ch-getal aan als de tekst
+     zelf langer wordt. */
   max-width: min(90vw, 52ch);
   white-space: normal;
 }
@@ -205,12 +267,21 @@ body {
   font-weight: 300;
 }
 
+.text-right p + p {
+  margin-top: 14px;
+}
+
+/* ARTWORK SPACES    ----------------------------------------------------------------------------------------------------------------------------------------*/
 .artwork {
   position: relative;
   height: clamp(500px, calc(60vw * var(--room-scale, 1)), calc(1000px * var(--room-scale, 1)));
   overflow: hidden;
 }
 
+/* Optional curatorial rhythm modifiers — apply where a section
+   deserves to feel more intimate or more monumental than its
+   neighbours. Not applied automatically: each use should be a
+   deliberate choice per master prompt 6C / 6E. */
 .artwork--intimate {
   --room-scale: 0.72;
 }
@@ -219,6 +290,7 @@ body {
   --room-scale: 1.12;
 }
 
+/*ARTWORK LAYOUT ----------------------------------------------------------------------------------------------------------------------------------------*/
 .artwork--rightbg img {
   position: absolute;
   left: 0;
@@ -227,6 +299,17 @@ body {
   width: auto;
   z-index: 2;
 }
+
+.artwork--full img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  z-index: 2;
+}
+
+
 
 .artwork--rightpanel{
     position:absolute;
@@ -245,14 +328,7 @@ body {
     z-index:3;
 }
 
-.artwork--full img {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: auto;
-  z-index: 2;
-}
+
 
 .artwork--leftbg{
     position:absolute;
@@ -271,6 +347,8 @@ body {
     z-index:3;
 }
 
+
+/*ARTWORK COVER ----------------------------------------------------------------------------------------------------------------------------------------*/
 .artwork--cover {
   position: relative;
   width: 100%;
@@ -295,6 +373,8 @@ body {
     left:4vw;
     top:4vh;
 
+    /* Was hardcoded #222 / opacity:0.75 — nu op de tekstvariabele
+       aangesloten, consistent met de andere captions. */
     color:var(--caption);
     opacity:1;
 
@@ -306,6 +386,14 @@ body {
     z-index:3;
 }
 
+/*
+  Alternative "room" type: full-width photo with the caption as
+  its own line below, instead of squeezed into the narrow side
+  panel used by .artwork--full / .artwork--rightbg. Used where an
+  image's proportions would otherwise leave too little room for
+  the caption text to breathe. Deliberately a different system —
+  per master prompt 6E, not every room needs identical treatment.
+*/
 .artwork--caption-below {
   position: relative;
   height: auto;
@@ -326,6 +414,10 @@ body {
 
 
 .artwork--caption-below-text {
+  /* Positie is instelbaar via variabelen, zodat de plek van de
+     caption per foto (of later opnieuw) makkelijk te verschuiven
+     is zonder de hele regel te herschrijven.
+     Huidige keuze: linksboven. */
   --caption-x: 4vw;
   --caption-y: 4vh;
 
@@ -356,6 +448,14 @@ body {
   height: clamp(540px, 64vw, 1050px);
 }
 
+/*
+  Documentary vs. autonomous work distinction (master prompt 6AA):
+  documentary/context images get a visually lighter caption
+  treatment — slightly smaller, slightly more muted — so they
+  read as documentation rather than as a reproduction of an
+  autonomous piece. Applied to the studio and exhibition-history
+  sections (art 6, 7, 8, 9).
+*/
 .title--documentary {
   font-size: 11px;
   opacity: 0.6;
@@ -378,10 +478,10 @@ font-weight:300;
 
 margin:0;
 
+/* Was hardcoded #222 — nu op de tekstvariabele aangesloten. */
 color:var(--caption);
 
 }
-
 .mixedcase {
   text-transform: none;
 }
@@ -426,6 +526,23 @@ color:var(--caption);
 
 .statement-mobile {
   display: none;
+}
+
+@media (min-width:801px){
+
+.artwork--full.artwork--current-room.artwork--mobile-inset img{
+    height:80%;
+    top:10%;
+    right:4%;
+}
+
+/* MOBILE ----------------------------------------------------------------------------------------------------------------------------------------------*/
+.artwork--rightbg.artwork--current-room.artwork--mobile-inset img{
+    height:80%;
+    top:10%;
+    left:4%;
+}
+
 }
 
 @media (max-width: 800px) {
@@ -557,12 +674,20 @@ color:var(--caption);
   position: static;
   width: 100%;
   padding: 20px 20px 30px;
+  /* Was hardcoded #fafafa — nu op dezelfde papierkleur-variabele
+     aangesloten als de rest van het systeem. */
   background: var(--paper);
   display: flex;
   justify-content: flex-start;
   text-align: left;
 }
 
+/* Op mobiel is de foto verhoudingsgewijs vaak veel hoger dan
+   breed, waardoor een vaste overlay-positie op een onvoorspelbaar
+   deel van het beeld kan vallen en de tekst-shadow niet altijd
+   genoeg contrast geeft. Consistent met de andere panelen hierboven
+   wordt de caption op mobiel daarom een gewoon blok onder de foto,
+   in plaats van een overlay erop. */
 .artwork--caption-below-text {
   position: static;
   transform: none;
@@ -596,8 +721,9 @@ color:var(--caption);
     z-index: 10;
 
 }
-}
+}   /* <-- sluit de @media af */
 
+/* json ----------------------------------------------------------------------------------------------------------------------------------------------*/
 </style>
 
 
@@ -821,7 +947,7 @@ Drawn at Diergaarde Blijdorp, Rotterdam
 </section>
 
 <!-- ART 3 -->
-<section class="artwork artwork--full artwork--current-room artwork--mobile-inset">
+<section class="artwork artwork--full artwork--current-room artwork--mobile-inset artwork--floating">
   <h2 class="sr-only">Recent work: Layers of Absence (2025)</h2>
   <p class="sr-only">"Layers of Absence" (2025) is a mixed media work by John Boelee, combining ink and acrylic paint on paper with reverse-painted glass. Working between abstraction and representation, the piece builds up and obscures layers of image and material, creating a tension between presence and absence — between what is revealed and what remains unresolved.</p>
   <div class="artwork--leftbg">
@@ -851,7 +977,7 @@ decoding="async"
 
 
   <!-- ART 4 -->
-<section class="artwork artwork--rightbg artwork--current-room artwork--mobile-inset">
+<section class="artwork artwork--rightbg artwork--current-room artwork--mobile-inset artwork--floating">
   <h2 class="sr-only">Recent work: Untitled (2025)</h2>
   <p class="sr-only">An untitled mixed media work from 2025, made with ink and acrylic paint on paper and reverse-painted glass. Companion to "Layers of Absence," it continues the artist's investigation of image, perception and material — layers of gesture and fragment held between what is shown and what stays withheld.</p>
   <img
@@ -1039,8 +1165,6 @@ Amsterdam, 2012
   <h2 class="sr-only">Studio practice: Emotional Disturbance #5 and #6 (2010)</h2>
   <p class="sr-only">Studio view of two small acrylic paintings, "Emotional Disturbance #5" and "#6" (2010), each 35 by 35 centimetres, airbrushed on canvas by John Boelee — a closing image returning to the intimate scale where image and material first take shape.</p>
   
-
-
 <picture>
 
   <source
