@@ -50,22 +50,43 @@
   box-sizing: border-box;
 }
 /* !!!!!!!!!- ROOT -!!!!!!!!!!*/
+
+
 :root {
 
-  /* HERO */
-  --hero-image-h: 55svh;
-  --hero-title-h: 20svh;
-  --hero-transition-h: 16svh;
+
+/* ARTWORK
+│
+├── room system
+│   ├── rightbg
+│   ├── full
+│   ├── fair
+│
+├── spacing system
+│   ├── space-tight
+│   ├── space-normal
+│   └── space-open
+│
+└── hanging/display system
+    ├── display-full
+    ├── display-inset
+    ├── display-right
+    └── display-left*/
+
+
+    /* HERO */
+--hero-image-h: 100svh;
+
 
 
 /* GALERIERUIMTE */
---wall-1: #e9e9e9;   /* afbeelding 3, 4, 8 — afb 8 deelt bewust dezelfde
+--wall-1: var(--paper);  /* afbeelding 3, 4, 8 — afb 8 deelt bewust dezelfde
                          kleur als 3/4, omdat de scrollafstand ertussen
                          groot genoeg is dat ze nooit naast elkaar worden
                          ervaren, terwijl dit wel een sterker contrast
                          geeft met de daadwerkelijke buren: afb 7 en 9 */
---wall-2: #eeeeee;  /* afbeelding 2, 5 */
---wall-3: #e8e8e8;   /* afbeelding 6, 7 — verdonkerd t.o.v. --paper,
+--wall-2: var(--paper);  /* afbeelding 2, 5 */
+--wall-3: var(--paper);   /* afbeelding 6, 7 — verdonkerd t.o.v. --paper,
                          zodat de overgang van de CV-tekst naar de
                          eerste documentaire foto (Galerie Delta)
                          voelbaar is: van "tekst over de kunstenaar"
@@ -76,12 +97,45 @@
 --hero-transition: #e3e2df;
 --exhibition-end: #dddddd;
 
+/* SPACING SYSTEM */
+--space-tight: 20px;
+--space-normal: 60px;
+--space-open: 200px;
+
+/* Ruimte tussen afbeelding 4 en 5 (standaard).
+   Deze default geldt tenzij een media-query overschrijft. 
+   Zie @meddia voor afsliting style de px moeten hetzelfde zijn.*/
+--gap-4-5: 100px;
+
+
 
   /* TEKST */
 --paper: #fafafa;
   --text: #111;
   --caption: #777;
 }
+
+
+
+
+
+/* DISPLAY SYSTEM */
+.artwork--display-full img {
+  height:100%;
+  top:0;
+}
+
+.artwork--display-inset img {
+  height:80%;
+  top:10%;
+}
+
+.artwork--display-small img {
+  height:65%;
+  top:17.5%;
+}
+
+
 
 /* Alleen voor zoekmachines en screenreaders zichtbaar; onzichtbaar
    in de visuele opmaak. Gebruikt voor verborgen h2's per "zaal",
@@ -116,7 +170,7 @@ body {
   content:"";
   position:absolute;
   inset:0;
-  background: var(--wall-1);
+  background: var(--paper);
   z-index:1;
 }
 
@@ -128,13 +182,13 @@ body {
 
 /* afbeelding 5 */
 .artwork--monumental::before {
-  background: var(--wall-2);
+  background: var(--paper);
 }
 
 
 /* afbeelding 6 */
 .artwork--light6::before {
-  background: var(--wall-3);
+  background: var(--paper);
 }
 
 
@@ -153,11 +207,10 @@ body {
   position: relative;
   width: 100%;
   min-height: 100svh;
-  background: var(--hero-transition);
+  background: var(--paper);
 }
 
 .hero img {
-
   width:100%;
   height: var(--hero-image-h);
   object-fit:cover;
@@ -165,20 +218,8 @@ body {
 }
 
 
-.hero-title-space {
-  height: var(--hero-title-h);
-  display:flex;
-  align-items:flex-end;
-  justify-content:flex-end;
-  padding-right:12vw;
-  padding-bottom:2vh;
-  background: var(--hero-transition);
-}
 
-.hero-transition {
-  height: var(--hero-transition-h);
-  background: var(--hero-transition);
-}
+
 
 
 .hero-name {
@@ -278,6 +319,14 @@ body {
   overflow: hidden;
 }
 
+/* Vertical rhythm */
+.space-xs { margin-top: 8px; }
+.space-s  { margin-top: 24px; }
+.space-m  { margin-top: 48px; }
+.space-l  { margin-top: 80px; }
+.space-xl { margin-top: 120px; }
+
+
 /* Optional curatorial rhythm modifiers — apply where a section
    deserves to feel more intimate or more monumental than its
    neighbours. Not applied automatically: each use should be a
@@ -291,6 +340,10 @@ body {
 }
 
 /*ARTWORK LAYOUT ----------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
 .artwork--rightbg img {
   position: absolute;
   left: 0;
@@ -345,6 +398,36 @@ body {
     background:inherit;
 
     z-index:3;
+}
+
+/* individuele ruimte tussen werken */
+
+.artwork--space-tight {
+  margin-top: var(--space-tight);
+}
+
+.artwork--space-normal {
+  margin-top: var(--space-normal);
+}
+
+.artwork--space-open {
+  margin-top: var(--space-open);
+}
+
+.artwork--wide {
+  height: auto;
+}
+
+.artwork--wide::before {
+  display: none;
+}
+
+.artwork--wide img {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 
@@ -444,9 +527,54 @@ body {
   height: clamp(500px, 55vw, 750px);
 }
 
-.artwork--fair {
-  height: clamp(540px, 64vw, 1050px);
+
+
+.artwork--image-right img {
+  right: 4vw;
+  left: auto;
 }
+
+.artwork--image-right .artwork--rightpanel {
+  left: 0 !important;
+  right: auto !important;
+
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-left: 4vw;
+}
+
+/* Modifier: forceert het label ónder de afbeelding, links uitgelijnd,
+   op alle schermformaten — in plaats van de top-left overlay die
+   .artwork--caption-below-text standaard gebruikt (zoals bij
+   afbeelding 7, waar dat wél als wandlabel-overlay bedoeld is).
+   Alleen gebruikt bij afbeelding 5, waar het bijschrift leest als
+   een caption onder de foto, niet als label erover. */
+.artwork--label-under .artwork--caption-below-text {
+  position: static;
+  left: auto;
+  top: auto;
+  padding: 20px 4vw 0;
+  background: transparent;
+  text-align: left;
+}
+
+/* Extra lucht na afbeelding 6 (Galerie Delta, exterieur), vóór de
+   overgang naar afbeelding 7 (interieur). Losse regel i.p.v. de
+   algemene --space-* modifiers, zodat alleen deze overgang wijzigt
+   en niet het ritme van de andere zalen. */
+.artwork--delta {
+  margin-bottom: 145px;
+}
+
+/* Opmerking:
+   De specifieke overgang tussen afbeelding 4 en 5 wordt nu door
+   de media-query voor desktop bepaald (zie verderop). */
+
+/* Als sectie heeft ook een modifier die ruimte reset — dat laten we staan */
+.artwork--monumental.artwork--space-open {
+    margin-top: 0;
+}
+
 
 /*
   Documentary vs. autonomous work distinction (master prompt 6AA):
@@ -487,12 +615,15 @@ color:var(--caption);
 }
 
 .footer {
-    background: var(--exhibition-end);
+    position: absolute;
+    left: 4vw;
+    bottom: 4vh;
 
-    padding:
-        12vh
-        4vw
-        22vh;
+    padding: 0;
+
+    background: transparent;
+
+    z-index: 10;
 
     text-align: left;
 
@@ -524,26 +655,42 @@ color:var(--caption);
   text-decoration: underline;
 }
 
-.statement-mobile {
-  display: none;
+
+
+/* DESKTOP: override voor de gap en zet hier de margin voor desktop */
+@media (min-width:801px) {
+  :root {
+    --gap-4-5: 900px; /* desktopwaarde — verander dit naar wens */
+  }
+
+  /* Apply the gap specifically on desktop between artwork 4 and 5 */
+  .artwork--current-room + .artwork--monumental {
+    margin-top: var(--gap-4-5);
+  }
 }
 
-@media (min-width:801px){
-
+/* algemene rule voor artwork--full image layout (staat buiten media-query) */
 .artwork--full.artwork--current-room.artwork--mobile-inset img{
     height:80%;
     top:10%;
     right:4%;
 }
 
-/* MOBILE ----------------------------------------------------------------------------------------------------------------------------------------------*/
+/* MOBILE OVERRIDES / algemene spacing rules */
 .artwork--rightbg.artwork--current-room.artwork--mobile-inset img{
     height:80%;
     top:10%;
     left:4%;
 }
 
+.artwork + .artwork{
+    margin-top: 10px;
 }
+
+  .artwork--space-open{
+    margin-top: var(--space-open);
+}
+
 
 @media (max-width: 800px) {
 
@@ -650,6 +797,26 @@ color:var(--caption);
   position: relative;
   z-index: 2;
 }
+/* DISPLAY OVERRIDES
+   Controls how the image hangs inside its room.
+   Placed after layout rules so it can override image defaults.
+*/
+
+.artwork--display-full img {
+  height:100%;
+  top:0;
+}
+
+.artwork--display-inset img {
+  height:80%;
+  top:10%;
+}
+
+.artwork--display-small img {
+  height:65%;
+  top:17.5%;
+}
+
 
 /* Alleen afbeelding 3 en 4 op mobiel: witte ruimte (papierkleur)
    aan beide kanten van de foto, elk 8% breed. Geplaatst na de
@@ -710,20 +877,29 @@ color:var(--caption);
     position: relative;
 }
 
+/* ruimte tussen afbeelding 4 en afbeelding 5 */
+section.artwork--monumental {
+    margin-top: var(--gap-4-5);
+}
+
 .footer {
-    position: absolute;
     left: 20px;
     bottom: 20px;
-
-    padding: 0;
-    background: transparent;
-
-    z-index: 10;
-
 }
 }   /* <-- sluit de @media af */
 
 /* json ----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+@media (min-width:801px) {
+  /* tijdelijke, duidelijke override om te testen of iets anders de margin overschrijft */
+  .artwork--current-room + .artwork--monumental {
+    margin-top: 100px !important;
+  }
+}
+
+
+
+
 </style>
 
 
@@ -850,7 +1026,7 @@ color:var(--caption);
   },
   "dateCreated":"2012",
   "artform":"Exhibition documentation",
-  "description":"Work presented by ARTITLEDcontemporary at the Affordable Art Fair in Amsterdam, 2012, documenting the practice within a contemporary art fair context.",
+  "description":"Work presented by ARTITLEDcontemporary at the Affordable Art Fair in Amsterdam, 2012, documenting the artist's practice within a contemporary art fair context.",
   "image":"https://johnboelee.com/john-boelee-art-08-1600.webp"
  },
 
@@ -909,15 +1085,9 @@ color:var(--caption);
 
 </picture>
 
-<div class="hero-title-space">
-  <h1 class="hero-name">
-    JOHN BOELEE
-  </h1>
-</div>
-
+<h1 class="hero-name">JOHN BOELEE</h1>
 </section>
 
-<div class="hero-transition"></div>
 
 <!-- ART 2 -->
 <section class="artwork artwork--origin artwork--rightbg artwork--light2">
@@ -1003,40 +1173,11 @@ decoding="async"
   </div>
 </section>
 
-<section class="text statement statement-desktop">
-  <div class="text-left"></div>
-
-  <div class="text-right">
-
-    <p class="statement-intro">
-      In between moments
-    </p>
-
-   
-  </div>
-</section>
-
-<!-- MOBILE -->
-<section class="statement-mobile">
-
-<p>
-In between moments
-</p>
-</section>
-
-
 
 <!-- ART 5 -->
-<section class="artwork artwork--full artwork--monumental">
+<section class="artwork artwork--caption-below artwork--label-under artwork--monumental">
   <h2 class="sr-only">Studio practice: Emotional Disturbance #9 (2021)</h2>
   <p class="sr-only">"Emotional Disturbance #9" (2021) is a large-scale, airbrushed acrylic painting on canvas by John Boelee, measuring 180 by 180 centimetres. Photographed in the artist's studio, the work sits within his ongoing practice between abstraction and representation, using material and gesture to explore how an image emerges and holds together at scale.</p>
-  <div class="artwork--leftbg">
-    <div class="title">
-     <br>Studio view <br><i>EMOTIONAL DISTURBANCE #9</i> (2021)
-<br>Acrylic paint on canvas (airbrushed)<br>
-180 × 180 cm
-    </div>
-  </div>
 
   <img
     src="john-boelee-art-05-1600.webp"
@@ -1051,6 +1192,15 @@ In between moments
     loading="lazy"
     decoding="async"
     alt="EMOTIONAL DISTURBANCE #9 (2021), acrylic paint on canvas (airbrushed) by John Boelee">
+
+  <div class="artwork--caption-below-text">
+    <div class="title">
+      Studio view<br>
+      <i>EMOTIONAL DISTURBANCE #9</i> (2021)<br>
+      Acrylic paint on canvas (airbrushed)<br>
+      180 × 180 cm
+    </div>
+  </div>
 </section>
 
 
@@ -1131,7 +1281,7 @@ Rotterdam<br>
 </section>
 
 <!-- ART 8 -->
-<section class="artwork artwork--rightbg artwork--current-room artwork--fair">
+<section class="artwork artwork--rightbg artwork--current-room artwork--fair artwork--image-right artwork--display-inset">
   <h2 class="sr-only">Exhibition history: Affordable Art Fair, Amsterdam (2012)</h2>
   <p class="sr-only">John Boelee's work presented by ARTITLEDcontemporary (formerly Galerie Arttitled! Contemporary Art) at the Affordable Art Fair in Amsterdam, 2012, documenting the artist's practice within a contemporary art fair context.</p>
   <img
