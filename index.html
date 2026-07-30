@@ -74,7 +74,45 @@
     └── display-left*/
 
 
-    /* HERO */
+    /*
+=====================================================
+OVERZICHT SECTION CLASSES PER AFBEELDING (1 t/m 9)
+=====================================================
+*/
+
+/* AFBEELDING 1 — HERO */
+/* <section class="hero"> */
+
+/* AFBEELDING 2 — Looking Back (1993) */
+/* <section class="artwork artwork--origin artwork--rightbg artwork--light2"> */
+
+/* AFBEELDING 3 — Layers of Absence (2025) */
+/* <section class="artwork artwork--full artwork--current-room artwork--mobile-inset artwork--floating"> */
+
+/* AFBEELDING 4 — Untitled (2025) */
+/* <section class="artwork artwork--rightbg artwork--current-room artwork--mobile-inset artwork--floating"> */
+
+/* AFBEELDING 5 — Emotional Disturbance #9 (2021) */
+/* <section class="artwork artwork--caption-below artwork--label-under artwork--monumental"> */
+
+/* CV-SECTIE (tussen afb. 5 en 6) */
+/* <section class="text cv"> */
+
+/* AFBEELDING 6 — Galerie Delta, exterieur (2010) */
+/* <section class="artwork artwork--rightbg artwork--light6 artwork--delta"> */
+
+/* AFBEELDING 7 — Galerie Delta, interieur (2010) */
+/* <section class="artwork artwork--caption-below"> */
+
+/* AFBEELDING 8 — Affordable Art Fair (2012) */
+/* <section class="artwork artwork--rightbg artwork--current-room artwork--fair artwork--image-right artwork--display-inset"> */
+
+/* AFBEELDING 9 — Emotional Disturbance #5 en #6 (2010) — closing/cover image */
+/* <section class="artwork artwork--cover"> */
+    
+    
+    
+  /* HERO */
 --hero-image-h: 100svh;
 
 
@@ -93,7 +131,7 @@
                          naar "de kunstenaar in de wereld" */
 
 
-  /* OVERGANGEN */
+                         /* OVERGANGEN */
 --hero-transition: #e3e2df;
 --exhibition-end: #dddddd;
 
@@ -103,18 +141,11 @@
 --space-open: 200px;
 
 
-
-
-
-  /* TEKST */
+/* TEKST */
 --paper: #fafafa;
   --text: #111;
   --caption: #777;
 }
-
-
-
-
 
 /* DISPLAY SYSTEM */
 .artwork--display-full img {
@@ -213,10 +244,6 @@ body {
   object-fit:cover;
   display:block;
 }
-
-
-
-
 
 
 .hero-name {
@@ -520,14 +547,11 @@ body {
   height: clamp(600px, 52vw, 750px);
 }
 
-.artwork--delta {
-  height: clamp(500px, 55vw, 750px);
-}
 
 
-
+/* Afbeelding 8 volledig tegen de rechterrand met 0vw*/
 .artwork--image-right img {
-  right: 4vw;
+  right: 0vw;
   left: auto;
 }
 
@@ -539,6 +563,72 @@ body {
   align-items: flex-end;
   padding-left: 4vw;
 }
+
+
+
+/*
+=================================================================================
+DESKTOP SPACING, witte ruimte BOVEN/ONDER PER AFBEELDING (1 t/m 9)
+Standaard op 0, voeg px wel toe aan de waarde! — pas de waarde aan indien gewenst
+=================================================================================
+*/
+
+/* AFBEELDING 2 — Looking Back */
+section.artwork--origin.artwork--rightbg.artwork--light2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 3 — Layers of Absence */
+section.artwork--full.artwork--current-room.artwork--floating {
+  margin-top: 60px;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 4 — Untitled */
+section.artwork--rightbg.artwork--current-room.artwork--floating {
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+
+/* AFBEELDING 5 — Emotional Disturbance #9 */
+section.artwork--caption-below.artwork--label-under.artwork--monumental {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 6 — Galerie Delta, exterieur */
+section.artwork--rightbg.artwork--light6.artwork--delta {
+  margin-top: 35px;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 7 — Galerie Delta, interieur */
+section.artwork--caption-below:not(.artwork--label-under) {
+  margin-top: 155px;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 8 — Affordable Art Fair */
+section.artwork--fair.artwork--current-room {
+  margin-top: 155px;
+  margin-bottom: 250px;
+}
+
+/* AFBEELDING 9 — Emotional Disturbance #5 en #6 */
+section.artwork--cover {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/*
+=================================================================================
+
+=================================================================================
+*/
+
+
+
 
 /* Modifier: forceert het label ónder de afbeelding, links uitgelijnd,
    op alle schermformaten — in plaats van de top-left overlay die
@@ -669,8 +759,10 @@ color:var(--caption);
     left:4%;
 }
 
+
+/* generieke desktop-regel op 0, nu wordt het via de ruimtes boven en onder de afbeeldingen zelf geregeld*/
 .artwork + .artwork{
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
   .artwork--space-open{
@@ -680,7 +772,70 @@ color:var(--caption);
 
 @media (max-width: 800px) {
 
-  .statement-desktop {
+/*
+=================================================================================
+MOBILE SPACING, witte ruimte BOVEN/ONDER PER AFBEELDING (1 t/m 9)
+Standaard op 0, voeg px wel toe aan de waarde! — pas de waarde aan indien gewenst
+=================================================================================
+*/
+
+/* AFBEELDING 2 — Looking Back */
+section.artwork--origin.artwork--rightbg.artwork--light2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 3 — Layers of Absence */
+section.artwork--full.artwork--current-room.artwork--floating {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 4 — Untitled */
+section.artwork--rightbg.artwork--current-room.artwork--floating {
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 5 — Emotional Disturbance #9 */
+section.artwork--caption-below.artwork--label-under.artwork--monumental {
+  margin-top: 120px;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 6 — Galerie Delta, exterieur */
+section.artwork--rightbg.artwork--light6.artwork--delta {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 7 — Galerie Delta, interieur */
+section.artwork--caption-below:not(.artwork--label-under) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* AFBEELDING 8 — Affordable Art Fair */
+section.artwork--fair.artwork--current-room {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/*
+=================================================================================
+
+=================================================================================
+*/
+
+
+
+/* AFBEELDING 9 — Emotional Disturbance #5 en #6 */
+section.artwork--cover {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.statement-desktop {
   display: none;
 }
 
@@ -702,10 +857,14 @@ color:var(--caption);
     color: var(--caption);
 }
 
+
+/* generieke desktop-regel op 0, nu wordt het via de ruimtes boven en onder de afbeeldingen zelf geregeld*/
   .artwork + .artwork {
-    margin-top: 2px;
+    margin-top: 0;
   }
 
+
+  /* generieke desktop-regel op 0, nu wordt het via de ruimtes boven en onder de afbeeldingen zelf geregeld*/
   /* Alleen de overgang tussen afbeelding 3 en 4: een grotere marge,
      zonder de algemene regel hierboven aan te passen (die zou ook
      de overgang tussen afbeelding 2 en 3 raken). Dit target specifiek
@@ -713,7 +872,7 @@ color:var(--caption);
      komt daar boven de foto terecht — niet boven het label, want
      bij afbeelding 4 staat het label ná de foto in de HTML. */
   .artwork--mobile-inset + .artwork--mobile-inset {
-    margin-top: 20px;
+    margin-top: 0;
   }
 
 .title {
@@ -921,12 +1080,7 @@ section.artwork--monumental {
 
 /* json ----------------------------------------------------------------------------------------------------------------------------------------------*/
 
-@media (min-width:801px) {
-  /* DESKTOP: ruimte tussen afbeelding 4 en 5  */
-  .artwork--current-room + .artwork--monumental {
-    margin-top: 100px !important;
-  }
-}
+
 
 
 
