@@ -49,66 +49,127 @@
 * {
   box-sizing: border-box;
 }
-/* !!!!!!!!!- ROOT -!!!!!!!!!!*/
-
 
 :root {
 
 
-/* ARTWORK
-│
-├── room system
-│   ├── rightbg
-│   ├── full
-│   ├── fair
-│
-├── spacing system
-│   ├── space-tight
-│   ├── space-normal
-│   └── space-open
-│
-└── hanging/display system
-    ├── display-full
-    ├── display-inset
-    ├── display-right
-    └── display-left*/
+ /* ===========================================================================================
+
+JOHN BOELEE — DIGITAL WHITE CUBE
+
+CSS ARCHITECTURE
+
+The stylesheet follows the same curatorial logic as the
+exhibition itself.
+
+Order:
+
+ROOT
+    Design tokens (colour, spacing, typography)
+
+BASE
+    Reset, body, generic elements
+
+TYPOGRAPHY
+    Headings, captions, text styles
+
+LAYOUT
+    Generic page layout and structural systems
+
+COMPONENTS
+    Hero
+
+    ============================================================================================
+    Artwork/ARTWORK SYSTEM (artwork sections are built from independent modifier systems) 
+    │
+    ├── Technical layout
+    │   ├── rightbg
+    │   ├── full
+    │   ├── wide
+    │
+    ├── Presentation
+    │   ├── display-full
+    │   ├── display-inset
+    │   ├── display-small
+    │   ├── space-tight
+    │   ├── space-normal
+    │   └── space-open
+    │
+    └── Curatorial role
+        ├── origin
+        ├── current-room
+        ├── delta
+        ├── fair
+        ├── monumental
+        ├── floating
+        ├── light2
+        └── light6
+
+        
+        Technical layout = where the work is placed.
+        Presentation = how the work is presented.
+        Curatorial role = the work's role within the exhibition.
+
+        Modifiers are combined rather than duplicated.
+     ============================================================================================
+    
+    Caption
+    Footer
+
+ROOM MODIFIERS
+    Reusable presentation systems
+    (display, spacing, wall colour, etc.)
+
+ARTWORK SPECIFIC (EXHIBITION SEQUENCE/ CURATORIAL SEQUENCE)
+    Curatorial exceptions for individual rooms
+    and transitions within the exhibition
+
+MEDIA QUERIES
+    Mobile adaptations
+
+The exhibition concept determines the CSS structure.
+Presentation follows curatorial intent rather than
+generic web design patterns.
+
+================================================================================================ 
 
 
-    /*
 =====================================================
 OVERZICHT SECTION CLASSES PER AFBEELDING (1 t/m 9)
 =====================================================
+
+
+AFBEELDING 1 — HERO
+<section class="hero">
+
+AFBEELDING 2 — Looking Back (1993)
+<section class="artwork artwork--origin artwork--rightbg artwork--light2">
+
+AFBEELDING 3 — Layers of Absence (2025)
+<section class="artwork artwork--full artwork--current-room artwork--mobile-inset artwork--floating">
+
+AFBEELDING 4 — Untitled (2025)
+<section class="artwork artwork--rightbg artwork--current-room artwork--mobile-inset artwork--floating">
+
+AFBEELDING 5 — Emotional Disturbance #9 (2021)
+<section class="artwork artwork--caption-below artwork--label-under artwork--monumental">
+
+CV-SECTIE (tussen afb. 5 en 6)
+<section class="text cv">
+
+AFBEELDING 6 — Galerie Delta, exterieur (2010)
+<section class="artwork artwork--rightbg artwork--light6 artwork--delta">
+
+AFBEELDING 7 — Galerie Delta, interieur (2010)
+<section class="artwork artwork--caption-below">
+
+AFBEELDING 8 — Affordable Art Fair (2012)
+<section class="artwork artwork--rightbg artwork--current-room artwork--fair artwork--image-right artwork--display-inset">
+
+AFBEELDING 9 — Emotional Disturbance #5 en #6 (2010) — closing/cover image
+<section class="artwork artwork--cover">
+  
 */
-
-/* AFBEELDING 1 — HERO */
-/* <section class="hero"> */
-
-/* AFBEELDING 2 — Looking Back (1993) */
-/* <section class="artwork artwork--origin artwork--rightbg artwork--light2"> */
-
-/* AFBEELDING 3 — Layers of Absence (2025) */
-/* <section class="artwork artwork--full artwork--current-room artwork--mobile-inset artwork--floating"> */
-
-/* AFBEELDING 4 — Untitled (2025) */
-/* <section class="artwork artwork--rightbg artwork--current-room artwork--mobile-inset artwork--floating"> */
-
-/* AFBEELDING 5 — Emotional Disturbance #9 (2021) */
-/* <section class="artwork artwork--caption-below artwork--label-under artwork--monumental"> */
-
-/* CV-SECTIE (tussen afb. 5 en 6) */
-/* <section class="text cv"> */
-
-/* AFBEELDING 6 — Galerie Delta, exterieur (2010) */
-/* <section class="artwork artwork--rightbg artwork--light6 artwork--delta"> */
-
-/* AFBEELDING 7 — Galerie Delta, interieur (2010) */
-/* <section class="artwork artwork--caption-below"> */
-
-/* AFBEELDING 8 — Affordable Art Fair (2012) */
-/* <section class="artwork artwork--rightbg artwork--current-room artwork--fair artwork--image-right artwork--display-inset"> */
-
-/* AFBEELDING 9 — Emotional Disturbance #5 en #6 (2010) — closing/cover image */
-/* <section class="artwork artwork--cover"> */
     
     
     
@@ -575,7 +636,7 @@ Standaard op 0, voeg px wel toe aan de waarde! — pas de waarde aan indien gewe
 
 /* AFBEELDING 2 — Looking Back */
 section.artwork--origin.artwork--rightbg.artwork--light2 {
-  margin-top: 0;
+  margin-top: 300px;
   margin-bottom: 0;
 }
 
@@ -703,8 +764,11 @@ color:var(--caption);
 
 .footer {
     position: absolute;
-    left: 4vw;
-    bottom: 4vh;
+    
+     /* plaats van de footer */
+    right: 4vw;
+   
+    bottom: 20vh;
 
     padding: 0;
 
@@ -793,7 +857,7 @@ section.artwork--full.artwork--current-room.artwork--floating {
 
 /* AFBEELDING 4 — Untitled */
 section.artwork--rightbg.artwork--current-room.artwork--floating {
-  margin-top: 50px;
+  margin-top: 40px;
   margin-bottom: 0;
 }
 
@@ -1082,7 +1146,20 @@ section.artwork--monumental {
 
 
 
+@media (min-width:801px) {
 
+.artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
+    height:80%;
+    top:10%;
+    left:4%;
+}
+
+.artwork--leftbg,
+.artwork--rightpanel {
+  padding: 20px 4vw 30px;
+}
+
+}
 
 
 </style>
