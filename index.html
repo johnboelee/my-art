@@ -102,10 +102,7 @@
 --space-normal: 60px;
 --space-open: 200px;
 
-/* Ruimte tussen afbeelding 4 en 5 (standaard).
-   Deze default geldt tenzij een media-query overschrijft. 
-   Zie @meddia voor afsliting style de px moeten hetzelfde zijn.*/
---gap-4-5: 100px;
+
 
 
 
@@ -657,17 +654,6 @@ color:var(--caption);
 
 
 
-/* DESKTOP: override voor de gap en zet hier de margin voor desktop */
-@media (min-width:801px) {
-  :root {
-    --gap-4-5: 900px; /* desktopwaarde — verander dit naar wens */
-  }
-
-  /* Apply the gap specifically on desktop between artwork 4 and 5 */
-  .artwork--current-room + .artwork--monumental {
-    margin-top: var(--gap-4-5);
-  }
-}
 
 /* algemene rule voor artwork--full image layout (staat buiten media-query) */
 .artwork--full.artwork--current-room.artwork--mobile-inset img{
@@ -760,6 +746,10 @@ color:var(--caption);
   overflow: visible;
 }
 
+.artwork img {
+  position: relative;
+}
+
 .artwork--cover {
   position: relative;
   height: auto;
@@ -818,6 +808,10 @@ color:var(--caption);
 }
 
 
+
+
+
+
 /* Alleen afbeelding 3 en 4 op mobiel: witte ruimte (papierkleur)
    aan beide kanten van de foto, elk 8% breed. Geplaatst na de
    algemene regel hierboven zodat hij die overschrijft. Raakt
@@ -825,8 +819,18 @@ color:var(--caption);
    artwork--current-room zelf, want die class zit ook op afbeelding 8,
    wat ongewijzigd moet blijven. */
 .artwork--mobile-inset img {
-  width: calc(100% - 10%);
-  margin: 0 5%;
+  width:90%;
+  margin-left:5%;
+  margin-right:5%;
+}
+
+
+
+
+
+
+.artwork--current-room {
+  background:var(--wall-1);
 }
 
 .artwork--cover img {
@@ -882,16 +886,43 @@ section.artwork--monumental {
     margin-top: var(--gap-4-5);
 }
 
+.artwork--mobile-inset img {
+  left:0;
+  right:auto;
+}
+
+@media (min-width:801px) {
+
+.artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
+    height:80%;
+    top:10%;
+    left:4%;
+}
+
+}
+
 .footer {
     left: 20px;
     bottom: 20px;
 }
-}   /* <-- sluit de @media af */
+ 
+
+/* Afbeelding 4 mobiel:
+   Deze uitzondering corrigeert de horizontale positie binnen de witte ruimte.
+   Afbeelding 3 en 4 hebben dezelfde schaal en hoogte, maar door hun verschillende
+   layout-systemen (.artwork--full vs .artwork--rightbg) vraagt afbeelding 4 om
+   een eigen verdeling van de linker- en rechterwitruimte. */
+.artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
+  margin-left:1%;
+  margin-right:14%;
+}
+
+} /* <-- sluit de @media af */
 
 /* json ----------------------------------------------------------------------------------------------------------------------------------------------*/
 
 @media (min-width:801px) {
-  /* tijdelijke, duidelijke override om te testen of iets anders de margin overschrijft */
+  /* DESKTOP: ruimte tussen afbeelding 4 en 5  */
   .artwork--current-room + .artwork--monumental {
     margin-top: 100px !important;
   }
