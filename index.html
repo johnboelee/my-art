@@ -45,7 +45,6 @@
 
 <title>John Boelee | Contemporary Artist</title>
 <style>
-
 * {
   box-sizing: border-box;
 }
@@ -208,7 +207,10 @@ AFBEELDING 9 — Emotional Disturbance #5 en #6 (2010) — closing/cover image
   --caption: #777;
 }
 
-/* DISPLAY SYSTEM */
+/* DISPLAY SYSTEM
+   Bepaalt hoe de afbeelding binnen zijn "kamer" hangt. Deze regels
+   gelden zowel op desktop als op mobiel (er is geen mobiele
+   variant nodig — vandaar geen apart blok in de media query). */
 .artwork--display-full img {
   height:100%;
   top:0;
@@ -1010,29 +1012,12 @@ section.artwork--cover {
   position: relative;
   z-index: 2;
 }
-/* DISPLAY OVERRIDES
-   Controls how the image hangs inside its room.
-   Placed after layout rules so it can override image defaults.
-*/
 
-.artwork--display-full img {
-  height:100%;
-  top:0;
-}
-
-.artwork--display-inset img {
-  height:80%;
-  top:10%;
-}
-
-.artwork--display-small img {
-  height:65%;
-  top:17.5%;
-}
-
-
-
-
+/* Let op: geen apart .artwork--display-full/inset/small blok hier —
+   dat stond in het origineel dubbel (identiek aan het blok
+   bovenaan bij "DISPLAY SYSTEM") en is hier verwijderd; de
+   cascade-uitkomst blijft ongewijzigd omdat de waarden identiek
+   waren en er geen tussenliggende regel was die ze overschreef. */
 
 
 /* Alleen afbeelding 3 en 4 op mobiel: witte ruimte (papierkleur)
@@ -1114,16 +1099,6 @@ section.artwork--monumental {
   right:auto;
 }
 
-@media (min-width:801px) {
-
-.artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
-    height:80%;
-    top:10%;
-    left:4%;
-}
-
-}
-
 .footer {
     left: 20px;
     bottom: 20px;
@@ -1140,12 +1115,22 @@ section.artwork--monumental {
   margin-right:14%;
 }
 
-} /* <-- sluit de @media af */
+} /* <-- sluit @media (max-width: 800px) af */
 
 /* json ----------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
+/*
+  Was eerder twee losse @media (min-width:801px) blokken — één
+  genest vlak vóór het sluiten van de max-width:800px query (bevatte
+  alleen de .artwork--rightbg...mobile-inset img regel), en één
+  erna (bevatte diezelfde regel nogmaals plus de .artwork--leftbg /
+  .artwork--rightpanel padding-regel). Samengevoegd tot dit ene
+  blok; de duplicaat-declaratie is verwijderd. Uitkomst ongewijzigd:
+  de tweede (identieke) keer overschreef zichzelf toch al met
+  dezelfde waarden.
+*/
 @media (min-width:801px) {
 
 .artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
@@ -1160,8 +1145,6 @@ section.artwork--monumental {
 }
 
 }
-
-
 </style>
 
 
