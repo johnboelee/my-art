@@ -205,6 +205,7 @@ AFBEELDING 9 — Emotional Disturbance #5 en #6 (2010) — closing/cover image
 --paper: #fafafa;
   --text: #111;
   --caption: #777;
+  --footer: #444;
 }
 
 /* DISPLAY SYSTEM
@@ -780,10 +781,15 @@ color:var(--caption);
 
     text-align: left;
 
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
-    letter-spacing: .08em;
-    color: var(--caption);
+    letter-spacing: .03em;
+    color: var(--footer);
+}
+
+.footer a {
+  color: var(--footer);
+  text-decoration: none;
 }
 
 .footer-content{
@@ -799,10 +805,7 @@ color:var(--caption);
     background: var(--exhibition-end);
 }
 
-.footer a {
-  color: var(--caption);
-  text-decoration: none;
-}
+
 
 .footer a:hover {
   text-decoration: underline;
@@ -1101,7 +1104,7 @@ section.artwork--monumental {
 
 .footer {
     left: 20px;
-    bottom: 20px;
+    bottom: 50px;
 }
  
 
