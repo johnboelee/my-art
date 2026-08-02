@@ -298,7 +298,8 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
   background: var(--paper);
 }
 
@@ -307,13 +308,20 @@ body {
   height: var(--hero-image-h);
   object-fit:cover;
   display:block;
+  object-position: center;
+
+  /* object-position: center 50%;   /* standaard 
+     object-position: center 40%;    iets hoger 
+     object-position: center 30%;    duidelijk hoger 
+     object-position: center 20%;    nog hoger 
+     object-position: center 10%;   bijna helemaal bovenin */
 }
 
 
 .hero-name {
   position: absolute;
   right: 12vw;
-  bottom: 18vh;
+  bottom: 26vh;
   margin: 0;
 
   font-size: clamp(24px,2.4vw,38px);
@@ -1376,9 +1384,9 @@ Drawn at Diergaarde Blijdorp, Rotterdam
   </div>
 </section>
 
-<!-- ART 2B -->
+<!-- ART 2B (Elsewhere)-->
 <section class="artwork artwork--rightbg artwork--current-room artwork--mobile-inset artwork--display-inset artwork--disappearing">
-  <h2 class="sr-only">Recent work: Elsewhere (2025)</h2>
+  <h2 class="sr-only">Recent work: Unbecoming (2025)</h2>
   <p class="sr-only">An expressive painting in which a human figure remains only partially visible. Combining ink and acrylic paint on paper with reverse-painted glass. The Layered brushstrokes create a tension between presence and absence, inviting an open interpretation.</p>
   <img
     src="john-boelee-art-02b-1600.webp"
@@ -1392,11 +1400,11 @@ Drawn at Diergaarde Blijdorp, Rotterdam
     height="2000"
     loading="lazy"
     decoding="async"
-    alt="Elsewhere (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
+    alt="Unbecoming (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
 
   <div class="artwork--rightpanel">
     <div class="title">
-      <i>Elsewhere</i> (2025)<br>
+      <i>Unbecoming</i> (2025)<br>
       Ink and acrylic paint on paper and reverse-painted glass<br>
       49 × 59 cm
     </div>
