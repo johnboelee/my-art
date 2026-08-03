@@ -173,7 +173,7 @@ AFBEELDING 9 — Emotional Disturbance #5 en #6 (2010) — closing/cover image
     
     
   /* HERO */
---hero-image-h: 100svh;
+
 
 
 
@@ -184,21 +184,7 @@ AFBEELDING 9 — Emotional Disturbance #5 en #6 (2010) — closing/cover image
                          ervaren, terwijl dit wel een sterker contrast
                          geeft met de daadwerkelijke buren: afb 7 en 9 */
 --wall-2: var(--paper);  /* afbeelding 2, 5 */
---wall-3: var(--paper);   /* afbeelding 6, 7 — verdonkerd t.o.v. --paper,
-                         zodat de overgang van de CV-tekst naar de
-                         eerste documentaire foto (Galerie Delta)
-                         voelbaar is: van "tekst over de kunstenaar"
-                         naar "de kunstenaar in de wereld" */
 
-
-                         /* OVERGANGEN */
---hero-transition: #e3e2df;
---exhibition-end: #dddddd;
-
-/* SPACING SYSTEM */
---space-tight: 20px;
---space-normal: 60px;
---space-open: 200px;
 
 
 /* TEKST */
@@ -305,7 +291,7 @@ body {
 
 .hero img {
   width:100%;
-  height: var(--hero-image-h);
+  height:100svh;
   object-fit:cover;
   display:block;
   object-position: center;
@@ -496,35 +482,6 @@ body {
     z-index:3;
 }
 
-/* individuele ruimte tussen werken */
-
-.artwork--space-tight {
-  margin-top: var(--space-tight);
-}
-
-.artwork--space-normal {
-  margin-top: var(--space-normal);
-}
-
-.artwork--space-open {
-  margin-top: var(--space-open);
-}
-
-.artwork--wide {
-  height: auto;
-}
-
-.artwork--wide::before {
-  display: none;
-}
-
-.artwork--wide img {
-  position: static;
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
 
 
 /*ARTWORK COVER ----------------------------------------------------------------------------------------------------------------------------------------*/
@@ -731,15 +688,6 @@ section.artwork--cover {
   margin-bottom: 145px;
 }
 
-/* Opmerking:
-   De specifieke overgang tussen afbeelding 4 en 5 wordt nu door
-   de media-query voor desktop bepaald (zie verderop). */
-
-/* Als sectie heeft ook een modifier die ruimte reset — dat laten we staan */
-.artwork--monumental.artwork--space-open {
-    margin-top: 0;
-}
-
 
 /*
   Documentary vs. autonomous work distinction (master prompt 6AA):
@@ -814,12 +762,6 @@ color:var(--caption);
     color:inherit;
 }
 
-.exhibition-end {
-    height: 40svh;
-    background: var(--exhibition-end);
-}
-
-
 
 .footer a:hover {
   text-decoration: underline;
@@ -848,9 +790,6 @@ color:var(--caption);
     margin-top: 0px;
 }
 
-  .artwork--space-open{
-    margin-top: var(--space-open);
-}
 
 
 @media (max-width: 800px) {
@@ -882,7 +821,7 @@ section.artwork--full.artwork--current-room.artwork--floating {
 
 /* AFBEELDING 4 — Untitled */
 section.artwork--rightbg.artwork--current-room.artwork--floating {
-  margin-top: 40px;
+  margin-top: 80px;
   margin-bottom: 0;
 }
 
@@ -1112,10 +1051,7 @@ section.artwork--cover {
     position: relative;
 }
 
-/* ruimte tussen afbeelding 4 en afbeelding 5 */
-section.artwork--monumental {
-    margin-top: var(--gap-4-5);
-}
+
 
 .artwork--mobile-inset img {
   left:0;
