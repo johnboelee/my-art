@@ -613,6 +613,11 @@ section.artwork--disappearing {
   margin-top: 0;
   margin-bottom: 0;
 }
+/* 70 - 15 - 15 = 100, just to make bigger or smaller*/
+.artwork--rightbg.artwork--current-room.artwork--mobile-inset.artwork--disappearing img {
+  height: 70%;
+  top: 15%;
+}
 
 /* AFBEELDING 3 — Layers of Absence */
 section.artwork--full.artwork--current-room.artwork--floating {
@@ -804,14 +809,15 @@ Standaard op 0, voeg px wel toe aan de waarde! — pas de waarde aan indien gewe
 /* AFBEELDING 2 — Looking Back */
 section.artwork--origin.artwork--rightbg.artwork--light2 {
   margin-top: 150px;
-  margin-bottom: 100px;
+  margin-bottom: 125px;
 }
 
 /* AFBEELDING 2B — Disappearing */
 section.artwork--disappearing {
   margin-top: 300px;
-  margin-bottom: 0;
+  margin-bottom: 75px;
 }
+
 
 /* AFBEELDING 3 — Layers of Absence */
 section.artwork--full.artwork--current-room.artwork--floating {
@@ -975,6 +981,14 @@ section.artwork--cover {
   z-index: 2;
 }
 
+/* AFBEELDING 2B — Disappearing
+   Kleiner op mobiel en horizontaal gecentreerd */
+section.artwork--disappearing img {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Let op: geen apart .artwork--display-full/inset/small blok hier —
    dat stond in het origineel dubbel (identiek aan het blok
    bovenaan bij "DISPLAY SYSTEM") en is hier verwijderd; de
@@ -1072,6 +1086,14 @@ section.artwork--cover {
 .artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
   margin-left:1%;
   margin-right:14%;
+}
+
+/* AFBEELDING 2B- 80 + 10 + 10 = 100 — Disappearing makes it centered!!!!!!!!!!!!!!!*/
+section.artwork--disappearing.artwork--rightbg img {
+    width: 80% !important;
+    left: 10% !important;
+    right: auto !important;
+    margin: 0 !important;
 }
 
 } /* <-- sluit @media (max-width: 800px) af */
