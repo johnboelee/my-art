@@ -996,19 +996,17 @@ section.artwork--disappearing img {
    waren en er geen tussenliggende regel was die ze overschreef. */
 
 
-/* Alleen afbeelding 3 en 4 op mobiel: witte ruimte (papierkleur)
+/* Alleen afbeelding 3 op mobiel: witte ruimte (papierkleur)
    aan beide kanten van de foto, elk 8% breed. Geplaatst na de
    algemene regel hierboven zodat hij die overschrijft. Raakt
    alleen deze twee afbeeldingen via de eigen class hieronder — niet
    artwork--current-room zelf, want die class zit ook op afbeelding 8,
    wat ongewijzigd moet blijven. */
 .artwork--mobile-inset img {
-  width:90%;
-  margin-left:5%;
-  margin-right:5%;
+  width:85%;
+  margin-left:7.5%;
+  margin-right:7.5%;
 }
-
-
 
 
 
@@ -1078,23 +1076,27 @@ section.artwork--disappearing img {
 }
  
 
-/* Afbeelding 4 mobiel:
-   Deze uitzondering corrigeert de horizontale positie binnen de witte ruimte.
-   Afbeelding 3 en 4 hebben dezelfde schaal en hoogte, maar door hun verschillende
-   layout-systemen (.artwork--full vs .artwork--rightbg) vraagt afbeelding 4 om
-   een eigen verdeling van de linker- en rechterwitruimte. */
-.artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
-  margin-left:1%;
-  margin-right:14%;
-}
 
 /* AFBEELDING 2B- 80 + 10 + 10 = 100 — Disappearing makes it centered!!!!!!!!!!!!!!!*/
 section.artwork--disappearing.artwork--rightbg img {
-    width: 80% !important;
-    left: 10% !important;
+    width: 75% !important;
+    left: 12.5% !important;
     right: auto !important;
     margin: 0 !important;
 }
+
+
+/* AFBEELDING 4 — dezelfde witte zijranden als afbeelding 3 */
+.artwork--rightbg.artwork--current-room.artwork--mobile-inset img {
+  width: 85%;
+  margin-left: 7.5%;
+  margin-right: 7.5%;
+  left: auto;
+  right: auto;
+}
+
+
+
 
 } /* <-- sluit @media (max-width: 800px) af */
 
