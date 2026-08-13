@@ -32,6 +32,10 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<!-- Performance: preload critical images (hero + first artwork) -->
+<link rel="preload" as="image" href="john-boelee-art-01-1600.webp" imagesrcset="john-boelee-art-01-800.webp 800w, john-boelee-art-01-1600.webp 1600w, john-boelee-art-01-2560.webp 2560w, john-boelee-art-01-3840.webp 3840w" imagesizes="100vw">
+<link rel="preload" as="image" href="john-boelee-art-02-1600.webp" imagesrcset="john-boelee-art-02-800.webp 800w, john-boelee-art-02-1600.webp 1600w, john-boelee-art-02-2560.webp 2560w, john-boelee-art-02-3840.webp 3840w" imagesizes="100vw">
+
 <title>John Boelee | Contemporary Artist</title>
 
 <style>
@@ -1258,7 +1262,7 @@ work in which changing meaning, transformation and the space created by what is 
       john-boelee-art-02b-1600.webp 1600w,
       john-boelee-art-02b-2560.webp 2560w,
       john-boelee-art-02b-3840.webp 3840w"
-    sizes="100vw"
+    sizes="(max-width: 800px) 80vw, 55vw"
     width="1600"
     height="2000"
     loading="lazy"
@@ -1303,7 +1307,7 @@ the viewer is encouraged to see how the works reinforce one another and how mean
       john-boelee-art-03-1600.webp 1600w,
       john-boelee-art-03-2560.webp 2560w,
       john-boelee-art-03-3840.webp 3840w"
-    sizes="100vw"
+    sizes="(max-width: 800px) 80vw, 55vw"
     width="1600"
     height="2000"
     decoding="async"
@@ -1335,7 +1339,7 @@ The figures seem less to be placed into the image than to be discovered within i
       john-boelee-art-04-1600.webp 1600w,
       john-boelee-art-04-2560.webp 2560w,
       john-boelee-art-04-3840.webp 3840w"
-    sizes="100vw"
+    sizes="(max-width: 800px) 80vw, 55vw"
     width="1600"
     height="2000"
     loading="lazy"
@@ -1516,7 +1520,7 @@ Rotterdam<br>
       john-boelee-art-08-1600.webp 1600w,
       john-boelee-art-08-2560.webp 2560w,
       john-boelee-art-08-3840.webp 3840w"
-    sizes="100vw"
+    sizes="(max-width: 800px) 100vw, 55vw"
     width="1600"
     height="1200"
     loading="lazy"
