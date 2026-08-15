@@ -74,16 +74,18 @@
 :root {
   --paper: #fafafa;
   --text: #111;
-  --caption: #777;
-  --footer: #444;
+  --caption: #6a6a6a;
+  --footer: #555;
 
   /* Wall colours (shared rooms) */
   --wall-1: var(--paper); /* art-03, art-04, art-08 */
   --wall-2: var(--paper); /* art-02 */
 
-  /* Label opacity — zie notitie bij TYPOGRAPHY (<div class="title"> of <div class="title--documentary"> bij de afbeeldingen */
-  --label-opacity-artwork: 0.9;
-  --label-opacity-documentary: 0.7;
+  /* Label opacity — centrale instelling
+     0.85 = stil maar leesbaar (autonome werken)
+     0.62 = duidelijk stiller (documentaire beelden) */
+  --label-opacity-artwork: 0.85;
+  --label-opacity-documentary: 0.62;
 }
 
 
@@ -138,20 +140,20 @@ body {
 */
 
 .title {
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  letter-spacing: 0.055em;
   text-transform: none;
   opacity: var(--label-opacity-artwork);
-  line-height: 1.6;
+  line-height: 1.55;
   font-weight: 300;
   margin: 0;
   color: var(--caption);
 }
 
 .title--documentary {
-  font-size: 12px;
+  font-size: 11.5px;
   opacity: var(--label-opacity-documentary);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
 }
 
 .mixedcase {
@@ -271,7 +273,7 @@ body {
   position: static;
   left: auto;
   top: auto;
-  padding: 20px 4vw 0;
+  padding: 24px 4vw 0;
   background: transparent;
   text-align: left;
 }
@@ -337,12 +339,12 @@ body {
 
 .hero-name {
   position: absolute;
-  right: 12vw;
-  bottom: 26vh;
+  right: 10vw;
+  bottom: 24vh;
   margin: 0;
-  font-size: clamp(24px, 2.4vw, 38px);
+  font-size: clamp(22px, 2.15vw, 34px);
   font-weight: 300;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text);
 }
@@ -356,7 +358,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 20px;
+  padding: 28px 4vw 32px;
   background: inherit;
   z-index: 3;
 }
@@ -369,7 +371,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  padding: 20px;
+  padding: 28px 4vw 32px;
   background: inherit;
   z-index: 3;
 }
@@ -395,11 +397,11 @@ body {
   left: 4vw;
   top: 4vh;
   color: var(--caption);
-  opacity: var(--label-opacity-artwork); /* volgt de artwork-labels */
-  font-size: 12px;
-  line-height: 1.6;
+  opacity: var(--label-opacity-artwork);
+  font-size: 11.5px;
+  line-height: 1.55;
   font-weight: 300;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.055em;
   z-index: 3;
 }
 
@@ -411,35 +413,35 @@ body {
 
 .text-right {
   background: transparent;
-  max-width: 520px;
+  max-width: 480px;
   margin-left: auto;
-  margin-right: 10vw;
-  padding: 140px 20px;
+  margin-right: 11vw;
+  padding: 160px 20px;
 }
 
 .cv .text-right {
-  max-width: 460px;
-  padding-top: 90px;
-  padding-bottom: 70px;
+  max-width: 420px;
+  padding-top: 110px;
+  padding-bottom: 90px;
 }
 
 .statement .text-right {
-  max-width: 620px;
-  margin-left: 40%;
-  margin-right: 15%;
-  padding-top: 220px;
-  padding-bottom: 260px;
+  max-width: 580px;
+  margin-left: 38%;
+  margin-right: 16%;
+  padding-top: 240px;
+  padding-bottom: 280px;
   color: var(--caption);
 }
 
 .statement-intro {
-  font-size: 12px !important;
-  letter-spacing: .08em;
-  margin-bottom: 120px !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.06em;
+  margin-bottom: 130px !important;
 }
 
 .statement .text-right p {
-  max-width: min(90vw, 52ch);
+  max-width: min(90vw, 50ch);
   white-space: normal;
 }
 
@@ -449,35 +451,37 @@ body {
 }
 
 .text-right p + p {
-  margin-top: 14px;
+  margin-top: 1.1em;
 }
 
 .text-right h1 {
-  margin-bottom: 20px;
+  margin-bottom: 1.4em;
 }
 
 .text-right p {
-  max-width: 1000px;
+  max-width: 42ch;
   margin: 0;
-  font-size: clamp(15px, 1.1vw, 20px);
-  line-height: 1.7;
-  letter-spacing: 0.3px;
+  font-size: clamp(14px, 0.95vw, 16.5px);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   font-weight: 300;
+  color: #333;
 }
 
 /* --- Footer --- */
 .footer {
   position: absolute;
   right: 4vw;
-  bottom: 20vh;
+  bottom: 18vh;
   padding: 0;
   background: transparent;
   z-index: 10;
   text-align: left;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
-  letter-spacing: .03em;
+  letter-spacing: 0.04em;
   color: var(--footer);
+  opacity: 0.85;
 }
 
 .footer a {
@@ -490,7 +494,7 @@ body {
 }
 
 .footer-content {
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .footer-content a {
@@ -721,7 +725,7 @@ body {
   .panel-left {
     position: static;
     width: 100%;
-    padding: 20px 20px 30px;
+    padding: 22px 20px 28px;
     background: var(--paper);
     display: flex;
     justify-content: flex-start;
@@ -732,7 +736,7 @@ body {
     position: static;
     transform: none;
     width: 100%;
-    padding: 20px 20px 30px;
+    padding: 22px 20px 28px;
     background: var(--paper);
     text-align: left;
     text-shadow: none;
@@ -743,17 +747,17 @@ body {
   }
 
   .title {
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    line-height: 1.6;
-    /* opacity komt uit --label-opacity-artwork */
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    line-height: 1.55;
     text-align: left;
   }
 
   .hero-name {
     right: 20px;
-    bottom: 3vh;
-    font-size: 24px;
+    bottom: 3.5vh;
+    font-size: 20px;
+    letter-spacing: 0.12em;
   }
 
   .text {
@@ -765,12 +769,20 @@ body {
   }
 
   .text-right {
-    padding: 30px 20px;
+    padding: 60px 20px 70px;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .cv .text-right {
+    padding-top: 70px;
+    padding-bottom: 60px;
   }
 
   .footer {
     left: 20px;
-    bottom: 150px;
+    bottom: 140px;
+    font-size: 11.5px;
   }
 
   .layout-cover {
@@ -796,9 +808,9 @@ body {
     z-index: 10;
     color: var(--caption);
     opacity: var(--label-opacity-artwork);
-    font-size: 12px;
-    line-height: 1.5;
-    letter-spacing: .06em;
+    font-size: 11.5px;
+    line-height: 1.55;
+    letter-spacing: 0.055em;
   }
 
   .role-current {
@@ -966,10 +978,10 @@ body {
 
   .statement-mobile p {
     margin: 0;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 300;
-    letter-spacing: 0.08em;
-    line-height: 1.6;
+    letter-spacing: 0.055em;
+    line-height: 1.55;
     white-space: nowrap;
     color: var(--caption);
   }
@@ -1003,7 +1015,7 @@ body {
 
   .panel-right,
   .panel-left {
-    padding: 20px 4vw 30px;
+    padding: 28px 4vw 32px;
   }
 }
 
@@ -1616,20 +1628,15 @@ It is an insight into the studio and at the same time a quiet farewell to one ph
   <div class="text-left"></div>
 
   <div class="text-right">
-    <p>John Boelee — Dutch contemporary artist based in Spain</p>
+    <p>John Boelee</p>
+    <p>Dutch contemporary artist based in Spain</p>
     <p>Born in Leiden, the Netherlands</p>
-    <p>Royal Academy of Art, The Hague (1992–1996)</p>
+    <p>Royal Academy of Art, The Hague, 1992–1996</p>
     <p>
-      Selected group exhibitions and art fairs include Pulchri Studio
-      (The Hague), Galerie Delta (Rotterdam), ART RAI (Amsterdam, with
-      Galerie Delta), Affordable Art Fair (with ARTITLEDcontemporary), and
-      Chinese Whispers, a two-location exhibition presented at Gallery Nasty
-      Alice (Eindhoven, the Netherlands) and Karin Janssen Project Space
-      (London, UK).
+      Solo exhibitions include Galerie Delta, Rotterdam, and Pulchri Studio, The Hague.
     </p>
     <p>
-      Solo exhibitions include Galerie Delta (Rotterdam), and Pulchri Studio
-      (The Hague).
+      Selected group exhibitions and art fairs: Pulchri Studio (The Hague), Galerie Delta (Rotterdam), ART RAI (Amsterdam, with Galerie Delta), Affordable Art Fair (with ARTITLEDcontemporary), and Chinese Whispers — a two-location exhibition at Gallery Nasty Alice (Eindhoven) and Karin Janssen Project Space (London).
     </p>
   </div>
 </section>
