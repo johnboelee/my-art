@@ -5,38 +5,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works that explore perception, memory and visual culture.">
+<!-- Primary SEO -->
+<title>John Boelee | Dutch Contemporary Artist based in Spain</title>
+<meta name="description" content="John Boelee is a Dutch contemporary artist based in Spain. Paintings and mixed media works exploring perception, memory and visual culture. Studio practice between abstraction and representation.">
+<meta name="author" content="John Boelee">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://johnboelee.com/">
 
-<meta property="og:title" content="John Boelee | Contemporary Artist">
-<meta property="og:description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works">
+<!-- Open Graph -->
+<meta property="og:title" content="John Boelee | Dutch Contemporary Artist based in Spain">
+<meta property="og:description" content="Dutch contemporary artist based in Spain. Paintings and mixed media works exploring perception, memory and visual culture.">
 <meta property="og:image" content="https://johnboelee.com/john-boelee-art-03-1600.webp">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="2000">
-<meta property="og:url" content="https://johnboelee.com">
+<meta property="og:image:alt" content="Layers of Absence (2025), mixed media work by John Boelee">
+<meta property="og:url" content="https://johnboelee.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="John Boelee">
-<meta name="robots" content="index, follow">
+<meta property="og:locale" content="en_GB">
 
+<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="John Boelee | Contemporary Artist">
-<meta name="twitter:description" content="John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works">
+<meta name="twitter:title" content="John Boelee | Dutch Contemporary Artist based in Spain">
+<meta name="twitter:description" content="Dutch contemporary artist based in Spain. Paintings and mixed media works exploring perception, memory and visual culture.">
 <meta name="twitter:image" content="https://johnboelee.com/john-boelee-art-03-1600.webp">
+<meta name="twitter:image:alt" content="Layers of Absence (2025), mixed media work by John Boelee">
 
+<!-- Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-
-<link rel="canonical" href="https://johnboelee.com">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-<!-- Performance: preload critical images (hero + first artwork) -->
+<!-- Preload critical images (hero + first artwork) -->
 <link rel="preload" as="image" href="john-boelee-art-01-1600.webp" imagesrcset="john-boelee-art-01-800.webp 800w, john-boelee-art-01-1600.webp 1600w, john-boelee-art-01-2560.webp 2560w, john-boelee-art-01-3840.webp 3840w" imagesizes="100vw">
 <link rel="preload" as="image" href="john-boelee-art-02-1600.webp" imagesrcset="john-boelee-art-02-800.webp 800w, john-boelee-art-02-1600.webp 1600w, john-boelee-art-02-2560.webp 2560w, john-boelee-art-02-3840.webp 3840w" imagesizes="100vw">
-
-<title>John Boelee | Contemporary Artist</title>
 
 <style>
 /* ===========================================================================================
@@ -74,6 +80,10 @@
   /* Wall colours (shared rooms) */
   --wall-1: var(--paper); /* art-03, art-04, art-08 */
   --wall-2: var(--paper); /* art-02 */
+
+  /* Label opacity — zie notitie bij TYPOGRAPHY */
+  --label-opacity-artwork: 0.9;
+  --label-opacity-documentary: 0.7;
 }
 
 
@@ -109,11 +119,29 @@ body {
 /* ==========================================================================
    3. TYPOGRAPHY
    ========================================================================== */
+
+/*
+  LABEL OPACITY — centrale instelling
+  -----------------------------------
+  De waarden staan in :root (bovenaan bij Design tokens).
+
+  --label-opacity-artwork     → captions bij autonome kunstwerken
+                                (Looking Back, Unbecoming, Layers of Absence,
+                                 Untitled, Emotional Disturbance #9, art-09 cover)
+
+  --label-opacity-documentary → captions bij documentaire foto’s
+                                (Galerie Delta, Affordable Art Fair, studio views)
+
+  Waarde 1   = volledig zichtbaar
+  Waarde 0.7 = duidelijk stiller
+  Waarde 0.5 = heel terughoudend
+*/
+
 .title {
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: none;
-  opacity: 1;
+  opacity: var(--label-opacity-artwork);
   line-height: 1.6;
   font-weight: 300;
   margin: 0;
@@ -122,7 +150,7 @@ body {
 
 .title--documentary {
   font-size: 12px;
-  opacity: 1;
+  opacity: var(--label-opacity-documentary);
   letter-spacing: 0.08em;
 }
 
@@ -367,7 +395,7 @@ body {
   left: 4vw;
   top: 4vh;
   color: var(--caption);
-  opacity: 0.95;
+  opacity: var(--label-opacity-artwork); /* volgt de artwork-labels */
   font-size: 12px;
   line-height: 1.6;
   font-weight: 300;
@@ -718,7 +746,7 @@ body {
     font-size: 12px;
     letter-spacing: 1.5px;
     line-height: 1.6;
-    opacity: 1;
+    /* opacity komt uit --label-opacity-artwork */
     text-align: left;
   }
 
@@ -767,7 +795,7 @@ body {
     bottom: auto;
     z-index: 10;
     color: var(--caption);
-    opacity: 0.95;
+    opacity: var(--label-opacity-artwork);
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: .06em;
@@ -978,6 +1006,147 @@ body {
     padding: 20px 4vw 30px;
   }
 }
+
+
+/* ==========================================================================
+   PRINT STYLESHEET
+   Clean, economical output for paper / PDF.
+   Only the essential content is shown.
+
+   ONDERHOUD / LET OP:
+   Deze print-stijlen hoeven NIET aangepast te worden bij gewone wijzigingen
+   (spacing, image-sizing, nieuwe afbeeldingen met dezelfde class-structuur,
+   tekstwijzigingen, kleuren, etc.).
+
+   WEL aanpassen wanneer:
+   - Nieuwe soorten secties of layout-classes worden toegevoegd
+   - De HTML-structuur of class-namen sterk veranderen
+   - Nieuwe componenten moeten worden verborgen of juist getoond bij printen
+   - De gewenste print-hiërarchie verandert
+
+   Zolang de bestaande class-logica (artwork, art-XX, layout-*, panel-*,
+   caption-*) wordt aangehouden, blijft deze print stylesheet meestal
+   vanzelf correct werken.
+   ========================================================================== */
+@media print {
+
+  /* Base */
+  * {
+    background: transparent !important;
+    color: #111 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 11pt;
+    line-height: 1.45;
+    background: #fff !important;
+  }
+
+  /* Hide elements that have no value on paper */
+  .sr-only,
+  .hero-name,
+  .footer,
+  noscript {
+    display: none !important;
+  }
+
+  /* Hero: show the image, but smaller */
+  .hero {
+    height: auto !important;
+    min-height: 0 !important;
+    page-break-after: always;
+  }
+
+  .hero img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 70vh;
+    object-fit: contain !important;
+  }
+
+  /* Artwork sections */
+  .artwork {
+    height: auto !important;
+    overflow: visible !important;
+    margin: 1.5cm 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .artwork::before {
+    display: none !important;
+  }
+
+  .artwork img,
+  .layout-right img,
+  .layout-full img,
+  .layout-cover img,
+  .layout-caption-below img {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    margin: 0 auto 0.6cm auto !important;
+  }
+
+  /* Panels & captions become simple text under the image */
+  .panel-right,
+  .panel-left,
+  .caption-below,
+  .caption-cover {
+    position: static !important;
+    width: 100% !important;
+    padding: 0.3cm 0 0 0 !important;
+    background: transparent !important;
+    text-align: left !important;
+  }
+
+  .title,
+  .title--documentary {
+    font-size: 9pt !important;
+    letter-spacing: 0.04em !important;
+    color: #333 !important;
+    opacity: 1 !important;
+  }
+
+  /* CV / text blocks */
+  .text,
+  .cv {
+    margin: 1.5cm 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .text-right {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .text-right p {
+    font-size: 10pt !important;
+    margin-bottom: 0.4cm !important;
+  }
+
+  /* Links: show the URL after the text */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+  }
+
+  /* Avoid breaking inside important blocks */
+  h1, h2, h3, .title {
+    page-break-after: avoid;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+}
 </style>
 
 
@@ -987,16 +1156,48 @@ body {
  "@graph":[
 
  {
+  "@type":"WebSite",
+  "@id":"https://johnboelee.com/#website",
+  "url":"https://johnboelee.com/",
+  "name":"John Boelee",
+  "description":"Official website of Dutch contemporary artist John Boelee, based in Spain. Paintings and mixed media works.",
+  "publisher":{"@id":"https://johnboelee.com/#artist"},
+  "inLanguage":"en"
+ },
+
+ {
   "@type":"Person",
   "@id":"https://johnboelee.com/#artist",
   "name":"John Boelee",
+  "alternateName":"John Boelee Artist",
   "jobTitle":"Contemporary Artist",
-  "description":"John Boelee is a Dutch contemporary artist based in Spain, creating paintings and mixed media works exploring perception, memory and visual culture.",
+  "description":"John Boelee is a Dutch contemporary artist based in Spain. Working across painting, drawing and mixed media, his practice explores perception, memory, visual culture and the tension between abstraction and representation.",
   "image":"https://johnboelee.com/john-boelee-art-01-1600.webp",
-  "birthPlace":"Leiden, Netherlands",
-  "url":"https://johnboelee.com",
+  "birthPlace":{
+    "@type":"Place",
+    "name":"Leiden, Netherlands"
+  },
+  "nationality":"Dutch",
+  "homeLocation":{
+    "@type":"Place",
+    "name":"Spain"
+  },
+  "url":"https://johnboelee.com/",
   "sameAs":[
    "https://www.saatchiart.com/en-es/johnboelee"
+  ],
+  "alumniOf":{
+    "@type":"CollegeOrUniversity",
+    "name":"Royal Academy of Art, The Hague"
+  },
+  "knowsAbout":[
+    "Contemporary art",
+    "Mixed media",
+    "Painting",
+    "Abstraction",
+    "Representation",
+    "Perception",
+    "Visual culture"
   ]
  },
 
@@ -1404,19 +1605,19 @@ It is an insight into the studio and at the same time a quiet farewell to one ph
      CV
      ========================================================================== -->
 <section class="text cv">
-  <h2 class="sr-only">Biography</h2>
+  <h2 class="sr-only">Biography — John Boelee, Dutch contemporary artist based in Spain</h2>
   <p class="sr-only">
-    John Boelee. Dutch contemporary artist based in Spain. Active as an artist
-    since the early 1990s. Working across painting, drawing and mixed media.
-    This exhibition presents selected works in predominantly reverse
-    chronological order, allowing the development of the practice to be
-    encountered through the works themselves.
+    John Boelee is a Dutch contemporary artist based in Spain. Active since the early 1990s,
+    he works across painting, drawing and mixed media, exploring perception, memory and
+    visual culture between abstraction and representation. This digital exhibition presents
+    selected works in predominantly reverse chronological order.
   </p>
 
   <div class="text-left"></div>
 
   <div class="text-right">
-    <p>Born in Leiden, the Netherlands; based in Spain</p>
+    <p>John Boelee — Dutch contemporary artist based in Spain</p>
+    <p>Born in Leiden, the Netherlands</p>
     <p>Royal Academy of Art, The Hague (1992–1996)</p>
     <p>
       Selected group exhibitions and art fairs include Pulchri Studio
