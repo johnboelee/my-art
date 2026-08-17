@@ -841,14 +841,29 @@ body {
 
   /* ---------- Per-artwork mobile spacing & image behaviour ---------- */
 
-  /* ART-01B — label only */
-  .art-01b {
-    margin-top: 125px !important;
-    margin-bottom: 225px !important;
-  }
-  .art-01b .caption-below {
-    padding: 0 20px !important;
-  }
+/* ART-01B — label only */
+.art-01b {
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin-top: 125px !important;
+  margin-bottom: 225px !important;
+  overflow: visible !important;
+}
+
+.art-01b .caption-below {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  padding: 0 20px !important;
+  background: transparent !important;
+}
+
+.art-01b .title {
+  display: block !important;
+  color: var(--caption) !important;
+  opacity: var(--label-opacity-artwork) !important;
+}
 
   /* ART-02 — Looking Back
      Full width on mobile */
