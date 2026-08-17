@@ -524,11 +524,33 @@ body {
 
 
 /* --------------------------------------------------------------------------
+   ART-01B — They’re Eating the Pets of the People That Live There (2026)
+   Label only, placed in the white space after the hero
+   -------------------------------------------------------------------------- */
+.art-01b {
+  height: auto !important;
+  overflow: visible;
+  margin-top: 140px;
+  margin-bottom: 300px;
+}
+
+.art-01b::before {
+  display: none;
+}
+
+.art-01b .caption-below {
+  position: static;
+  padding: 0 4vw;
+  background: transparent;
+}
+
+
+/* --------------------------------------------------------------------------
    ART-02 — Looking Back (1993)
    Layout: right | Role: origin + light2
    -------------------------------------------------------------------------- */
 .art-02 {
-  margin-top: 350px;
+  margin-top: 160px;
   margin-bottom: 180px;
 }
 
@@ -819,10 +841,19 @@ body {
 
   /* ---------- Per-artwork mobile spacing & image behaviour ---------- */
 
+  /* ART-01B — label only */
+  .art-01b {
+    margin-top: 125px !important;
+    margin-bottom: 225px !important;
+  }
+  .art-01b .caption-below {
+    padding: 0 20px !important;
+  }
+
   /* ART-02 — Looking Back
      Full width on mobile */
   .art-02 {
-    margin-top: 230px !important;
+    margin-top: 80px !important;
     margin-bottom: 0 !important;
   }
   .art-02 img {
@@ -1410,6 +1441,22 @@ The hero image is therefore not intended as a promotional banner, but as the fir
 <h2 class="sr-only">
     John Boelee – Contemporary Artist Based in Spain
 </h2>
+</section>
+
+
+<!-- ==========================================================================
+     ART-01B — They’re Eating the Pets of the People That Live There (2026)
+     Label placed in the white space between hero and Looking Back
+     ========================================================================== -->
+<section class="artwork art-01b layout-caption-below present-label-under">
+  <h2 class="sr-only">Recent work: They’re Eating the Pets of the People That Live There (2026)</h2>
+  <div class="caption-below">
+    <div class="title">
+      <i>They’re Eating the Pets of the People That Live There</i> (2026)<br>
+      Acrylic paint and charcoal on canvas<br>
+      70 × 70 cm
+    </div>
+  </div>
 </section>
 
 
