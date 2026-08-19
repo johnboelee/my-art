@@ -78,7 +78,7 @@
   --footer: #555;
 
   /* Wall colours (shared rooms) */
-  --wall-1: var(--paper); /* art-03, art-04, art-08 */
+  --wall-1: var(--paper); /* art-03, art-04 (full-width), art-08 */
   --wall-2: var(--paper); /* art-02 */
 
   /* Label opacity — centrale instelling
@@ -583,14 +583,13 @@ body {
 
 
 
-
 /* --------------------------------------------------------------------------
    ART-03 — Layers of Absence (2025)
    Layout: full | Present: mobile-inset + floating | Role: current
    -------------------------------------------------------------------------- */
 .art-03 {
-  margin-top: 30px;
-  margin-bottom: 0;
+  margin-top: 80px;
+  margin-bottom: 125px;
 }
 
 /* Desktop image sizing & position
@@ -604,22 +603,21 @@ body {
 
 
 
-
 /* --------------------------------------------------------------------------
    ART-04 — Untitled (2025)
-   Layout: right | Present: mobile-inset + floating | Role: current
+   Layout: caption-below | Present: label-under | Role: current
+   Full-width studio wall photo (side to side), like art-05
    -------------------------------------------------------------------------- */
 .art-04 {
   margin-top: 0;
   margin-bottom: 380px;
 }
 
-/* Desktop image sizing & position
-   (further refined in the min-width:801px query) */
-.art-04.layout-right img {
-  height: 80%;
-  top: 10%;
-  left: 4%;              /* sits slightly in from the left */
+/* Full-width image – no horizontal offset */
+.art-04.layout-caption-below img {
+  width: 100%;
+  height: auto;
+  left: auto;
   right: auto;
 }
 
@@ -897,11 +895,11 @@ body {
     top: auto !important;
 }
 
-  /* ART-03 — Layers of Absence
+     /* ART-03 — Layers of Absence
      Inset (80% width, centred) */
   .art-03 {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 80px !important;
+    margin-bottom: 150px !important;
   }
  .art-03 img {
     width: 80% !important;
@@ -913,20 +911,24 @@ body {
     top: auto !important;
 }
 
-  /* ART-04 — Untitled
-     Inset (80% width, centred) — same as art-03 */
-  .art-04 {
-    margin-top: 80px !important;
-    margin-bottom: 0 !important;
-  }
- .art-04 img {
-    width: 80% !important;
-    margin-left: 10% !important;
-    margin-right: 10% !important;
-    left: auto !important;
-    right: auto !important;
-    height: auto !important;
-    top: auto !important;
+/* ART-04 — Untitled
+   Full width, higher mobile image field */
+
+.art-04 {
+  height: 70vh !important;
+  margin-top: 0 !important;
+  margin-bottom: 80px !important;
+}
+
+.art-04 img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
 }
 
   /* ART-05 — Emotional Disturbance #9
@@ -1052,12 +1054,7 @@ body {
     left: 4%;
   }
 
-  /* ART-04 desktop: image on the left side of the room */
-  .art-04.layout-right.present-mobile-inset img {
-    height: 80%;
-    top: 10%;
-    left: 4%;
-  }
+  /* ART-04 is full-width (layout-caption-below); no desktop inset positioning needed */
 
   .panel-right,
   .panel-left {
@@ -1415,15 +1412,19 @@ body {
 <section class="hero art-01">
 <p class="sr-only">
 
-This photograph forms the entrance to the digital exhibition of Dutch contemporary artist John Boelee. It shows a framed mixed-media artwork hanging on the wall of Boelee's studio in Spain, where he is based and develops his artistic practice. The work is seen from a distance and is not presented as a fully revealed artwork; instead, it appears within the studio environment as part of a larger space.
 
-The image is deliberately used as the hero of the website because it functions as a visual entrance into the exhibition. Rather than beginning with a close-up or an isolated reproduction of an artwork, the visitor first encounters the space in which the work exists. The photograph creates the impression of entering the artist's studio and discovering an artwork ahead, much as a visitor might enter a physical exhibition and encounter a work before seeing the exhibition as a whole.
+This image forms the conceptual entrance to the digital exhibition of Dutch contemporary artist John Boelee. It shows a recent painting hanging on the wall of Boelee's studio in Spain. The work is visible within the studio environment, although its subject and meaning are not immediately apparent. The image therefore functions both as a glimpse of the artist's working environment and as an introduction to a more contemporary concern within his practice.
 
-The partial visibility of the mixed-media work is intentional. It provides a first glimpse of John Boelee's practice without immediately explaining or revealing everything that follows. The image therefore acts as a quiet introduction and a visual threshold between the outside world and the digital exhibition. It establishes the relationship between artwork, studio, space and observation that continues throughout the presentation of Boelee's work.
+The painting, *They’re Eating the Pets of the People That Live There* (2026), takes its title from an intentionally absurd statement associated with Donald Trump. The title introduces a language of political rhetoric in which an opponent can be transformed into a threat through exaggeration, fear and repetition. In the painting, this mechanism is echoed by the presence of a dark male figure whose appearance can initially seem unsettling or even threatening.
 
-As an artist based in Spain, John Boelee works across abstraction and representation, exploring perception, memory, visual culture and layered imagery through painting and mixed media. This studio photograph introduces that practice through context rather than through a conventional portfolio presentation. The artwork remains part of a real working environment, allowing the first encounter with the exhibition to begin with space, distance and suggestion.
+At the same time, the image can be read as a form of parody. The apparently frightening figure is so strongly shaped by the expectations we bring to the image that the construction of the "enemy" itself becomes visible. What appears at first as a threatening person can therefore also be understood as an exaggerated or absurd projection — a visual boogeyman created through perception, language and suggestion.
 
-The hero image is therefore not intended as a promotional banner, but as the first room of the digital white-cube exhibition: a quiet point of entry into John Boelee's contemporary art practice, with the artwork ahead serving as an initial glimpse of what the visitor will encounter further into the exhibition.
+The work occupies the uncertain space between seeing and interpreting. The figure is not simply presented as a character or portrait, but becomes a surface onto which ideas about danger, difference and otherness can be projected. The relationship between the deliberately provocative title and the ambiguous image makes it possible to question how quickly an image can acquire meaning, and how easily that meaning can be manipulated.
+
+As the entrance to the exhibition, the hero introduces this tension between image, language and perception without attempting to explain the work completely. The painting remains part of the real environment in which John Boelee works, but its role within the website is conceptual rather than documentary: it establishes a contemporary point of entry into an oeuvre concerned with representation, visual culture, perception and the unstable meanings carried by images.
+
+The hero is therefore not a promotional banner and not simply a studio photograph. It is a threshold between the artist's physical working environment and the wider questions raised by the work, inviting the visitor to enter the exhibition through an image whose meaning remains deliberately unsettled.
+
 </p>
 
 <h1 class="hero-name">JOHN BOELEE</h1>
@@ -1554,6 +1555,7 @@ work in which changing meaning, transformation and the space created by what is 
 </section>
 
 
+
 <!-- ==========================================================================
      ART-03 — Layers of Absence (2025)
      ========================================================================== -->
@@ -1590,10 +1592,12 @@ the viewer is encouraged to see how the works reinforce one another and how mean
 </section>
 
 
+
 <!-- ==========================================================================
      ART-04 — Untitled (2025)
+     Full-width studio wall photo (side to side), like art-05
      ========================================================================== -->
-<section class="artwork art-04 layout-right present-mobile-inset present-floating role-current">
+<section class="artwork art-04 layout-caption-below present-label-under role-current">
   <h2 class="sr-only">Recent work: Untitled (2025)</h2>
   <p class="sr-only">
 
@@ -1614,21 +1618,23 @@ The figures seem less to be placed into the image than to be discovered within i
       john-boelee-art-04-1600.webp 1600w,
       john-boelee-art-04-2560.webp 2560w,
       john-boelee-art-04-3840.webp 3840w"
-    sizes="(max-width: 800px) 80vw, 55vw"
+    sizes="100vw"
     width="1600"
     height="2000"
     loading="lazy"
     decoding="async"
-    alt="Untitled (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
+    alt="Studio view of Untitled (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee, hanging on the wall">
 
-  <div class="panel-right">
+  <div class="caption-below">
     <div class="title">
-       <i>Untitled</i> (2025)<br>
+      Studio view<br>
+      <i>Untitled</i> (2025)<br>
       Ink and acrylic paint on paper and reverse-painted glass<br>
       59 × 49 cm
     </div>
   </div>
 </section>
+
 
 
 <!-- ==========================================================================
