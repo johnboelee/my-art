@@ -352,29 +352,29 @@ body {
 /* --- Panels & Captions --- */
 .panel-right {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: var(--label-bottom, 40px);
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 28px 4vw 32px;
-  background: inherit;
+  padding: 0 4vw;
+  background: transparent;
   z-index: 3;
 }
 
+
 .panel-left {
   position: absolute;
-  top: 0;
-  bottom: 0;
   left: 0;
+  bottom: var(--label-bottom, 40px);
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  padding: 28px 4vw 32px;
-  background: inherit;
+  padding: 0 4vw;
+  background: transparent;
   z-index: 3;
 }
+
 
 .caption-below {
   --caption-x: 4vw;
@@ -544,21 +544,26 @@ body {
   background: transparent;
 }
 
-
 /* --------------------------------------------------------------------------
    ART-02 — Looking Back (1993)
    Layout: right | Role: origin + light2
    -------------------------------------------------------------------------- */
 .art-02 {
-  margin-top: 140px;
-  margin-bottom: 270px;
+  margin-top: 160px;
+  margin-bottom: 140px;
+
+  /* Container / room */
+  height: 1100px;
+
+  /* Label position */
+  --label-bottom: 1px;
 }
 
 /* Desktop image sizing & position */
 .art-02.layout-right img {
-  height: 100%;          /* full height of the room */
+  height: 750px;
   top: 0;
-  left: 0;               /* image sits on the left side of the section */
+  left: 0;
   right: auto;
 }
 
@@ -573,18 +578,34 @@ body {
    Curatorial role:
    origin → autonomous contemporary work → recent development
    -------------------------------------------------------------------------- */
+
 .art-02a {
   margin-top: 0;
   margin-bottom: 180px;
+
+  height: 1500px;
+  position: relative;
+
+  --label-bottom: 50px;
 }
 
-/* Desktop image sizing & position */
 .art-02a.layout-right.present-inset img {
-  height: 90%;
-  top: 9%;
-  left: auto;
-  right: 8%;
+  position: absolute !important;
+
+  width: auto !important;
+  height: 750px !important;
+
+  top: 47% !important;
+  bottom: auto !important;
+
+  left: 50% !important;
+  right: auto !important;
+
+  transform: translate(-50%, -50%) !important;
 }
+
+
+
 
 
 
@@ -596,15 +617,18 @@ body {
 .art-02b {
   margin-top: 0;
   margin-bottom: 0;
+
+  height: 1100px;
+  --label-bottom: 1px;
 }
 
-/* Desktop image sizing & position */
 .art-02b.layout-right.present-inset img {
-  height: 70%;           /* smaller than full room height */
-  top: 15%;              /* vertically centred-ish */
-  left: 0;
-  right: auto;
+  height: 600px !important;
+  top: 17%;
+  left: auto;
+  right: 4%;
 }
+
 
 
 
@@ -613,18 +637,20 @@ body {
    Layout: full | Present: mobile-inset + floating | Role: current
    -------------------------------------------------------------------------- */
 .art-03 {
-  margin-top: 80px;
-  margin-bottom: 250px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  height: 1200px;
+  --label-bottom: 50px;
 }
 
-/* Desktop image sizing & position
-   (further refined in the min-width:801px query) */
 .art-03.layout-full img {
-  height: 80%;
-  top: 10%;
-  left: 4%;              /* sits slightly in from the left */
+  height: 728px !important;
+  top: 8%;
   right: auto;
+  left: 4%;
 }
+
 
 
 
@@ -634,7 +660,7 @@ body {
    Full-width studio wall photo (side to side), like art-05
    -------------------------------------------------------------------------- */
 .art-04 {
-  margin-top: 0;
+  margin-top: 110px;
   margin-bottom: 380px;
 }
 
@@ -1125,15 +1151,6 @@ body {
     background: #f2f2f2;
   }
 
-  .art-02a {
-    height: 1400px;
-  }
-
-  .art-02a.layout-right.present-inset img {
-    height: 750px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
 }
 
 
