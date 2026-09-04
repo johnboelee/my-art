@@ -1521,7 +1521,33 @@ The hero is therefore not a promotional banner and not simply a studio photograp
 
 <h1 class="hero-name">JOHN BOELEE</h1>
 
+
+<!-- 
+================================================================================
+RESPONSIVE IMAGES – EIGEN BREAKPOINTS 
+
+Alle art-werken gebruiken nu <picture> + media queries i.p.v. alleen srcset.
+Doel: zelf bepalen bij welke vensterbreedte welke resolutie wordt geladen.
+
+Standaard desktop-breakpoints:
+  ≥ 2200px  → 3840
+  ≥ 1400px  → 2560
+  ≥ 801px   → 1600
+  ≤ 800px   → 800 (of speciale mobile-crop)
+
+Aanpassen per afbeelding:
+  Verander alleen de media-waarde van dat ene werk, bijv.:
+  <source media="(min-width: 1200px)" srcset="...-2560.webp">
+
+Speciale mobile-crops (art-01, art-04, art-09) blijven via:
+  <source media="(max-width: 800px)" srcset="...-mobile-...">
+
+De <img> is alleen nog fallback.
+================================================================================
+-->
+
 <picture>
+  <!-- Mobile – speciale crop -->
   <source
     media="(max-width: 800px)"
     srcset="
@@ -1531,13 +1557,23 @@ The hero is therefore not a promotional banner and not simply a studio photograp
       john-boelee-art-01-mobile-3840.webp 3840w"
     sizes="100vw">
 
+  <!-- Desktop breakpoints -->
+  <source
+    media="(min-width: 2200px)"
+    srcset="john-boelee-art-01-3840.webp">
+
+  <source
+    media="(min-width: 1400px)"
+    srcset="john-boelee-art-01-2560.webp">
+
+  <source
+    media="(min-width: 801px)"
+    srcset="john-boelee-art-01-1600.webp">
+
+  <!-- Fallback -->
   <img
     src="john-boelee-art-01-1600.webp"
-    srcset="
-      john-boelee-art-01-800.webp 800w,
-      john-boelee-art-01-1600.webp 1600w,
-      john-boelee-art-01-2560.webp 2560w,
-      john-boelee-art-01-3840.webp 3840w"
+    srcset="john-boelee-art-01-800.webp 800w"
     sizes="100vw"
     width="1600"
     height="2000"
@@ -1545,6 +1581,8 @@ The hero is therefore not a promotional banner and not simply a studio photograp
     fetchpriority="high"
     decoding="async">
 </picture>
+
+
 
 <h2 class="sr-only">
     John Boelee – Contemporary Artist Based in Spain
@@ -1571,7 +1609,7 @@ The hero is therefore not a promotional banner and not simply a studio photograp
 
 
 <!-- ==========================================================================
-     ART-02 — Looking Back (1993)
+     ART-02 — Looking Back (1993) (zonder speciale mobile-crop).
      ========================================================================== -->
 <section class="artwork art-02 layout-right role-origin role-light2">
  <h2 class="sr-only">Early work: Looking Back (1993)</h2>
@@ -1586,18 +1624,20 @@ The decision to present this work at its full image width is also intentional. T
 Within the context of the exhibition, this early drawing therefore serves as an origin point. It establishes a connection between observation and artistic transformation and reminds the viewer that the later abstract, experimental and mixed-media works did not emerge in isolation. They developed from an ongoing process of looking, recording, questioning and reinterpreting visual experience. Placing this work here is an invitation to notice that continuity and to consider how the concerns visible in this early drawing continue to echo throughout John Boelee's artistic practice.
 </p>
 
- <img
-  src="john-boelee-art-02-1600.webp"
-  srcset="
-    john-boelee-art-02-800.webp 800w,
-    john-boelee-art-02-1600.webp 1600w,
-    john-boelee-art-02-2560.webp 2560w,
-    john-boelee-art-02-3840.webp 3840w"
-  sizes="100vw"
-  width="1600"
-  height="2000"
-  decoding="async"
-  alt="Looking Back (1993), charcoal drawing on paper, drawn at Diergaarde Blijdorp, Rotterdam, by John Boelee">
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-02-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-02-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-02-1600.webp">
+
+  <img
+    src="john-boelee-art-02-1600.webp"
+    srcset="john-boelee-art-02-800.webp 800w"
+    sizes="100vw"
+    width="1600"
+    height="2000"
+    decoding="async"
+    alt="Looking Back (1993), charcoal drawing on paper, drawn at Diergaarde Blijdorp, Rotterdam, by John Boelee">
+</picture>
   
   <div class="panel-right">
     <div class="title">
@@ -1613,7 +1653,7 @@ Drawn at Diergaarde Blijdorp, Rotterdam
 
 <!-- ==========================================================================
      ART-02A — They’re Eating the Pets of the People That Live There (2026)
-     Return of the hero work as an autonomous artwork
+     Return of the hero work as an autonomous artwork (zonder speciale mobile-crop).
      ========================================================================== -->
 
 <section class="artwork art-02a layout-right present-inset role-current">
@@ -1640,19 +1680,21 @@ Drawn at Diergaarde Blijdorp, Rotterdam
     visual culture and the instability of meaning.
   </p>
 
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-02a-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-02a-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-02a-1600.webp">
+
   <img
     src="john-boelee-art-02a-1600.webp"
-    srcset="
-      john-boelee-art-02a-800.webp 800w,
-      john-boelee-art-02a-1600.webp 1600w,
-      john-boelee-art-02a-2560.webp 2560w,
-      john-boelee-art-02a-3840.webp 3840w"
+    srcset="john-boelee-art-02a-800.webp 800w"
     sizes="(max-width: 800px) 80vw, 50vw"
     width="1600"
     height="1600"
     loading="lazy"
     decoding="async"
     alt="They’re Eating the Pets of the People That Live There (2026), acrylic paint and charcoal on canvas by John Boelee">
+</picture>
 
   <div class="panel-right">
     <div class="title">
@@ -1667,12 +1709,8 @@ Drawn at Diergaarde Blijdorp, Rotterdam
 
 
 
-
-
-
-
 <!-- ==========================================================================
-     ART-02B — Unbecoming (2025)
+     ART-02B — Unbecoming (2025) (zonder speciale mobile-crop).
      ========================================================================== -->
 <section class="artwork art-02b layout-right present-inset present-mobile-inset role-current role-disappearing">
   <h2 class="sr-only">Recent work: Unbecoming (2025)</h2>
@@ -1686,19 +1724,21 @@ Rather than adding more visual information, the work explores what can happen wh
 
 work in which changing meaning, transformation and the space created by what is left out become important parts of the artistic process.</p>
 
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-02b-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-02b-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-02b-1600.webp">
+
   <img
     src="john-boelee-art-02b-1600.webp"
-    srcset="
-      john-boelee-art-02b-800.webp 800w,
-      john-boelee-art-02b-1600.webp 1600w,
-      john-boelee-art-02b-2560.webp 2560w,
-      john-boelee-art-02b-3840.webp 3840w"
+    srcset="john-boelee-art-02b-800.webp 800w"
     sizes="(max-width: 800px) 80vw, 55vw"
     width="1600"
     height="2000"
     loading="lazy"
     decoding="async"
     alt="Unbecoming (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
+</picture>
 
   <div class="panel-right">
     <div class="title">
@@ -1712,7 +1752,7 @@ work in which changing meaning, transformation and the space created by what is 
 
 
 <!-- ==========================================================================
-     ART-03 — Meathead (2025)
+     ART-03 — Meathead (2025) (zonder speciale mobile-crop)
      ========================================================================== -->
 <section class="artwork art-03 layout-full present-mobile-inset present-floating role-current">
   <h2 class="sr-only">Recent work: Meathead (2025)</h2>
@@ -1732,18 +1772,20 @@ the viewer is encouraged to see how the works reinforce one another and how mean
     </div>
   </div>
 
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-03-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-03-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-03-1600.webp">
+
   <img
     src="john-boelee-art-03-1600.webp"
-    srcset="
-      john-boelee-art-03-800.webp 800w,
-      john-boelee-art-03-1600.webp 1600w,
-      john-boelee-art-03-2560.webp 2560w,
-      john-boelee-art-03-3840.webp 3840w"
+    srcset="john-boelee-art-03-800.webp 800w"
     sizes="(max-width: 800px) 80vw, 55vw"
     width="1600"
     height="2000"
     decoding="async"
     alt="MEATHEAD (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
+</picture>
 </section>
 
 
@@ -1769,10 +1811,8 @@ The figures seem less to be placed into the image than to be discovered within i
 </p>
 
 
-  
-
-
-<picture>
+  <picture>
+  <!-- Mobile – speciale crop -->
   <source
     media="(max-width: 800px)"
     srcset="
@@ -1782,13 +1822,23 @@ The figures seem less to be placed into the image than to be discovered within i
       john-boelee-art-04-mobile-3840.webp 3840w"
     sizes="100vw">
 
-<img
+  <!-- Desktop breakpoints -->
+  <source
+    media="(min-width: 2200px)"
+    srcset="john-boelee-art-04-3840.webp">
+
+  <source
+    media="(min-width: 1400px)"
+    srcset="john-boelee-art-04-2560.webp">
+
+  <source
+    media="(min-width: 801px)"
+    srcset="john-boelee-art-04-1600.webp">
+
+  <!-- Fallback -->
+  <img
     src="john-boelee-art-04-1600.webp"
-    srcset="
-      john-boelee-art-04-800.webp 800w,
-      john-boelee-art-04-1600.webp 1600w,
-      john-boelee-art-04-2560.webp 2560w,
-      john-boelee-art-04-3840.webp 3840w"
+    srcset="john-boelee-art-04-800.webp 800w"
     sizes="100vw"
     width="1600"
     height="2000"
@@ -1810,7 +1860,7 @@ The figures seem less to be placed into the image than to be discovered within i
 
 
 <!-- ==========================================================================
-     ART-05 — Emotional Disturbance #9 (2021)
+     ART-05 — Emotional Disturbance #9 (2021) (zonder speciale mobile-crop).
      ========================================================================== -->
 <section class="artwork art-05 layout-caption-below present-label-under role-monumental">
   <h2 class="sr-only">Studio practice: Emotional Disturbance #9 (2021)</h2>
@@ -1828,19 +1878,21 @@ The full-width presentation of the photograph is deliberately documentary. It al
 
 It is an insight into the studio and at the same time a quiet farewell to one phase of the artist's practice. Within the chronology of the exhibition, it looks backwards while the work itself continues to hold onto the uncertain space between one state and another.</p>
 
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-05-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-05-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-05-1600.webp">
+
   <img
     src="john-boelee-art-05-1600.webp"
-    srcset="
-      john-boelee-art-05-800.webp 800w,
-      john-boelee-art-05-1600.webp 1600w,
-      john-boelee-art-05-2560.webp 2560w,
-      john-boelee-art-05-3840.webp 3840w"
+    srcset="john-boelee-art-05-800.webp 800w"
     sizes="100vw"
     width="1600"
     height="1600"
     loading="lazy"
     decoding="async"
     alt="EMOTIONAL DISTURBANCE #9 (2021), acrylic paint on canvas (airbrushed) by John Boelee">
+</picture>
 
   <div class="caption-below">
     <div class="title">
@@ -1883,7 +1935,7 @@ It is an insight into the studio and at the same time a quiet farewell to one ph
 
 
 <!-- ==========================================================================
-     ART-06 — Galerie Delta, exterieur (2010)
+     ART-06 — Galerie Delta, exterieur (2010) (zonder speciale mobile-crop).
      ========================================================================== -->
 <section class="artwork art-06 layout-right role-light6 role-delta">
   <h2 class="sr-only">From the studio into the wider art world, exhibition history: Galerie Delta, Rotterdam (2010)</h2>
@@ -1907,43 +1959,46 @@ Exterior view during the solo exhibition<br>
     </div>
   </div>
 
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-06-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-06-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-06-1600.webp">
+
   <img
     src="john-boelee-art-06-1600.webp"
-    srcset="
-      john-boelee-art-06-800.webp 800w,
-      john-boelee-art-06-1600.webp 1600w,
-      john-boelee-art-06-2560.webp 2560w,
-      john-boelee-art-06-3840.webp 3840w"
+    srcset="john-boelee-art-06-800.webp 800w"
     sizes="100vw"
     width="1600"
     height="1200"
     loading="lazy"
     decoding="async"
     alt="Galerie Delta, Rotterdam, 2010, exterior view during the solo exhibition by John Boelee">
+</picture>
 </section>
 
 
 <!-- ==========================================================================
-     ART-07 — Galerie Delta, interieur (2010)
+     ART-07 — Galerie Delta, interieur (2010) (zonder speciale mobile-crop)
      ========================================================================== -->
 <section class="artwork art-07 layout-caption-below">
   <h2 class="sr-only">Exhibition history: Galerie Delta, Rotterdam, interior view (2010)</h2>
   <p class="sr-only">Interior view of Galerie Delta in Rotterdam during John Boelee's 2010 solo exhibition, showing the paintings installed within the gallery space.</p>
 
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-07-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-07-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-07-1600.webp">
+
   <img
     src="john-boelee-art-07-1600.webp"
-    srcset="
-      john-boelee-art-07-800.webp 800w,
-      john-boelee-art-07-1600.webp 1600w,
-      john-boelee-art-07-2560.webp 2560w,
-      john-boelee-art-07-3840.webp 3840w"
+    srcset="john-boelee-art-07-800.webp 800w"
     sizes="100vw"
     width="1600"
     height="1200"
     loading="lazy"
     decoding="async"
     alt="Interior view of Galerie Delta, Rotterdam, during the 2010 solo exhibition, paintings by John Boelee installed in the gallery space">
-
+</picture>
   <div class="caption-below">
     <div class="title title--documentary">
 Solo exhibition Galerie Delta<br>
@@ -1955,25 +2010,27 @@ Rotterdam<br>
 
 
 <!-- ==========================================================================
-     ART-08 — Affordable Art Fair (2012)
+     ART-08 — Affordable Art Fair (2012) (zonder speciale mobile-crop).
      ========================================================================== -->
 <section class="artwork art-08 layout-right present-inset present-image-right role-current role-fair">
   <h2 class="sr-only">Exhibition history: Affordable Art Fair, Amsterdam (2012)</h2>
   <p class="sr-only">John Boelee's work presented by ARTITLEDcontemporary (formerly Galerie Arttitled! Contemporary Art) at the Affordable Art Fair in Amsterdam, 2012, documenting the artist's practice within a contemporary art fair context.</p>
 
+<picture>
+  <source media="(min-width: 2200px)" srcset="john-boelee-art-08-3840.webp">
+  <source media="(min-width: 1400px)" srcset="john-boelee-art-08-2560.webp">
+  <source media="(min-width: 801px)"  srcset="john-boelee-art-08-1600.webp">
+
   <img
     src="john-boelee-art-08-1600.webp"
-    srcset="
-      john-boelee-art-08-800.webp 800w,
-      john-boelee-art-08-1600.webp 1600w,
-      john-boelee-art-08-2560.webp 2560w,
-      john-boelee-art-08-3840.webp 3840w"
+    srcset="john-boelee-art-08-800.webp 800w"
     sizes="(max-width: 800px) 100vw, 55vw"
     width="1600"
     height="1200"
     loading="lazy"
     decoding="async"
     alt="ARTITLEDcontemporary (formerly Galerie Arttitled! Contemporary Art) presenting John Boelee's work at the 2012 Affordable Art Fair.">
+</picture>
 
   <div class="panel-right">
     <div class="title title--documentary">
@@ -2003,30 +2060,41 @@ without requiring a final explanation or conclusion. They form a quiet closing p
 
 but with a moment of looking. The final image leaves the viewer with the work itself and with the possibility of continuing to observe, without needing to resolve what has been seen.</p>
 
-  <picture>
-    <source
-      media="(max-width: 800px)"
-      srcset="
-        john-boelee-art-09-mobile-800.webp 800w,
-        john-boelee-art-09-mobile-1600.webp 1600w,
-        john-boelee-art-09-mobile-2560.webp 2560w,
-        john-boelee-art-09-mobile-3840.webp 3840w"
-      sizes="100vw">
+<picture>
+  <!-- Mobile – speciale crop -->
+  <source
+    media="(max-width: 800px)"
+    srcset="
+      john-boelee-art-09-mobile-800.webp 800w,
+      john-boelee-art-09-mobile-1600.webp 1600w,
+      john-boelee-art-09-mobile-2560.webp 2560w,
+      john-boelee-art-09-mobile-3840.webp 3840w"
+    sizes="100vw">
 
-    <img
-      src="john-boelee-art-09-1600.webp"
-      srcset="
-        john-boelee-art-09-800.webp 800w,
-        john-boelee-art-09-1600.webp 1600w,
-        john-boelee-art-09-2560.webp 2560w,
-        john-boelee-art-09-3840.webp 3840w"
-      sizes="100vw"
-      width="1600"
-      height="1067"
-      loading="lazy"
-      decoding="async"
-      alt="Studio view, EMOTIONAL DISTURBANCE #5 and #6 (2010), acrylic paint on canvas (airbrushed), 35 × 35 cm each, by John Boelee">
-  </picture>
+  <!-- Desktop breakpoints -->
+  <source
+    media="(min-width: 2200px)"
+    srcset="john-boelee-art-09-3840.webp">
+
+  <source
+    media="(min-width: 1400px)"
+    srcset="john-boelee-art-09-2560.webp">
+
+  <source
+    media="(min-width: 801px)"
+    srcset="john-boelee-art-09-1600.webp">
+
+  <!-- Fallback -->
+  <img
+    src="john-boelee-art-09-1600.webp"
+    srcset="john-boelee-art-09-800.webp 800w"
+    sizes="100vw"
+    width="1600"
+    height="1067"
+    loading="lazy"
+    decoding="async"
+    alt="Studio view, EMOTIONAL DISTURBANCE #5 and #6 (2010), acrylic paint on canvas (airbrushed), 35 × 35 cm each, by John Boelee">
+</picture>
 
   <div class="caption-cover">
     Studio view<br>
