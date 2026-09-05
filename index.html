@@ -850,22 +850,23 @@ body {
     z-index: 2;
   }
 
-  .panel-right,
-  .panel-left {
-    position: static;
-    width: 100%;
-    padding: 22px 20px 28px;
-    background: var(--paper);
-    display: flex;
-    justify-content: flex-start;
-    text-align: left;
-  }
+.panel-right,
+.panel-left {
+  position: static;
+  width: 100%;
+  padding: var(--caption-gap, 22px) 20px 28px;
+  background: var(--paper);
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+}
+
 
   .caption-below {
     position: static;
     transform: none;
     width: 100%;
-    padding: 22px 20px 28px;
+    padding: var(--caption-gap, 22px) 20px 28px;
     background: var(--paper);
     text-align: left;
     text-shadow: none;
@@ -977,6 +978,7 @@ body {
   .art-02 {
     margin-top: 80px !important;
     margin-bottom: 0 !important;
+    --caption-gap: 120px !important; /* standaard waarde, pas aan naar wens */
   }
   .art-02 img {
     width: 100% !important;
@@ -992,8 +994,9 @@ body {
      Autonomous reproduction after Looking Back */
 
 .art-02a {
-  margin-top: 140px !important;
+  margin-top: 150px !important;
   margin-bottom: 90px !important;
+  --caption-gap: 120px !important; /* standaard waarde, pas aan naar wens */
 }
 
 .art-02a img {
@@ -1012,6 +1015,7 @@ body {
   .art-02b {
     margin-top: 200px !important;
     margin-bottom: 75px !important;
+    --caption-gap: 100px !important; /* standaard waarde, pas aan naar wens */
   }
  .art-02b img {
     width: 80% !important;
@@ -1028,6 +1032,7 @@ body {
   .art-03 {
     margin-top: 80px !important;
     margin-bottom: 150px !important;
+    --caption-gap: 100px !important; /* standaard waarde, pas aan naar wens */
   }
  .art-03 img {
     width: 80% !important;
@@ -1044,6 +1049,7 @@ body {
 .art-04 {
   margin-top: 0 !important;
   margin-bottom: 80px !important;
+
   height: auto !important;
   overflow: hidden !important;
 }
@@ -1075,6 +1081,7 @@ body {
   .art-05 {
     margin-top: 280px !important;
     margin-bottom: 100px !important;
+    --caption-gap: 30px !important; /* standaard waarde, pas aan naar wens */
   }
   .art-05 img {
     width: 100% !important;
@@ -1091,6 +1098,7 @@ body {
   .art-06 {
     margin-top: 80px !important;
     margin-bottom: 0 !important;
+    --caption-gap: 30px !important; /* standaard waarde, pas aan naar wens */
   }
   .art-06 img {
     width: 100% !important;
@@ -1107,6 +1115,7 @@ body {
   .art-07 {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+    --caption-gap: 30px !important; /* standaard waarde, pas aan naar wens */
   }
   .art-07 img {
     width: 100% !important;
@@ -1123,6 +1132,7 @@ body {
   .art-08 {
     margin-top: 0 !important;
     margin-bottom: 190px !important;
+    --caption-gap: 30px !important; /* standaard waarde, pas aan naar wens */
   }
   .art-08 img {
     width: 100% !important;
@@ -1139,6 +1149,7 @@ body {
   .art-09 {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+    
   }
   .art-09 img {
     width: 100% !important;
@@ -1499,13 +1510,14 @@ body {
     "@id": "https://johnboelee.com/#artist"
   },
   "dateCreated": "2025",
-  "width": "49 cm",
-  "height": "59 cm",
   "artform": "Mixed media",
   "artMedium": "Ink and acrylic paint on paper and reverse-painted glass",
-  "description": "A mixed media work between abstraction and representation, in which a fragmented human figure emerges from layers of ink, acrylic paint, gestures and painted marks. The work explores the unstable boundary between flesh, image and material, allowing the suggestion of a face and body to appear without becoming fully resolved.",
+  "width": "49 cm",
+  "height": "59 cm",
+  "description": "Meathead (2025) is a mixed media work by Dutch contemporary artist John Boelee. Ink and acrylic paint on paper and reverse-painted glass are layered to create a fragmented human figure that emerges from a dense field of marks, gestures and painted forms. The work explores the unstable boundary between abstraction and representation, allowing the suggestion of a face and body to appear without becoming fully resolved.",
   "image": "https://johnboelee.com/john-boelee-art-03-1600.webp"
 }
+
 ,
 
  {
@@ -1865,14 +1877,6 @@ as though the image is allowing them to emerge rather than simply depicting them
 
 the viewer is encouraged to see how the works reinforce one another and how meaning can arise from the accumulation and presence of visual elements. These recent works continue Boelee's exploration of perception and the relationship between abstraction and representation, while shifting the emphasis from disappearance and omission toward the possibilities contained within what remains.</p>
 
-  <div class="panel-right">
-    <div class="title">
-      <i>Meathead</i> (2025)<br>
-      Ink and acrylic paint on paper and reverse-painted glass<br>
-      59 × 49 cm
-    </div>
-  </div>
-
 <picture>
   <source media="(min-width: 2200px)" srcset="john-boelee-art-03-3840.webp">
   <source media="(min-width: 1400px)" srcset="john-boelee-art-03-2560.webp">
@@ -1887,6 +1891,16 @@ the viewer is encouraged to see how the works reinforce one another and how mean
     decoding="async"
     alt="MEATHEAD (2025), mixed media artwork, ink and acrylic paint on paper and reverse-painted glass by John Boelee">
 </picture>
+
+  <div class="panel-right">
+    <div class="title">
+      <i>Meathead</i> (2025)<br>
+      Ink and acrylic paint on paper and reverse-painted glass<br>
+      59 × 49 cm
+    </div>
+  </div>
+
+
 </section>
 
 
