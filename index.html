@@ -40,9 +40,51 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+
+
 <!-- Preload critical images (hero + first artwork) -->
-<link rel="preload" as="image" href="john-boelee-art-01-1600.webp" imagesrcset="john-boelee-art-01-800.webp 800w, john-boelee-art-01-1600.webp 1600w, john-boelee-art-01-2560.webp 2560w, john-boelee-art-01-3840.webp 3840w" imagesizes="100vw">
-<link rel="preload" as="image" href="john-boelee-art-02-1600.webp" imagesrcset="john-boelee-art-02-800.webp 800w, john-boelee-art-02-1600.webp 1600w, john-boelee-art-02-2560.webp 2560w, john-boelee-art-02-3840.webp 3840w" imagesizes="100vw">
+<!-- Viewport	        Preload	           <picture>
+     ≤ 800px	        mobile srcset	     mobile srcset
+     801–1399px	      1600	             1600
+     1400–2199px	    2560	             2560
+     ≥ 2200px	        3840	             3840
+
+binnen ≤800px laat je de browser nog steeds kiezen tussen 800/1600/2560/3840
+op basis van viewport + DPR. Dat is juist gewenst; daar dwing je niet één vaste mobiele afbeelding af.    
+ -->
+<link rel="preload"
+      as="image"
+      href="john-boelee-art-01-mobile-1600.webp"
+      media="(max-width: 800px)"
+      imagesrcset="
+        john-boelee-art-01-mobile-800.webp 800w,
+        john-boelee-art-01-mobile-1600.webp 1600w,
+        john-boelee-art-01-mobile-2560.webp 2560w,
+        john-boelee-art-01-mobile-3840.webp 3840w"
+      imagesizes="100vw"
+      fetchpriority="high">
+
+<!-- Desktop: 801–1399px -->
+<link rel="preload"
+      as="image"
+      href="john-boelee-art-01-1600.webp"
+      media="(min-width: 801px) and (max-width: 1399px)"
+      fetchpriority="high">
+
+<!-- Desktop: 1400–2199px -->
+<link rel="preload"
+      as="image"
+      href="john-boelee-art-01-2560.webp"
+      media="(min-width: 1400px) and (max-width: 2199px)"
+      fetchpriority="high">
+
+<!-- Desktop: ≥ 2200px -->
+<link rel="preload"
+      as="image"
+      href="john-boelee-art-01-3840.webp"
+      media="(min-width: 2200px)"
+      fetchpriority="high">
+
 
 <style>
 /* ===========================================================================================
@@ -96,6 +138,14 @@
   box-sizing: border-box;
 }
 
+picture {
+  display: block;
+}
+
+picture img {
+  display: block;
+}
+
 html,
 body {
   margin: 0;
@@ -104,6 +154,7 @@ body {
   color: var(--text);
   overflow-x: hidden;
 }
+
 
 .sr-only {
   position: absolute;
@@ -329,13 +380,20 @@ body {
   background: var(--paper);
 }
 
-.hero img {
+.hero picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero picture img {
   width: 100%;
   height: 100svh;
   object-fit: cover;
   display: block;
   object-position: center;
 }
+
 
 .hero-name {
   position: absolute;
@@ -1114,6 +1172,49 @@ body {
     white-space: nowrap;
     color: var(--caption);
   }
+
+
+  /* ==========================================================================
+   MOBILE — FORCE DESKTOP OVERRIDES BACK TO NORMAL FLOW
+   ========================================================================== */
+   .art-02a.layout-right.present-inset img {
+    position: relative !important;
+    width: 80% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+  }
+
+    .art-03.layout-full.present-mobile-inset img {
+    position: relative !important;
+    width: 80% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+  }
+
+    .art-02b.layout-right.present-inset.present-mobile-inset img {
+    position: relative !important;
+    width: 80% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+  }
 }
 
 
@@ -1570,16 +1671,16 @@ De <img> is alleen nog fallback.
     media="(min-width: 801px)"
     srcset="john-boelee-art-01-1600.webp">
 
-  <!-- Fallback -->
-  <img
-    src="john-boelee-art-01-1600.webp"
-    srcset="john-boelee-art-01-800.webp 800w"
-    sizes="100vw"
-    width="1600"
-    height="2000"
-    alt="Framed mixed-media artwork hanging on the wall of John Boelee's studio in Spain, seen from a distance."
-    fetchpriority="high"
-    decoding="async">
+  
+<!-- Fallback -->
+<img
+  src="john-boelee-art-01-1600.webp"
+  width="1600"
+  height="2000"
+  alt="Framed mixed-media artwork hanging on the wall of John Boelee's studio in Spain, seen from a distance."
+  fetchpriority="high"
+  decoding="async">
+
 </picture>
 
 
