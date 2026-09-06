@@ -755,20 +755,40 @@ body {
 
 /* --------------------------------------------------------------------------
    ART-06 — Galerie Delta, exterieur (2010)
-   Layout: right | Role: light6 + delta
+   Full-width + label in wit vlak erboven (desktop)
    -------------------------------------------------------------------------- */
 .art-06 {
   margin-top: 100px;
-  margin-bottom: 145px;  /* extra air before art-07 */
+  margin-bottom: 0px;
 }
 
-/* Desktop image sizing & position */
 /* Full-width image */
 .art-06.layout-cover img {
   width: 100%;
   height: auto;
-  left: auto;
-  right: auto;
+}
+
+/* Label uit de absolute positie halen → in het wit boven de foto */
+.art-06 .caption-cover {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  width: 100%;
+  padding: 0 4vw 28px;          /* wit ruimte + label linksboven */
+  background: transparent;
+  z-index: auto;
+  color: var(--caption);
+  opacity: var(--label-opacity-documentary);
+  font-size: 11.5px;
+  line-height: 1.55;
+  letter-spacing: 0.05em;
+}
+
+.art-06 .caption-cover .title {
+  opacity: var(--label-opacity-documentary);
 }
 
 /* --------------------------------------------------------------------------
@@ -776,7 +796,7 @@ body {
    Layout: caption-below
    -------------------------------------------------------------------------- */
 .art-07 {
-  margin-top: 155px;
+  margin-top: 0px;
   margin-bottom: 0;
 }
 
