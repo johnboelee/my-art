@@ -763,13 +763,13 @@ body {
 }
 
 /* Desktop image sizing & position */
-.art-06.layout-right img {
-  height: 100%;
-  top: 0;
-  left: 0;
+/* Full-width image */
+.art-06.layout-cover img {
+  width: 100%;
+  height: auto;
+  left: auto;
   right: auto;
 }
-
 
 /* --------------------------------------------------------------------------
    ART-07 — Galerie Delta, interieur (2010)
@@ -1093,21 +1093,48 @@ body {
     top: auto !important;
   }
 
-  /* ART-06 — Galerie Delta exterieur
-     Full width */
+  /* ============================================================
+     ART-06 — Galerie Delta exterieur
+     Mobile: label terug in normale flow (zoals voorheen)
+     ============================================================ */
   .art-06 {
     margin-top: 70px !important;
     margin-bottom: 0 !important;
-    --caption-gap: 30px !important; /* standaard waarde, pas aan naar wens */
+    height: auto !important;
+    overflow: visible !important;
   }
+
   .art-06 img {
     width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    height: auto !important;
+    position: relative !important;
     left: auto !important;
     right: auto !important;
-    height: auto !important;
     top: auto !important;
+    margin: 0 !important;
+  }
+
+  /* Force caption-cover terug naar static flow – overlay uitzetten */
+  .art-06 .caption-cover {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    padding: 22px 20px 28px !important;   /* zelfde als de andere captions */
+    background: var(--paper) !important;
+    z-index: auto !important;
+    color: var(--caption);
+    opacity: var(--label-opacity-documentary);
+    font-size: 11.5px;
+    line-height: 1.55;
+    letter-spacing: 0.05em;
+  }
+
+  .art-06 .caption-cover .title {
+    opacity: var(--label-opacity-documentary);
   }
 
   /* ART-07 — Galerie Delta interieur
@@ -2052,7 +2079,7 @@ It is an insight into the studio and at the same time a quiet farewell to one ph
 <!-- ==========================================================================
      ART-06 — Galerie Delta, exterieur (2010) (zonder speciale mobile-crop).
      ========================================================================== -->
-<section class="artwork art-06 layout-right role-light6 role-delta">
+<section class="artwork art-06 layout-cover role-light6 role-delta">
   <h2 class="sr-only">From the studio into the wider art world, exhibition history: Galerie Delta, Rotterdam (2010)</h2>
   <p class="sr-only">Following the studio photograph, these documentary images mark the movement of John Boelee's work from the place where it is made into the wider art world. The previous photograph showed the work in the environment of the artist's studio, close to the process of making. These images follow what happens afterwards: the work leaves the studio and enters galleries, exhibitions and art fairs, where it becomes part of a larger public and professional context.
 
@@ -2065,7 +2092,7 @@ The third photograph moves outward again, showing another gallery in an art fair
 The sequence of photographs therefore creates a movement from inside to outside and from the individual studio to the wider art world: the work is made in the studio, enters a gallery, and then continues outward into exhibitions and art fairs. Shown together and at full screen width, the photographs function as documents rather than as images that need to be judged or interpreted. They offer a moment to look at the places through which the work has travelled and to see the exhibition history as a physical continuation of the making process.
 </p>
 
-  <div class="panel-right">
+  <div class="caption-cover">
     <div class="title title--documentary">
 Galerie Delta<br>
 Rotterdam<br>
