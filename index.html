@@ -117,7 +117,7 @@ op basis van viewport + DPR. Dat is juist gewenst; daar dwing je niet één vast
   --paper: #fafafa;
   --text: #111;
   --caption: #6a6a6a;
-  --footer: #555;
+  --footer: #969696;
 
   /* Wall colours (shared rooms) */
   --wall-1: var(--paper); /* art-03, art-04 (full-width), art-08 */
@@ -1470,32 +1470,39 @@ body {
   "inLanguage":"en"
  },
 
- {
-  "@type":"Person",
-  "@id":"https://johnboelee.com/#artist",
-  "name":"John Boelee",
-  "alternateName":"John Boelee Artist",
-  "jobTitle":"Contemporary Artist",
-  "description":"John Boelee is a Dutch contemporary artist based in Spain. Working across painting, drawing and mixed media, his practice explores perception, memory, visual culture and the tension between abstraction and representation.",
-  "image":"https://johnboelee.com/john-boelee-art-01-1600.webp",
-  "birthPlace":{
-    "@type":"Place",
-    "name":"Leiden, Netherlands"
+{
+  "@type": "Person",
+  "@id": "https://johnboelee.com/#artist",
+  "name": "John Boelee",
+  "alternateName": "John Boelee Artist",
+  "jobTitle": "Contemporary Artist",
+  "description": "John Boelee is a Dutch contemporary artist based in Spain. Working across painting, drawing and mixed media, his practice explores perception, memory, visual culture and the tension between abstraction and representation.",
+  "image": "https://johnboelee.com/john-boelee-art-01-1600.webp",
+
+  "copyrightHolder": {
+    "@type": "Person",
+    "name": "John Boelee"
   },
-  "nationality":"Dutch",
-  "homeLocation":{
-    "@type":"Place",
-    "name":"Spain"
+  "copyrightYear": "2026",
+
+  "birthPlace": {
+    "@type": "Place",
+    "name": "Leiden, Netherlands"
   },
-  "url":"https://johnboelee.com/",
-  "sameAs":[
-   "https://www.saatchiart.com/en-es/johnboelee"
+  "nationality": "Dutch",
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Spain"
+  },
+  "url": "https://johnboelee.com/",
+  "sameAs": [
+    "https://www.saatchiart.com/en-es/johnboelee"
   ],
-  "alumniOf":{
-    "@type":"CollegeOrUniversity",
-    "name":"Royal Academy of Art, The Hague"
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Royal Academy of Art, The Hague"
   },
-  "knowsAbout":[
+  "knowsAbout": [
     "Contemporary art",
     "Mixed media",
     "Painting",
@@ -1504,7 +1511,7 @@ body {
     "Perception",
     "Visual culture"
   ]
- },
+},
 
 {
  "@type":"ImageObject",
@@ -2265,12 +2272,13 @@ but with a moment of looking. The final image leaves the viewer with the work it
     35 × 35 cm each
   </div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      John Boelee<br><br>
-      <a href="mailto:studio@johnboelee.com">studio@johnboelee.com</a><br><br>
-    </div>
-  </footer>
+ <footer class="footer">
+  <div class="footer-content">
+    John Boelee<br><br>
+    <a href="mailto:studio@johnboelee.com">studio@johnboelee.com</a><br><br>
+    © 2026 John Boelee. All rights reserved.
+  </div>
+</footer>
 </section>
 
 </main>
